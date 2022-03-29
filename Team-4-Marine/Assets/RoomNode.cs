@@ -7,6 +7,9 @@ public class RoomNode : MapNode
     [SerializeField]
     protected Vector3 m_Size;
 
+    [SerializeField]
+    protected UtilityNode m_Affected;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
