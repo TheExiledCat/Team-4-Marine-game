@@ -1,0 +1,102 @@
+{
+    "name": "Pilot",
+    "maps": [
+        {
+            "name": "Cockpit",
+            "id": "522bbbee-0a19-456e-8380-93d05d5a3480",
+            "actions": [
+                {
+                    "name": "ToManualScreen",
+                    "type": "Button",
+                    "id": "aaaf155f-5589-473e-b779-f1a7204f4904",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "22c77d43-25ad-4022-96e0-ad8ddf38fe40",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToManualScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Manual",
+            "id": "ceef3b21-ae67-4999-853f-dbfc8369997b",
+            "actions": [
+                {
+                    "name": "PageLeft",
+                    "type": "Button",
+                    "id": "a5041b9a-07da-4b7f-9827-bd44519f364b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PageRight",
+                    "type": "Button",
+                    "id": "ff86dd9f-3746-4e95-920d-ea61c59687b3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToCockpitScreen",
+                    "type": "Button",
+                    "id": "7b3c07ca-0784-4998-94a6-be1d14acbdfa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1c39fae7-d8fb-48d8-b2c6-fd3e52a503f0",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PageRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9783890d-bbe9-449a-b2f2-b36b229e463d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PageLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee92fa10-9acc-48be-b9f7-f90110a457a3",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToCockpitScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
