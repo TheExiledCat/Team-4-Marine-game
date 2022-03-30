@@ -11,6 +11,11 @@ public class MapNode : MonoBehaviour
     [SerializeField]
     protected Sprite m_Icon;
 
+    private void Start()
+    {
+        GetComponent<Rigidbody2D>().isKinematic = true;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, "MapNode");
