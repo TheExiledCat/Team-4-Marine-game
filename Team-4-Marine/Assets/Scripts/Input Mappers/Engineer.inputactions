@@ -1,8 +1,8 @@
 {
-    "name": "EngineerInputActions",
+    "name": "Engineer",
     "maps": [
         {
-            "name": "Engineer",
+            "name": "Movement2D",
             "id": "244d5465-c075-41ac-879f-c5dd6d99d3ac",
             "actions": [
                 {

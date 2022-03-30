@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager GM = null;
     public Pilot m_PilotControls;
+    public Engineer m_EngineerControls;
 
     private void Awake()
     {
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
         }
         m_PilotControls = new Pilot();
         m_PilotControls.Enable();
+        m_EngineerControls = new Engineer();
+        m_EngineerControls.Enable();
     }
 
     public void SetCockpitControls(bool _enabled)
@@ -44,6 +47,18 @@ public class GameManager : MonoBehaviour
         else
         {
             m_PilotControls.Manual.Disable();
+        }
+    }
+
+    public void SetMovement2DControls(bool _enabled)
+    {
+        if (_enabled)
+        {
+            m_EngineerControls.Movement2D.Enable();
+        }
+        else
+        {
+            m_EngineerControls.Movement2D.Disable();
         }
     }
 }
