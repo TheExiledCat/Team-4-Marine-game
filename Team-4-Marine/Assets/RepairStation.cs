@@ -1,18 +1,33 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class RepairStation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private string m_StationName;
+
+    [SerializeField]
+    private bool m_Fixed;
+
+    public static Action OnComplete;
+
+    protected virtual void RandomizeStation()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsFixed()
     {
-        
+        return m_Fixed;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (m_Fixed)
+        {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawIcon(transform.position, "d_Favorite@2x");
+        }
     }
 }

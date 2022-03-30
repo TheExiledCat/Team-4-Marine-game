@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class UtilityNode : MapNode
 {
-    private bool m_Enabled;
+    [SerializeField]
+    protected bool m_Activated;
 
     public void SetEnabled(bool _enabled)
     {
-        m_Enabled = _enabled;
+        m_Activated = _enabled;
     }
+
     public void ToggleEnabled()
     {
-        m_Enabled = !m_Enabled;
+        m_Activated = !m_Activated;
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, "UtilityNode");
