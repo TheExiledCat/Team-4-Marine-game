@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof (Rigidbody))]
 public class Movement2D : MonoBehaviour
 {
     Engineer.Movement2DActions m_2DControls;
-
-    [SerializeField]
-    public Rigidbody m_Rb;
+    InputAction m_Move;
+    Rigidbody m_Rb;
 
     [SerializeField]
     private Vector2 m_Delta;
@@ -22,12 +22,12 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField]
     Vector2 m_MoveDirection = Vector2.zero;
-    private InputAction m_Move;
 
     private void Awake()
     {
         m_2DControls = GameManager.GM.m_EngineerControls.Movement2D;
         m_Move = m_2DControls.Move;
+        m_Rb = GetComponent<Rigidbody>();
     }
 
     private void Move(float _topSpeed,float _decaySpeed)
@@ -75,6 +75,11 @@ public class Movement2D : MonoBehaviour
             m_Delta.y += m_Acceleration * -Mathf.Sign(m_Rb.velocity.y);
             m_Delta.y = Mathf.Abs(m_Delta.y) < m_Acceleration ? 0 : m_Delta.y;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position + new Vector3(m_Delta.normalized.x, m_Delta.normalized.y, 0), 0.2f);
     }
 }
 
