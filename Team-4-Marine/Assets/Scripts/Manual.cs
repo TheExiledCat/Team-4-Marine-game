@@ -10,23 +10,22 @@ public class Manual : MonoBehaviour
     [SerializeField]
     List<Sprite> m_Pages;
 
-    Pilot m_Pilot;
+    Pilot.ManualActions m_ManualControls;
     int m_PageIndex;
 
-    private void Awake()
+    private void Start()
     {
-        m_Pilot = new Pilot();
-        m_Pilot.Manual.Enable();
+        m_ManualControls = GameManager.GM.m_PilotControls.Manual;
         m_PageIndex = 0;
     }
 
     private void Update()
     {
-        if (m_Pilot.Manual.PageLeft.WasPressedThisFrame())
+        if (m_ManualControls.PageLeft.WasPressedThisFrame())
         {
            m_PageIndex--;
         }
-        if (m_Pilot.Manual.PageRight.WasPressedThisFrame())
+        if (m_ManualControls.PageRight.WasPressedThisFrame())
         {
            m_PageIndex++;
         }

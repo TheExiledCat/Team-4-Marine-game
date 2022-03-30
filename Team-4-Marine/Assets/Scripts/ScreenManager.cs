@@ -7,24 +7,26 @@ public class ScreenManager : MonoBehaviour
     [SerializeField]
     CanvasGroup m_CockpitScreen, m_ManualScreen;
 
-    Pilot m_Pilot;
+    Pilot.CockpitActions m_CockpitControls;
+    Pilot.ManualActions m_ManualControls;
 
     bool m_ManualShown = false;
 
-    private void Awake()
+    private void Start()
     {
-        m_Pilot = new Pilot();
-        m_Pilot.Cockpit.Enable();
+        m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
+        m_ManualControls = GameManager.GM.m_PilotControls.Manual;
+        GameManager.GM.SetManualControls(false);
     }
 
     private void Update()
     {
-        if (m_Pilot.Cockpit.ToManualScreen.WasPressedThisFrame())
+        if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
         {
             m_ManualShown = true;
             ToggleScreens();
         }
-        if (m_Pilot.Manual.ToCockpitScreen.WasPressedThisFrame())
+        if (m_ManualControls.ToCockpitScreen.WasPressedThisFrame())
         {
             m_ManualShown = false;
             ToggleScreens();
@@ -35,17 +37,17 @@ public class ScreenManager : MonoBehaviour
     {
         if (m_ManualShown)
         {
-            m_Pilot.Cockpit.Disable();
+            GameManager.GM.SetCockpitControls(false);
             m_CockpitScreen.alpha = 0;
             m_ManualScreen.alpha = 1;
-            m_Pilot.Manual.Enable();
+            GameManager.GM.SetManualControls(true);
         }
         else
         {
-            m_Pilot.Manual.Disable();
+            GameManager.GM.SetManualControls(false);
             m_ManualScreen.alpha = 0;
             m_CockpitScreen.alpha = 1;
-            m_Pilot.Cockpit.Enable();
+            GameManager.GM.SetCockpitControls(true);
         }
     }
 }
