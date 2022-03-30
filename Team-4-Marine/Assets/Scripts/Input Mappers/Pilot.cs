@@ -56,6 +56,15 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             ""id"": ""ceef3b21-ae67-4999-853f-dbfc8369997b"",
             ""actions"": [
                 {
+                    ""name"": ""ToCockpitScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b3c07ca-0784-4998-94a6-be1d14acbdfa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""PageLeft"",
                     ""type"": ""Button"",
                     ""id"": ""a5041b9a-07da-4b7f-9827-bd44519f364b"",
@@ -74,13 +83,13 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToCockpitScreen"",
-                    ""type"": ""Button"",
-                    ""id"": ""7b3c07ca-0784-4998-94a6-be1d14acbdfa"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Bookmark"",
+                    ""type"": ""Value"",
+                    ""id"": ""ab8db3bc-1671-4454-b858-8babe00c5192"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -116,6 +125,61 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""action"": ""ToCockpitScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""id"": ""f487f00b-2313-430a-ab9d-c7fed3a17e72"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bookmark"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9772a39f-4e27-4351-aa95-59761305a64a"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bookmark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1082569f-792d-42d0-9dc4-b0c4af8978ce"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bookmark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ea5ca1f7-ff1c-45e8-bc0a-62080ef2505a"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bookmark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b2dcc638-5ece-4d4e-85ac-89b255c0e615"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bookmark"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -127,9 +191,10 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
         // Manual
         m_Manual = asset.FindActionMap("Manual", throwIfNotFound: true);
+        m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
         m_Manual_PageLeft = m_Manual.FindAction("PageLeft", throwIfNotFound: true);
         m_Manual_PageRight = m_Manual.FindAction("PageRight", throwIfNotFound: true);
-        m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
+        m_Manual_Bookmark = m_Manual.FindAction("Bookmark", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -222,16 +287,18 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     // Manual
     private readonly InputActionMap m_Manual;
     private IManualActions m_ManualActionsCallbackInterface;
+    private readonly InputAction m_Manual_ToCockpitScreen;
     private readonly InputAction m_Manual_PageLeft;
     private readonly InputAction m_Manual_PageRight;
-    private readonly InputAction m_Manual_ToCockpitScreen;
+    private readonly InputAction m_Manual_Bookmark;
     public struct ManualActions
     {
         private @Pilot m_Wrapper;
         public ManualActions(@Pilot wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ToCockpitScreen => m_Wrapper.m_Manual_ToCockpitScreen;
         public InputAction @PageLeft => m_Wrapper.m_Manual_PageLeft;
         public InputAction @PageRight => m_Wrapper.m_Manual_PageRight;
-        public InputAction @ToCockpitScreen => m_Wrapper.m_Manual_ToCockpitScreen;
+        public InputAction @Bookmark => m_Wrapper.m_Manual_Bookmark;
         public InputActionMap Get() { return m_Wrapper.m_Manual; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,28 +308,34 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ManualActionsCallbackInterface != null)
             {
+                @ToCockpitScreen.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
+                @ToCockpitScreen.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
+                @ToCockpitScreen.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
                 @PageLeft.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
                 @PageLeft.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
                 @PageLeft.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
                 @PageRight.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
                 @PageRight.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
                 @PageRight.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
-                @ToCockpitScreen.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
-                @ToCockpitScreen.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
-                @ToCockpitScreen.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
+                @Bookmark.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
+                @Bookmark.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
+                @Bookmark.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
             }
             m_Wrapper.m_ManualActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @ToCockpitScreen.started += instance.OnToCockpitScreen;
+                @ToCockpitScreen.performed += instance.OnToCockpitScreen;
+                @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
                 @PageLeft.started += instance.OnPageLeft;
                 @PageLeft.performed += instance.OnPageLeft;
                 @PageLeft.canceled += instance.OnPageLeft;
                 @PageRight.started += instance.OnPageRight;
                 @PageRight.performed += instance.OnPageRight;
                 @PageRight.canceled += instance.OnPageRight;
-                @ToCockpitScreen.started += instance.OnToCockpitScreen;
-                @ToCockpitScreen.performed += instance.OnToCockpitScreen;
-                @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
+                @Bookmark.started += instance.OnBookmark;
+                @Bookmark.performed += instance.OnBookmark;
+                @Bookmark.canceled += instance.OnBookmark;
             }
         }
     }
@@ -273,8 +346,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     }
     public interface IManualActions
     {
+        void OnToCockpitScreen(InputAction.CallbackContext context);
         void OnPageLeft(InputAction.CallbackContext context);
         void OnPageRight(InputAction.CallbackContext context);
-        void OnToCockpitScreen(InputAction.CallbackContext context);
+        void OnBookmark(InputAction.CallbackContext context);
     }
 }
