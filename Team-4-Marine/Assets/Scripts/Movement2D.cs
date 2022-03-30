@@ -1,54 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.InputSystem;
-
-//public class Movement2D : MonoBehaviour
-//{
-//    [SerializeField]
-//    public Rigidbody m_rb;
-//    private float m_Speed = 5f;
-//    private float m_maxSpeed = 15f;
-//    private EngineerInputActions EngineerControls;
-
-//    Vector2 moveDirection = Vector2.zero;
-//    private InputAction m_Move;
-
-//    private void Awake()
-//    {
-//        EngineerControls = new EngineerInputActions();
-//    }
-
-//    private void OnEnable()
-//    {
-//        m_Move = EngineerControls.Player.Move;
-//        m_Move.Enable();
-//    }
-
-//    private void OnDisable()
-//    {
-//        m_Move.Disable();
-//    }
-
-
-//    void Update()
-//    {
-//        moveDirection = m_Move.ReadValue<Vector2>();
-//    }
-
-//    private void FixedUpdate()
-//    {
-//        if (m_Speed < m_maxSpeed)
-//        {
-//            m_rb.velocity = new Vector2(moveDirection.x * m_Speed, moveDirection.y * m_Speed);
-//        }
-
-//    }
-
-//m_rb.velocity = new Vector2(moveDirection.x * m_Speed * Time.deltaTime, moveDirection.y * m_Speed * Time.deltaTime);
-
-//}
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -83,15 +32,15 @@ public class Movement2D : MonoBehaviour
 
     private void OnEnable()
     {
-        m_Move = EngineerControls.Player.Move;
+        m_Move = EngineerControls.Engineer.Move;
 
-        EngineerControls.Player.Enable();
+        EngineerControls.Engineer.Enable();
     }
 
     private void OnDisable()
     {
         m_Move.Disable();
-        EngineerControls.Player.Disable();
+        EngineerControls.Engineer.Disable();
     }
 
     private void Move(float _topSpeed,float _decaySpeed)
@@ -118,12 +67,12 @@ public class Movement2D : MonoBehaviour
     void Update()
     {
         moveDirection = m_Move.ReadValue<Vector2>();
-        if (!EngineerControls.Player.Sprint.IsPressed())
+        if (!EngineerControls.Engineer.Sprint.IsPressed())
         {
             Move(m_maxSpeed,m_Speed);
         }
         
-        if (EngineerControls.Player.Sprint.IsPressed())
+        if (EngineerControls.Engineer.Sprint.IsPressed())
         {
             Move(m_maxSpeed,m_maxSpeed);
         }
@@ -132,13 +81,13 @@ public class Movement2D : MonoBehaviour
     }
     void Decay()
     {
-        if (moveDirection.x == 0 && m_rb.velocity.x != 0 || !EngineerControls.Player.Sprint.IsPressed() && Mathf.Abs(m_Delta.x) > m_Speed)
+        if (moveDirection.x == 0 && m_rb.velocity.x != 0 || !EngineerControls.Engineer.Sprint.IsPressed() && Mathf.Abs(m_Delta.x) > m_Speed)
         {
             m_Delta.x += m_Acceleration * -Mathf.Sign(m_rb.velocity.x);
             m_Delta.x = Mathf.Abs(m_Delta.x) < m_Acceleration ? 0 : m_Delta.x;
         }
 
-        if (moveDirection.y == 0 && m_rb.velocity.y != 0 || !EngineerControls.Player.Sprint.IsPressed() && Mathf.Abs(m_Delta.y) > m_Speed)
+        if (moveDirection.y == 0 && m_rb.velocity.y != 0 || !EngineerControls.Engineer.Sprint.IsPressed() && Mathf.Abs(m_Delta.y) > m_Speed)
         {
             m_Delta.y += m_Acceleration * -Mathf.Sign(m_rb.velocity.y);
             m_Delta.y = Mathf.Abs(m_Delta.y) < m_Acceleration ? 0 : m_Delta.y;

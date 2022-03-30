@@ -24,7 +24,7 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
     ""name"": ""EngineerInputActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Engineer"",
             ""id"": ""244d5465-c075-41ac-879f-c5dd6d99d3ac"",
             ""actions"": [
                 {
@@ -35,15 +35,6 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Fire"",
-                    ""type"": ""Button"",
-                    ""id"": ""03ac7d75-9e72-41e1-a84b-171205dd35e6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Sprint"",
@@ -185,61 +176,6 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": ""Joystick"",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -836,11 +772,10 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        // Engineer
+        m_Engineer = asset.FindActionMap("Engineer", throwIfNotFound: true);
+        m_Engineer_Move = m_Engineer.FindAction("Move", throwIfNotFound: true);
+        m_Engineer_Sprint = m_Engineer.FindAction("Sprint", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -909,54 +844,46 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Fire;
-    private readonly InputAction m_Player_Sprint;
-    public struct PlayerActions
+    // Engineer
+    private readonly InputActionMap m_Engineer;
+    private IEngineerActions m_EngineerActionsCallbackInterface;
+    private readonly InputAction m_Engineer_Move;
+    private readonly InputAction m_Engineer_Sprint;
+    public struct EngineerActions
     {
         private @EngineerInputActions m_Wrapper;
-        public PlayerActions(@EngineerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Fire => m_Wrapper.m_Player_Fire;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public EngineerActions(@EngineerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Engineer_Move;
+        public InputAction @Sprint => m_Wrapper.m_Engineer_Sprint;
+        public InputActionMap Get() { return m_Wrapper.m_Engineer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(EngineerActions set) { return set.Get(); }
+        public void SetCallbacks(IEngineerActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_EngineerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
-                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Move.started -= m_Wrapper.m_EngineerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_EngineerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_EngineerActionsCallbackInterface.OnMove;
+                @Sprint.started -= m_Wrapper.m_EngineerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_EngineerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_EngineerActionsCallbackInterface.OnSprint;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_EngineerActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Fire.started += instance.OnFire;
-                @Fire.performed += instance.OnFire;
-                @Fire.canceled += instance.OnFire;
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public EngineerActions @Engineer => new EngineerActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1107,10 +1034,9 @@ public partial class @EngineerInputActions : IInputActionCollection2, IDisposabl
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IEngineerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnFire(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
     }
     public interface IUIActions
