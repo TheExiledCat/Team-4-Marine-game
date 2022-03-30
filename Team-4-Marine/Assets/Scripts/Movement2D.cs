@@ -18,6 +18,8 @@ public class Movement2D : MonoBehaviour
     m_Acceleration,
     m_Spacing;
 
+    
+
 
     private EngineerInputActions EngineerControls;
 
@@ -92,6 +94,11 @@ public class Movement2D : MonoBehaviour
             m_Delta.y += m_Acceleration * -Mathf.Sign(m_rb.velocity.y);
             m_Delta.y = Mathf.Abs(m_Delta.y) < m_Acceleration ? 0 : m_Delta.y;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position + new Vector3(m_Delta.normalized.x, m_Delta.normalized.y, 0), 0.2f);
     }
 }
 
