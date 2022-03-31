@@ -5,11 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MapNode : MonoBehaviour
 {
-    [SerializeField]
-    protected string m_NodeName;
+    public string m_NodeName;
 
-    [SerializeField]
-    protected Sprite m_Icon;
+    public Sprite m_Icon;
 
     private void Start()
     {
