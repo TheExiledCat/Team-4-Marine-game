@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof (Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Movement2D : MonoBehaviour
 {
-    Engineer.Movement2DActions m_2DControls;
-    InputAction m_Move;
-    Rigidbody m_Rb;
+    private Engineer.Movement2DActions m_2DControls;
+    private InputAction m_Move;
+    private Rigidbody2D m_Rb;
 
     [SerializeField]
     private Vector2 m_Delta;
@@ -21,23 +21,25 @@ public class Movement2D : MonoBehaviour
     m_Spacing;
 
     [SerializeField]
-    Vector2 m_MoveDirection = Vector2.zero;
+    private Vector2 m_MoveDirection = Vector2.zero;
 
-    private void Awake()
+    private void Start()
     {
         m_2DControls = GameManager.GM.m_EngineerControls.Movement2D;
         m_Move = m_2DControls.Move;
-        m_Rb = GetComponent<Rigidbody>();
+        m_Rb = GetComponent<Rigidbody2D>();
+        m_Rb.isKinematic = true;
     }
 
-    private void Move(float _topSpeed,float _decaySpeed)
+    private void Move(float _topSpeed, float _decaySpeed)
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
 
-        if(Mathf.Abs(m_Delta.x)< _decaySpeed){
+        if (Mathf.Abs(m_Delta.x) <= _decaySpeed)
+        {
             m_Delta.x += m_Acceleration * m_MoveDirection.x;
         }
-        if (Mathf.Abs(m_Delta.y) < _decaySpeed)
+        if (Mathf.Abs(m_Delta.y) <= _decaySpeed)
         {
             m_Delta.y += m_Acceleration * m_MoveDirection.y;
         }
@@ -47,22 +49,22 @@ public class Movement2D : MonoBehaviour
         m_Delta.y = Mathf.Clamp(m_Delta.y, -_topSpeed, _topSpeed);
     }
 
-    void Update()
+    private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
         if (!m_2DControls.Sprint.IsPressed())
         {
-            Move(m_MaxSpeed,m_Speed);
+            Move(m_MaxSpeed, m_Speed);
         }
-        
+
         if (m_2DControls.Sprint.IsPressed())
         {
-            Move(m_MaxSpeed,m_MaxSpeed);
+            Move(m_MaxSpeed, m_MaxSpeed);
         }
         m_Rb.velocity = m_Delta * Time.deltaTime;
-
     }
-    void Decay()
+
+    private void Decay()
     {
         if (m_MoveDirection.x == 0 && m_Rb.velocity.x != 0 || !m_2DControls.Sprint.IsPressed() && Mathf.Abs(m_Delta.x) > m_Speed)
         {
@@ -79,10 +81,6 @@ public class Movement2D : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(transform.position + new Vector3(m_Delta.normalized.x, m_Delta.normalized.y, 0), 0.2f);
+        Gizmos.DrawSphere(transform.position + (new Vector3(m_Delta.normalized.x, m_Delta.normalized.y, 0) * Mathf.Abs(m_Delta.magnitude) / m_MaxSpeed), 0.05f);
     }
 }
-
-
-
-
