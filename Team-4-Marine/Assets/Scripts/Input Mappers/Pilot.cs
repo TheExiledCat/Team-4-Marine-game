@@ -65,22 +65,13 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PageLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""a5041b9a-07da-4b7f-9827-bd44519f364b"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""SwapPage"",
+                    ""type"": ""Value"",
+                    ""id"": ""9aa01093-b879-407d-8951-0d4be3dbde63"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PageRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""ff86dd9f-3746-4e95-920d-ea61c59687b3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Bookmark"",
@@ -93,28 +84,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""1c39fae7-d8fb-48d8-b2c6-fd3e52a503f0"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PageRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9783890d-bbe9-449a-b2f2-b36b229e463d"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PageLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""ee92fa10-9acc-48be-b9f7-f90110a457a3"",
@@ -180,6 +149,39 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""action"": ""Bookmark"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7e820f15-2652-4720-996f-a673a3d03527"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapPage"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""12f2e60a-8bef-494b-86f3-7604050b6bc4"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1cb8090d-be44-4084-982e-35e5e9209ee2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapPage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -192,8 +194,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         // Manual
         m_Manual = asset.FindActionMap("Manual", throwIfNotFound: true);
         m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
-        m_Manual_PageLeft = m_Manual.FindAction("PageLeft", throwIfNotFound: true);
-        m_Manual_PageRight = m_Manual.FindAction("PageRight", throwIfNotFound: true);
+        m_Manual_SwapPage = m_Manual.FindAction("SwapPage", throwIfNotFound: true);
         m_Manual_Bookmark = m_Manual.FindAction("Bookmark", throwIfNotFound: true);
     }
 
@@ -288,16 +289,14 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Manual;
     private IManualActions m_ManualActionsCallbackInterface;
     private readonly InputAction m_Manual_ToCockpitScreen;
-    private readonly InputAction m_Manual_PageLeft;
-    private readonly InputAction m_Manual_PageRight;
+    private readonly InputAction m_Manual_SwapPage;
     private readonly InputAction m_Manual_Bookmark;
     public struct ManualActions
     {
         private @Pilot m_Wrapper;
         public ManualActions(@Pilot wrapper) { m_Wrapper = wrapper; }
         public InputAction @ToCockpitScreen => m_Wrapper.m_Manual_ToCockpitScreen;
-        public InputAction @PageLeft => m_Wrapper.m_Manual_PageLeft;
-        public InputAction @PageRight => m_Wrapper.m_Manual_PageRight;
+        public InputAction @SwapPage => m_Wrapper.m_Manual_SwapPage;
         public InputAction @Bookmark => m_Wrapper.m_Manual_Bookmark;
         public InputActionMap Get() { return m_Wrapper.m_Manual; }
         public void Enable() { Get().Enable(); }
@@ -311,12 +310,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
-                @PageLeft.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
-                @PageLeft.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
-                @PageLeft.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageLeft;
-                @PageRight.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
-                @PageRight.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
-                @PageRight.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnPageRight;
+                @SwapPage.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
+                @SwapPage.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
+                @SwapPage.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
                 @Bookmark.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
                 @Bookmark.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
                 @Bookmark.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
@@ -327,12 +323,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started += instance.OnToCockpitScreen;
                 @ToCockpitScreen.performed += instance.OnToCockpitScreen;
                 @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
-                @PageLeft.started += instance.OnPageLeft;
-                @PageLeft.performed += instance.OnPageLeft;
-                @PageLeft.canceled += instance.OnPageLeft;
-                @PageRight.started += instance.OnPageRight;
-                @PageRight.performed += instance.OnPageRight;
-                @PageRight.canceled += instance.OnPageRight;
+                @SwapPage.started += instance.OnSwapPage;
+                @SwapPage.performed += instance.OnSwapPage;
+                @SwapPage.canceled += instance.OnSwapPage;
                 @Bookmark.started += instance.OnBookmark;
                 @Bookmark.performed += instance.OnBookmark;
                 @Bookmark.canceled += instance.OnBookmark;
@@ -347,8 +340,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     public interface IManualActions
     {
         void OnToCockpitScreen(InputAction.CallbackContext context);
-        void OnPageLeft(InputAction.CallbackContext context);
-        void OnPageRight(InputAction.CallbackContext context);
+        void OnSwapPage(InputAction.CallbackContext context);
         void OnBookmark(InputAction.CallbackContext context);
     }
 }
