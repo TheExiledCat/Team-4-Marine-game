@@ -18,7 +18,8 @@ public class RepairStation : MonoBehaviour
     public static Action OnComplete;
     public static Action OnFail;
     public static Action OnOpen;
-
+    public static Action OnClose;
+    private bool m_Opened;
     protected virtual void RandomizeStation()
     {
     }
@@ -26,21 +27,38 @@ public class RepairStation : MonoBehaviour
     {
         CheckForMechanic();
     }
-    private void CheckForMechanic()
+    public virtual void Open()
+    {
+        print("Opening");
+        m_Opened = true;
+        OnOpen?.Invoke();
+    }
+    public virtual void Close()
+    {
+        if (m_Opened == false)
+        {
+            print("Closing");
+            m_Opened = false;
+            OnClose?.Invoke();
+        }
+    }
+    public bool CheckForMechanic()
     {
         Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + (Vector3)m_Hitbox.position, m_Hitbox.size, 0, m_PlayerMask);
         if (cols.Length > 0)
         {
             cols[0].GetComponent<MechanicScript>().SetStation(this);
             print("SetStation");
+            return true;
         }
+        return false;
     }
     public bool IsFixed()
     {
         return m_Fixed;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         if (m_Fixed)
         {
