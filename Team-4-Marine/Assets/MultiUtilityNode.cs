@@ -25,7 +25,7 @@ public class MultiUtilityNode : UtilityNode
             foreach (Vector2 v in m_NodesPositions)
             {
                 m_Nodes.Add(new GameObject().AddComponent<UtilityNode>());
-                UtilityNode u = m_Nodes[m_Nodes.Count];
+                UtilityNode u = m_Nodes[m_Nodes.Count - 1];
                 u.transform.position = v;
                 u.m_NodeName = m_NodeName + m_Nodes.Count;
                 u.m_Icon = m_MultiIcon;
@@ -44,7 +44,7 @@ public class MultiUtilityNode : UtilityNode
                     {
                         Vector3 pos = grid.CellToWorld(new Vector3Int(x, y, 0));
                         m_Nodes.Add(new GameObject().AddComponent<UtilityNode>());
-                        UtilityNode u = m_Nodes[m_Nodes.Count];
+                        UtilityNode u = m_Nodes[m_Nodes.Count - 1];
                         u.transform.position = pos;
                         u.m_NodeName = m_NodeName + m_Nodes.Count;
                         u.m_Icon = m_MultiIcon;
