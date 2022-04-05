@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GeneratorStation : RepairStation
 {
-    [SerializeField] private Canvas m_TestCanvas;
+    [SerializeField] private GameObject m_PhysicalModel;
+
     public override void Open()
     {
-        m_TestCanvas.gameObject.SetActive(true);
+        m_PhysicalModel.gameObject.SetActive(true);
     }
+
     public override void Close()
     {
-        m_TestCanvas.gameObject.SetActive(false);
+        m_PhysicalModel.gameObject.SetActive(false);
     }
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

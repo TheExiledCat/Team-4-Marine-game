@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Interaction
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Overlay
+    uniqueID: 1960887733
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -10,8 +10,10 @@ public class RepairStation : MonoBehaviour
 
     [SerializeField]
     private bool m_Fixed;
+
     [SerializeField]
     private Rect m_Hitbox;
+
     [SerializeField]
     private LayerMask m_PlayerMask;
 
@@ -20,19 +22,27 @@ public class RepairStation : MonoBehaviour
     public static Action OnOpen;
     public static Action OnClose;
     private bool m_Opened;
+
+    [SerializeField] private List<Switch> m_Switches = new List<Switch>();
+    [SerializeField] private List<Handle> m_Handles = new List<Handle>();
+    [SerializeField] private List<RotaryKnob> m_Rotaries = new List<RotaryKnob>();
+
     protected virtual void RandomizeStation()
     {
     }
+
     private void LateUpdate()
     {
         CheckForMechanic();
     }
+
     public virtual void Open()
     {
         print("Opening");
         m_Opened = true;
         OnOpen?.Invoke();
     }
+
     public virtual void Close()
     {
         if (m_Opened == false)
@@ -42,6 +52,7 @@ public class RepairStation : MonoBehaviour
             OnClose?.Invoke();
         }
     }
+
     public bool CheckForMechanic()
     {
         Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + (Vector3)m_Hitbox.position, m_Hitbox.size, 0, m_PlayerMask);
@@ -53,6 +64,7 @@ public class RepairStation : MonoBehaviour
         }
         return false;
     }
+
     public bool IsFixed()
     {
         return m_Fixed;
