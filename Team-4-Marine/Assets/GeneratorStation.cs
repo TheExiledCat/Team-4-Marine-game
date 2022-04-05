@@ -6,6 +6,10 @@ public class GeneratorStation : RepairStation
 {
     [SerializeField] private GameObject m_PhysicalModel;
 
+    private void Start()
+    {
+        RandomizeStation();
+    }
     public override void Open()
     {
         m_PhysicalModel.gameObject.SetActive(true);
