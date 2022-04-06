@@ -9,7 +9,7 @@ public class RepairStation : MonoBehaviour
     private string m_StationName;
 
     [SerializeField]
-    private bool m_Fixed;
+    protected bool m_Fixed;
 
     [SerializeField]
     private Rect m_Hitbox;
@@ -23,26 +23,29 @@ public class RepairStation : MonoBehaviour
     public static Action OnClose;
     private bool m_Opened;
 
-    [SerializeField] private List<Switch> m_Switches = new List<Switch>();
-    [SerializeField] private List<Handle> m_Handles = new List<Handle>();
-    [SerializeField] private List<RotaryKnob> m_Rotaries = new List<RotaryKnob>();
-    [SerializeField] private List<Indicator> m_Indicators = new List<Indicator>();
-    [SerializeField] private List<StationDisplay> m_Displays = new List<StationDisplay>();
+    [SerializeField] protected List<Switch> m_Switches = new List<Switch>();
+    [SerializeField] protected List<Handle> m_Handles = new List<Handle>();
+    [SerializeField] protected List<RotaryKnob> m_Rotaries = new List<RotaryKnob>();
+    [SerializeField] protected List<Indicator> m_Indicators = new List<Indicator>();
+    [SerializeField] protected List<StationDisplay> m_Displays = new List<StationDisplay>();
     protected virtual void RandomizeStation()
     {
         foreach (Switch s in m_Switches) s.Randomize();
-        foreach (Handle h in m_Handles) h.Randomize();
+        //foreach (Handle h in m_Handles) h.Randomize();
         foreach (RotaryKnob r in m_Rotaries) r.Randomize();
         //foreach (Indicator i in m_Switches) i.Randomize();
         foreach (StationDisplay sd in m_Displays) sd.Randomize();
         if (!CheckForFailure()) RandomizeStation(); else return;
     }
 
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
         CheckForMechanic();
     }
-
+    protected virtual void Update()
+    {
+        m_Displays[0].SetState(m_Fixed);
+    }
     public virtual void Open()
     {
         print("Opening");

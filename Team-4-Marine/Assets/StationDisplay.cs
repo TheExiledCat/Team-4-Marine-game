@@ -8,13 +8,13 @@ public class StationDisplay : PuzzleComponent
     [SerializeField] private string m_StationName;
     [SerializeField]
     private int m_DigitCrosses;
-    private TMP_Text m_TextName;
-    private TMP_Text m_Crosses;
-    private void Start()
+    [SerializeField]
+    private TMP_Text m_TextName, m_Crosses, m_FreeText;
+
+    private void Awake()
     {
-        m_TextName = transform.GetChild(1).GetComponent<TMP_Text>();
-        m_Crosses = transform.GetChild(2).GetComponent<TMP_Text>();
         m_TextName.text = m_StationName;
+        print(m_Crosses.name);
     }
     public override void Randomize()
     {
@@ -30,7 +30,20 @@ public class StationDisplay : PuzzleComponent
         }
         m_Crosses.text = x;
     }
-
+    public void SetState(bool _fixed)
+    {
+        print("Setting");
+        if (_fixed)
+        {
+            m_FreeText.text = "Working";
+            m_FreeText.color = Color.green;
+        }
+        else
+        {
+            m_FreeText.text = "Malfunctioning";
+            m_FreeText.color = Color.red;
+        }
+    }
     public float GetCrosses()
     {
         return m_DigitCrosses;

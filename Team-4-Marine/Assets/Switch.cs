@@ -5,11 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Switch : Interactable
 {
+    [SerializeField]
     private bool m_SwitchedOn;
+    [SerializeField]
+    private bool m_IsConstant;
 
     [SerializeField]
     private float m_TopAngle, m_BotAngle;
-
+    public bool GetState()
+    {
+        return m_SwitchedOn;
+    }
     public void SetState(bool _state)
     {
         m_SwitchedOn = _state;
@@ -23,8 +29,11 @@ public class Switch : Interactable
     }
     public override void Randomize()
     {
-        base.Randomize();
-        SetState((Random.Range(0f, 1f) < 0.5f) ? true : false);
+        if (!m_IsConstant)
+        {
+            base.Randomize();
+            SetState((Random.Range(0f, 1f) < 0.5f) ? true : false);
+        }
     }
     public override void Interact()
     {

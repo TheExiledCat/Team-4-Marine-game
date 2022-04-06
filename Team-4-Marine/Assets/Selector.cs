@@ -26,4 +26,8 @@ public class Selector : Interactable
         System.Random random = new System.Random();
         m_CurrentPosition = random.Next(m_Positions.Count);
     }
+    public int GetPosition()
+    {
+        return m_CurrentPosition;
+    }
 }
