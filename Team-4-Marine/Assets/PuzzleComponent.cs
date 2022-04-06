@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PuzzleComponent : MonoBehaviour
 {
-    public static event Action OnRanomize;
-    public virtual void Randomize()
+    public static event Action OnInitialization;
+    public virtual void Initiate()
     {
-        OnRanomize?.Invoke();
+        OnInitialization?.Invoke();
     }
 }

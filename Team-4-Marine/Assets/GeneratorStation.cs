@@ -5,12 +5,11 @@ using UnityEngine;
 public class GeneratorStation : RepairStation
 {
     [SerializeField] private GameObject m_PhysicalModel;
-
-    private bool m_RedIsOn;
-    private bool m_YellowIsOn;
+    [SerializeField]
+    private bool m_RedIsOn, m_YellowIsOn;
     private void Start()
     {
-        RandomizeStation();
+        InitiatePuzzle();
     }
     public override void Open()
     {
@@ -31,6 +30,7 @@ public class GeneratorStation : RepairStation
             {
                 print("win");
                 m_Fixed = true;
+                GetComponent<SpriteRenderer>().color = Color.green;
                 OnComplete?.Invoke();
             }
         }
@@ -40,6 +40,7 @@ public class GeneratorStation : RepairStation
             {
                 print("broken");
                 m_Fixed = false;
+                GetComponent<SpriteRenderer>().color = Color.yellow;
             }
         }
     }
@@ -56,15 +57,18 @@ public class GeneratorStation : RepairStation
         switch (m_Handles[0].GetPosition())
         {
             case 1:
+                print("Yellow On");
                 m_Indicators[1].SetIndicator(m_YellowIsOn);
                 break;
             case 2:
+                print("Red On");
                 m_Indicators[2].SetIndicator(m_RedIsOn);
                 break;
         }
     }
-    public override bool CheckForFailure()
+    public override bool CheckForFailure() // Puzzle win condition, hardcoded
     {
+        print("Checking");
         if (m_Displays[0].GetCrosses() >= 3)
         {
             //1A
@@ -80,7 +84,7 @@ public class GeneratorStation : RepairStation
                 }
                 else //red stays off
                 {
-                    if (!m_Switches[0].GetState())
+                    if (m_Switches[0].GetState())
                     {
                         return false;//win
                     }
@@ -90,15 +94,34 @@ public class GeneratorStation : RepairStation
         else
         {
             //1B
+            if (m_Handles[0].GetPosition() == 1)//Handle to yellow
+            {
+                if (m_Displays[0].GetCrosses() >= 2) // 2 crosses
+                {
+                    //2B
+                    if (m_Rotaries[0].GetPosition() == 0 && m_Switches[0].GetState() && m_Switches[1].GetState())//knob on 1600 and both switches on
+                    {
+                        return false;//win
+                    }
+                }
+                else //1 cross
+                {
+                    if (m_Rotaries[0].GetPosition() == 2 && m_Switches[0].GetState())//knob to 800 and left switch to on
+                    {
+                        return false;//win
+                    }
+                }
+            }
         }
 
-        return true;
+        return true;//not done yet
     }
-    protected override void RandomizeStation()
+    protected override void InitiatePuzzle()
     {
-        base.RandomizeStation();
-        m_RedIsOn = new System.Random().NextDouble() > 0.5f ? true : false;
-        m_YellowIsOn = new System.Random().NextDouble() > 0.2f ? true : false;
+        base.InitiatePuzzle();
+        GetComponent<SpriteRenderer>().color = m_Fixed ? Color.green : Color.yellow;
+        m_RedIsOn = Random.Range(0f, 1f) > 0.5f ? true : false;
+        m_YellowIsOn = Random.Range(0f, 1f) > 0.5f ? true : false;
     }
     protected override void OnDrawGizmos()
     {

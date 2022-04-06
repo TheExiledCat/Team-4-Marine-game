@@ -27,13 +27,14 @@ public class Switch : Interactable
         m_SwitchedOn = !m_SwitchedOn;
         transform.localEulerAngles = new Vector3(0, 0, m_SwitchedOn ? m_TopAngle : m_BotAngle);
     }
-    public override void Randomize()
+    public override void Initiate()
     {
-        if (!m_IsConstant)
-        {
-            base.Randomize();
-            SetState((Random.Range(0f, 1f) < 0.5f) ? true : false);
-        }
+        //if (!m_IsConstant)
+        //{
+        //    base.Initiate();
+        //    SetState((Random.Range(0f, 1f) < 0.5f) ? true : false);
+        //}
+        SetState(false);
     }
     public override void Interact()
     {

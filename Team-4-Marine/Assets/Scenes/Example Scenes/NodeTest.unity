@@ -556,6 +556,8 @@ MonoBehaviour:
   m_Displays:
   - {fileID: 1010990866}
   m_PhysicalModel: {fileID: 919132147939984824}
+  m_RedIsOn: 0
+  m_YellowIsOn: 0
 --- !u!61 &380535801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1204,7 +1206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132147939984824, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241202, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Name

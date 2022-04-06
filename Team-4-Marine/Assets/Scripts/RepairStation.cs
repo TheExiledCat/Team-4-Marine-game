@@ -28,14 +28,14 @@ public class RepairStation : MonoBehaviour
     [SerializeField] protected List<RotaryKnob> m_Rotaries = new List<RotaryKnob>();
     [SerializeField] protected List<Indicator> m_Indicators = new List<Indicator>();
     [SerializeField] protected List<StationDisplay> m_Displays = new List<StationDisplay>();
-    protected virtual void RandomizeStation()
+    protected virtual void InitiatePuzzle()
     {
-        foreach (Switch s in m_Switches) s.Randomize();
+        foreach (Switch s in m_Switches) s.Initiate();
         //foreach (Handle h in m_Handles) h.Randomize();
-        foreach (RotaryKnob r in m_Rotaries) r.Randomize();
-        //foreach (Indicator i in m_Switches) i.Randomize();
-        foreach (StationDisplay sd in m_Displays) sd.Randomize();
-        if (!CheckForFailure()) RandomizeStation(); else return;
+        foreach (RotaryKnob r in m_Rotaries) r.Initiate();
+        foreach (Indicator i in m_Indicators) i.Initiate();
+        foreach (StationDisplay sd in m_Displays) sd.Initiate();
+        if (!CheckForFailure()) InitiatePuzzle(); else return;
     }
 
     protected virtual void LateUpdate()

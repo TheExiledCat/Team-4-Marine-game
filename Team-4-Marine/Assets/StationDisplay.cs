@@ -16,7 +16,7 @@ public class StationDisplay : PuzzleComponent
         m_TextName.text = m_StationName;
         print(m_Crosses.name);
     }
-    public override void Randomize()
+    public override void Initiate()
     {
         SetCrosses(Mathf.FloorToInt(UnityEngine.Random.Range(1, 4)));
     }
@@ -32,7 +32,6 @@ public class StationDisplay : PuzzleComponent
     }
     public void SetState(bool _fixed)
     {
-        print("Setting");
         if (_fixed)
         {
             m_FreeText.text = "Working";

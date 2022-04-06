@@ -20,9 +20,9 @@ public class Selector : Interactable
         m_CurrentPosition--;
         m_CurrentPosition = Mathf.Clamp(m_CurrentPosition, 0, m_Positions.Count - 1);
     }
-    public override void Randomize()
+    public override void Initiate()
     {
-        base.Randomize();
+        base.Initiate();
         System.Random random = new System.Random();
         m_CurrentPosition = random.Next(m_Positions.Count);
     }
