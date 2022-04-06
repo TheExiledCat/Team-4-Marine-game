@@ -31,7 +31,6 @@ public class MechanicScript : MonoBehaviour
         {
             if (!m_Repairing)
             {
-                print("Press Button to Interact");
                 if (GameManager.GM.m_EngineerControls.Interactions.PrimaryInteract.WasPressedThisFrame())
                 {
                     Repair();

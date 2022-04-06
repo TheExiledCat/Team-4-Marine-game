@@ -24,8 +24,11 @@ public class GeneratorStation : RepairStation
     {
         base.Update();
         SetIndicators();
+
         if (!m_Fixed)
         {
+            if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
+            else GetComponent<SpriteRenderer>().color = Color.yellow;
             if (!CheckForFailure())
             {
                 print("win");
