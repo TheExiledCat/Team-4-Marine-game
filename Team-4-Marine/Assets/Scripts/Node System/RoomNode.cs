@@ -40,7 +40,7 @@ public class RoomNode : MapNode
                 nodeIsFixed = false;
             }
         }
-        print(nodeIsFixed);
+
         m_Affected.SetEnabled(nodeIsFixed);
     }
 

@@ -707,6 +707,116 @@ public partial class @Engineer : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Interactions"",
+            ""id"": ""0eaaffa9-f91a-4a6b-a6a4-8342d6fb6f4e"",
+            ""actions"": [
+                {
+                    ""name"": ""PrimaryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d93f45f-8702-444e-a597-953ad5d1c2f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReturnInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5ce6e86-309e-44da-ac2e-e19f13062801"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8e77d6d-ee0c-4057-80f9-d05ec990a4b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseSecondaryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b7691fb-a3c6-418a-bcf7-46ea298a1ed6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8ad49f26-fbcd-455a-bc96-7a917aaabf2c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bffaf2de-e449-4964-a6b1-76a44a55708a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3cc9f44b-61f4-4417-8ef8-78ede8a996e5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReturnInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7183a5e1-dba5-4034-b9a8-6e86125c5279"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReturnInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""384e1dda-e514-4dea-ab89-2fb27a798b34"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27f1aa24-2674-4fea-ba8f-e4fad963efe7"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseSecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -788,6 +898,12 @@ public partial class @Engineer : IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Interactions
+        m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
+        m_Interactions_PrimaryInteract = m_Interactions.FindAction("PrimaryInteract", throwIfNotFound: true);
+        m_Interactions_ReturnInteract = m_Interactions.FindAction("ReturnInteract", throwIfNotFound: true);
+        m_Interactions_MouseInteract = m_Interactions.FindAction("MouseInteract", throwIfNotFound: true);
+        m_Interactions_MouseSecondaryInteract = m_Interactions.FindAction("MouseSecondaryInteract", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -989,6 +1105,63 @@ public partial class @Engineer : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Interactions
+    private readonly InputActionMap m_Interactions;
+    private IInteractionsActions m_InteractionsActionsCallbackInterface;
+    private readonly InputAction m_Interactions_PrimaryInteract;
+    private readonly InputAction m_Interactions_ReturnInteract;
+    private readonly InputAction m_Interactions_MouseInteract;
+    private readonly InputAction m_Interactions_MouseSecondaryInteract;
+    public struct InteractionsActions
+    {
+        private @Engineer m_Wrapper;
+        public InteractionsActions(@Engineer wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PrimaryInteract => m_Wrapper.m_Interactions_PrimaryInteract;
+        public InputAction @ReturnInteract => m_Wrapper.m_Interactions_ReturnInteract;
+        public InputAction @MouseInteract => m_Wrapper.m_Interactions_MouseInteract;
+        public InputAction @MouseSecondaryInteract => m_Wrapper.m_Interactions_MouseSecondaryInteract;
+        public InputActionMap Get() { return m_Wrapper.m_Interactions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InteractionsActions set) { return set.Get(); }
+        public void SetCallbacks(IInteractionsActions instance)
+        {
+            if (m_Wrapper.m_InteractionsActionsCallbackInterface != null)
+            {
+                @PrimaryInteract.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnPrimaryInteract;
+                @PrimaryInteract.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnPrimaryInteract;
+                @PrimaryInteract.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnPrimaryInteract;
+                @ReturnInteract.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnReturnInteract;
+                @ReturnInteract.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnReturnInteract;
+                @ReturnInteract.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnReturnInteract;
+                @MouseInteract.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseInteract;
+                @MouseInteract.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseInteract;
+                @MouseInteract.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseInteract;
+                @MouseSecondaryInteract.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseSecondaryInteract;
+                @MouseSecondaryInteract.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseSecondaryInteract;
+                @MouseSecondaryInteract.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnMouseSecondaryInteract;
+            }
+            m_Wrapper.m_InteractionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @PrimaryInteract.started += instance.OnPrimaryInteract;
+                @PrimaryInteract.performed += instance.OnPrimaryInteract;
+                @PrimaryInteract.canceled += instance.OnPrimaryInteract;
+                @ReturnInteract.started += instance.OnReturnInteract;
+                @ReturnInteract.performed += instance.OnReturnInteract;
+                @ReturnInteract.canceled += instance.OnReturnInteract;
+                @MouseInteract.started += instance.OnMouseInteract;
+                @MouseInteract.performed += instance.OnMouseInteract;
+                @MouseInteract.canceled += instance.OnMouseInteract;
+                @MouseSecondaryInteract.started += instance.OnMouseSecondaryInteract;
+                @MouseSecondaryInteract.performed += instance.OnMouseSecondaryInteract;
+                @MouseSecondaryInteract.canceled += instance.OnMouseSecondaryInteract;
+            }
+        }
+    }
+    public InteractionsActions @Interactions => new InteractionsActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1051,5 +1224,12 @@ public partial class @Engineer : IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IInteractionsActions
+    {
+        void OnPrimaryInteract(InputAction.CallbackContext context);
+        void OnReturnInteract(InputAction.CallbackContext context);
+        void OnMouseInteract(InputAction.CallbackContext context);
+        void OnMouseSecondaryInteract(InputAction.CallbackContext context);
     }
 }
