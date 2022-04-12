@@ -28,7 +28,7 @@ public class Movement2D : MonoBehaviour
         m_2DControls = GameManager.GM.m_EngineerControls.Movement2D;
         m_Move = m_2DControls.Move;
         m_Rb = GetComponent<Rigidbody2D>();
-        m_Rb.isKinematic = true;
+        m_Rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     private void Move(float _topSpeed, float _decaySpeed)
