@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class RepairStation : MonoBehaviour
@@ -28,13 +29,24 @@ public class RepairStation : MonoBehaviour
     [SerializeField] protected List<RotaryKnob> m_Rotaries = new List<RotaryKnob>();
     [SerializeField] protected List<Indicator> m_Indicators = new List<Indicator>();
     [SerializeField] protected List<StationDisplay> m_Displays = new List<StationDisplay>();
+    [SerializeField] protected List<ButtonComponent> m_Buttons = new List<ButtonComponent>();
+    [SerializeField] protected ButtonComponent m_ConfirmationButton;
+
+    public virtual void Start()
+    {
+        InitiatePuzzle();
+        m_ConfirmationButton.m_Actions.AddListener(CheckWinCondition);
+    }
+
     protected virtual void InitiatePuzzle()
     {
+        //for every type of puzzle component call their Initiate Function here, might change this to an interactable class array and add them seperately
         foreach (Switch s in m_Switches) s.Initiate();
         //foreach (Handle h in m_Handles) h.Randomize();
         foreach (RotaryKnob r in m_Rotaries) r.Initiate();
-        foreach (Indicator i in m_Indicators) i.Initiate();
+        foreach (ButtonComponent b in m_Buttons) b.Initiate();
         foreach (StationDisplay sd in m_Displays) sd.Initiate();
+
         if (!CheckForFailure()) InitiatePuzzle(); else return;
     }
 
@@ -42,10 +54,12 @@ public class RepairStation : MonoBehaviour
     {
         CheckForMechanic();
     }
+
     protected virtual void Update()
     {
         m_Displays[0].SetState(m_Fixed);
     }
+
     public virtual void Open()
     {
         print("Opening");
@@ -62,17 +76,35 @@ public class RepairStation : MonoBehaviour
             OnClose?.Invoke();
         }
     }
+
+    public virtual void CheckWinCondition()
+    {
+        if (!CheckForFailure())
+        {
+            print("win");
+            m_Fixed = true;
+            GetComponent<SpriteRenderer>().color = Color.green;
+            OnComplete?.Invoke();
+        }
+        else
+        {
+            print("broken");
+            m_Fixed = false;
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+    }
+
     public virtual bool CheckForFailure()
     {
         return true;
     }
+
     public bool CheckForMechanic()
     {
         Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position + (Vector3)m_Hitbox.position, m_Hitbox.size, 0, m_PlayerMask);
         if (cols.Length > 0)
         {
             cols[0].GetComponent<MechanicScript>().SetStation(this);
-            print("SetStation");
             return true;
         }
         return false;
