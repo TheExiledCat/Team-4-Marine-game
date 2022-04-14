@@ -46,7 +46,7 @@ public class RepairStation : MonoBehaviour
         foreach (RotaryKnob r in m_Rotaries) r.Initiate();
         foreach (ButtonComponent b in m_Buttons) b.Initiate();
         foreach (StationDisplay sd in m_Displays) sd.Initiate();
-
+        foreach (Indicator i in m_Indicators) i.Initiate();
         if (!CheckForFailure()) InitiatePuzzle(); else return;
     }
 

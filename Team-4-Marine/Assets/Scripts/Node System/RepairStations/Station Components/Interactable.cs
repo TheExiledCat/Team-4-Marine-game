@@ -9,9 +9,13 @@ public class Interactable : PuzzleComponent
 
     public static event Action OnSecondaryinteract;
 
+    [SerializeField]
+    protected bool m_IsRandom;
+
     public override void Initiate()
     {
         base.Initiate();
+        if (m_IsRandom) Randomize();
     }
 
     public virtual void Interact()
@@ -24,5 +28,9 @@ public class Interactable : PuzzleComponent
     {
         OnSecondaryinteract?.Invoke();
         print("Secondary Interacted with " + name);
+    }
+
+    protected virtual void Randomize()
+    {
     }
 }

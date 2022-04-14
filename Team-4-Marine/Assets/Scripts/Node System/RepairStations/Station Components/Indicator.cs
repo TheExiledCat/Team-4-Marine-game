@@ -7,10 +7,6 @@ public class Indicator : MonoBehaviour
     private bool m_LitUp;
     private Color m_OriginalColor;
 
-    private void Start()
-    {
-    }
-
     public void Initiate()
     {
         m_OriginalColor = GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");

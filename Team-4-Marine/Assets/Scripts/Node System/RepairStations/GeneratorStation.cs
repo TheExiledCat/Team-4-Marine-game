@@ -52,8 +52,13 @@ public class GeneratorStation : RepairStation
         {
             i.SetIndicator(false);
         }
+
         switch (m_Handles[0].GetPosition())
         {
+            case 0:
+                m_Indicators[0].SetIndicator(true);
+                break;
+
             case 1:
                 print("Yellow On");
                 m_Indicators[1].SetIndicator(m_YellowIsOn);
