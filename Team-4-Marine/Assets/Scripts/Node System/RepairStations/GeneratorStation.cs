@@ -5,12 +5,15 @@ using UnityEngine;
 public class GeneratorStation : RepairStation
 {
     [SerializeField] private GameObject m_PhysicalModel;
+
     [SerializeField]
     private bool m_RedIsOn, m_YellowIsOn;
-    private void Start()
+
+    public override void Start()
     {
-        InitiatePuzzle();
+        base.Start();
     }
+
     public override void Open()
     {
         m_PhysicalModel.gameObject.SetActive(true);
@@ -20,6 +23,7 @@ public class GeneratorStation : RepairStation
     {
         m_PhysicalModel.gameObject.SetActive(false);
     }
+
     protected override void Update()
     {
         base.Update();
@@ -29,46 +33,44 @@ public class GeneratorStation : RepairStation
         {
             if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
             else GetComponent<SpriteRenderer>().color = Color.yellow;
-            if (!CheckForFailure())
-            {
-                print("win");
-                m_Fixed = true;
-                GetComponent<SpriteRenderer>().color = Color.green;
-                OnComplete?.Invoke();
-            }
-        }
-        else
-        {
-            if (CheckForFailure())
-            {
-                print("broken");
-                m_Fixed = false;
-                GetComponent<SpriteRenderer>().color = Color.yellow;
-            }
         }
     }
+
+    public override void CheckWinCondition()
+    {
+        base.CheckWinCondition();
+    }
+
     protected override void LateUpdate()
     {
         base.LateUpdate();
     }
+
     private void SetIndicators()
     {
         foreach (Indicator i in m_Indicators)
         {
             i.SetIndicator(false);
         }
+
         switch (m_Handles[0].GetPosition())
         {
+            case 0:
+                m_Indicators[0].SetIndicator(true);
+                break;
+
             case 1:
                 print("Yellow On");
                 m_Indicators[1].SetIndicator(m_YellowIsOn);
                 break;
+
             case 2:
                 print("Red On");
                 m_Indicators[2].SetIndicator(m_RedIsOn);
                 break;
         }
     }
+
     public override bool CheckForFailure() // Puzzle win condition, hardcoded
     {
         print("Checking");
@@ -119,6 +121,7 @@ public class GeneratorStation : RepairStation
 
         return true;//not done yet
     }
+
     protected override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
@@ -126,6 +129,7 @@ public class GeneratorStation : RepairStation
         m_RedIsOn = Random.Range(0f, 1f) > 0.5f ? true : false;
         m_YellowIsOn = Random.Range(0f, 1f) > 0.5f ? true : false;
     }
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
