@@ -10,13 +10,14 @@ public class RoomNode : MapNode
 
     [SerializeField]
     protected UtilityNode m_Affected;
-
+    [SerializeField]
+    LayerMask m_StationMask;
     [SerializeField]
     private List<RepairStation> m_Stations = new List<RepairStation>();
 
     protected virtual void Start()
     {
-        List<Collider2D> cols = Physics2D.OverlapBoxAll(transform.position, m_Size, 0).ToList();
+        List<Collider2D> cols = Physics2D.OverlapBoxAll(transform.position, m_Size, 0,m_StationMask).ToList();
         List<RepairStation> stations = new List<RepairStation>();
         foreach (Collider2D c in cols)
         {
