@@ -1,0 +1,103 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Tilemaps;
+public class NodeMonitor : MonoBehaviour
+{
+    [SerializeField]
+    private Tilemap m_Floor;
+    [SerializeField]
+    private Transform m_Origin;
+    [SerializeField]
+    private float m_MaxWidth;
+    [SerializeField]
+    private Sprite m_FloorSprite;
+    [SerializeField]
+    private List<MapNode> m_Nodes = new List<MapNode>();
+    private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
+    private void Start()
+    {
+        CreateFloor();
+        GetAllNodes();
+        CreateNodes<RoomNode>();
+        CreateNodes<UtilityNode>();
+        //CreateRoomNodes();
+        //CreateUtilityNodes();
+    }
+
+    private void CreateFloor() // instantiates the level tiles as a canvas element
+    {
+        BoundsInt tileBounds = m_Floor.cellBounds;
+        TileBase[] block = m_Floor.GetTilesBlock(tileBounds);
+        print(tileBounds);
+
+        for (int y = 0; y < tileBounds.size.y; y++)
+        {
+            for (int x = 0; x < tileBounds.size.x; x++)
+            {
+                TileBase tile = block[x + y * tileBounds.size.x];
+                print(tile != null);
+                if (tile != null)
+                {
+                    GameObject canvasCell = new GameObject();
+
+                    Image img = canvasCell.AddComponent<Image>();
+                    canvasCell.transform.SetParent(m_Origin);
+                    img.sprite = m_FloorSprite;
+                    RectTransform trans = canvasCell.GetComponent<RectTransform>();
+                    trans.anchoredPosition = (Vector2)TileToCanvas(m_Floor, new Vector2Int(x, y));
+
+                    trans.sizeDelta = new Vector2(GetCellSize(m_Floor), GetCellSize(m_Floor));
+                    trans.localScale = Vector3.one;
+                    canvasCell.name = x + "," + y + " Tile";
+                }
+            }
+        }
+    }
+    private void GetAllNodes()
+    {
+        MapNode[] allNodes = FindObjectsOfType<MapNode>();
+        print(allNodes.Length);
+        for (int i = 0; i < allNodes.Length; i++)
+        {
+            m_Nodes.Add(allNodes[i]);
+        }
+    }
+    private void CreateNodes<T>()
+    {
+        foreach (MapNode m in m_Nodes)
+        {
+            if (m is T)
+            {
+                GameObject nodeObject = new GameObject();
+
+                Image img = nodeObject.AddComponent<Image>();
+                nodeObject.transform.SetParent(m_Origin);
+                img.sprite = m.m_Icon;
+                RectTransform trans = nodeObject.GetComponent<RectTransform>();
+                trans.anchoredPosition = WorldToCanvas(m_Floor, m.transform.position);
+
+                trans.sizeDelta = new Vector2(GetCellSize(m_Floor), GetCellSize(m_Floor));
+                trans.localScale = Vector3.one;
+                nodeObject.name = m.m_NodeName;
+            }
+        }
+    }
+
+    public Vector3 WorldToCanvas(Tilemap _map, Vector3 _pos)
+    {
+        Vector2 canvasPosition = (_pos - m_Floor.cellBounds.min) * GetCellSize(_map);
+        return canvasPosition;
+    }
+    public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
+    {
+        Vector2 canvasPosition = _map.GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(_map));
+        return canvasPosition;
+    }
+    public float GetCellSize(Tilemap _map)
+    {
+        float canvasCellSize = m_MaxWidth / _map.cellBounds.size.x;
+        return canvasCellSize;
+    }
+}
