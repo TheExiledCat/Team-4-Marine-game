@@ -133,13 +133,13 @@ public class NodeMonitor : MonoBehaviour
 
     public Vector3 WorldToCanvas(Tilemap _map, Vector3 _pos)
     {
-        Vector2 canvasPosition = (_pos - _map.cellBounds.min) * GetCellSize(_map);
+        Vector2 canvasPosition = (_pos - m_TileMapsToShow[0].cellBounds.min) * GetCellSize(m_TileMapsToShow[0]);
         return canvasPosition;
     }
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = _map.GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(_map));
+        Vector2 canvasPosition = m_TileMapsToShow[0].GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(m_TileMapsToShow[0]));
         return canvasPosition;
     }
 
