@@ -35,7 +35,8 @@ public class RepairStation : MonoBehaviour
     public virtual void Start()
     {
         InitiatePuzzle();
-        m_ConfirmationButton.m_Actions.AddListener(CheckWinCondition);
+        if (m_ConfirmationButton != null)
+            m_ConfirmationButton.m_Actions.AddListener(CheckWinCondition);
     }
 
     protected virtual void InitiatePuzzle()
@@ -57,7 +58,8 @@ public class RepairStation : MonoBehaviour
 
     protected virtual void Update()
     {
-        m_Displays[0].SetState(m_Fixed);
+        if (m_Displays.Count > 0)
+            m_Displays[0].SetState(m_Fixed);
     }
 
     public virtual void Open()

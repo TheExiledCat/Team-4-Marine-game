@@ -11,6 +11,8 @@ public class RoomNode : MapNode
     [SerializeField]
     protected UtilityNode m_Affected;
 
+    public DamageState m_DamageState = 0;
+
     [SerializeField]
     private List<RepairStation> m_Stations = new List<RepairStation>();
 
@@ -30,17 +32,39 @@ public class RoomNode : MapNode
         SetUtilities();
     }
 
+    private void UpdateDamageState(float _amountPercentage)
+    {
+        if (_amountPercentage >= 0.5f)
+        {
+            if (_amountPercentage == 1)
+            {
+                m_DamageState = DamageState.FULL;
+                return;
+            }
+            m_DamageState = DamageState.DAMAGED;
+            return;
+        }
+        m_DamageState = DamageState.CRITICAL;
+        return;
+    }
+
     private void SetUtilities()
     {
+        int totalStations = 0;
+        int fixedStations = 0;
         bool nodeIsFixed = true;
         foreach (RepairStation rs in m_Stations)
         {
+            totalStations++;
+            fixedStations++;
             if (!rs.IsFixed())
             {
                 nodeIsFixed = false;
+                fixedStations--;
             }
         }
-
+        UpdateDamageState((float)fixedStations / (float)totalStations);
+        print(fixedStations + " out of " + totalStations + " are working");
         m_Affected.SetEnabled(nodeIsFixed);
     }
 
@@ -50,4 +74,11 @@ public class RoomNode : MapNode
         Gizmos.DrawWireCube(transform.position, m_Size);
         Gizmos.DrawIcon(transform.position, "RoomNode");
     }
+}
+
+public enum DamageState
+{
+    FULL,
+    DAMAGED,
+    CRITICAL
 }

@@ -3,27 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+
 public class NodeMonitor : MonoBehaviour
 {
     [SerializeField]
     private Tilemap m_Floor;
+
     [SerializeField]
     private Transform m_Origin;
+
     [SerializeField]
     private float m_MaxWidth;
+
     [SerializeField]
     private Sprite m_FloorSprite;
+
     [SerializeField]
     private List<MapNode> m_Nodes = new List<MapNode>();
+
+    private Dictionary<string, RoomNode> m_RoomNodes = new Dictionary<string, RoomNode>();
     private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
+
     private void Start()
     {
         CreateFloor();
         GetAllNodes();
         CreateNodes<RoomNode>();
         CreateNodes<UtilityNode>();
-        //CreateRoomNodes();
-        //CreateUtilityNodes();
     }
 
     private void CreateFloor() // instantiates the level tiles as a canvas element
@@ -55,6 +61,7 @@ public class NodeMonitor : MonoBehaviour
             }
         }
     }
+
     private void GetAllNodes()
     {
         MapNode[] allNodes = FindObjectsOfType<MapNode>();
@@ -62,8 +69,13 @@ public class NodeMonitor : MonoBehaviour
         for (int i = 0; i < allNodes.Length; i++)
         {
             m_Nodes.Add(allNodes[i]);
+            if (allNodes[i] is RoomNode)
+            {
+                m_RoomNodes.Add(allNodes[i].m_NodeName, allNodes[i] as RoomNode);
+            }
         }
     }
+
     private void CreateNodes<T>()
     {
         foreach (MapNode m in m_Nodes)
@@ -81,6 +93,36 @@ public class NodeMonitor : MonoBehaviour
                 trans.sizeDelta = new Vector2(GetCellSize(m_Floor), GetCellSize(m_Floor));
                 trans.localScale = Vector3.one;
                 nodeObject.name = m.m_NodeName;
+                m_Icons.Add(m.m_NodeName, img);
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateIcons();
+    }
+
+    private void UpdateIcons()
+    {
+        foreach (KeyValuePair<string, RoomNode> k in m_RoomNodes)
+        {
+            Image img = m_Icons[k.Key];
+            DamageState ds = k.Value.m_DamageState;
+
+            switch (ds)
+            {
+                case DamageState.CRITICAL:
+                    img.color = Color.red;
+                    break;
+
+                case DamageState.DAMAGED:
+                    img.color = new Color(255, 215, 0);
+                    break;
+
+                case DamageState.FULL:
+                    img.color = Color.green;
+                    break;
             }
         }
     }
@@ -90,11 +132,13 @@ public class NodeMonitor : MonoBehaviour
         Vector2 canvasPosition = (_pos - m_Floor.cellBounds.min) * GetCellSize(_map);
         return canvasPosition;
     }
+
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
         Vector2 canvasPosition = _map.GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(_map));
         return canvasPosition;
     }
+
     public float GetCellSize(Tilemap _map)
     {
         float canvasCellSize = m_MaxWidth / _map.cellBounds.size.x;
