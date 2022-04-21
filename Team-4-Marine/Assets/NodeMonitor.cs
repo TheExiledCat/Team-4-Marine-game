@@ -37,6 +37,7 @@ public class NodeMonitor : MonoBehaviour
         int i = 0;
         foreach (Tilemap t in m_TileMapsToShow)
         {
+            t.size = m_TileMapsToShow[0].size;
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
             print(tileBounds);
