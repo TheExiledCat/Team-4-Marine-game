@@ -15,21 +15,21 @@ public class OpenCloseDoors : MonoBehaviour
     private void Start()
     {
         m_DoorsClosed = false;
-        m_Doors = GetComponent<TilemapCollider2D>();
+        //m_Doors = GetComponent<TilemapCollider2D>();
     }
 
-    private void Update()
-    {
-        if (m_DoorsClosed)
-        {
-            Debug.Log("deuren zijn open");
-            m_Doors.enabled = false;
-        }
+    //private void Update()
+    //{
+    //    if (m_DoorsClosed)
+    //    {
+    //        Debug.Log("deuren zijn open");
+    //        m_Doors.enabled = false;
+    //    }
 
-        if (!m_DoorsClosed)
-        {
-            Debug.Log("deuren zijn dicht");
-            m_Doors.enabled = true;
-        }
-    }
+    //    if (!m_DoorsClosed)
+    //    {
+    //        Debug.Log("deuren zijn dicht");
+    //        m_Doors.enabled = true;
+    //    }
+    //}
 }
