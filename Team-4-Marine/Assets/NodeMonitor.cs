@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class NodeMonitor : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap m_Floor;
+    private List<Tilemap> m_TileMapsToShow = new List<Tilemap>();
 
     [SerializeField]
     private Transform m_Origin;
@@ -16,7 +16,7 @@ public class NodeMonitor : MonoBehaviour
     private float m_MaxWidth;
 
     [SerializeField]
-    private Sprite m_FloorSprite;
+    private List<Sprite> m_Sprites = new List<Sprite>();
 
     [SerializeField]
     private List<MapNode> m_Nodes = new List<MapNode>();
@@ -26,37 +26,41 @@ public class NodeMonitor : MonoBehaviour
 
     private void Start()
     {
-        CreateFloor();
+        CreateTileMaps();
         GetAllNodes();
         CreateNodes<RoomNode>();
         CreateNodes<UtilityNode>();
     }
 
-    private void CreateFloor() // instantiates the level tiles as a canvas element
+    private void CreateTileMaps() // instantiates the level tiles as a canvas element
     {
-        BoundsInt tileBounds = m_Floor.cellBounds;
-        TileBase[] block = m_Floor.GetTilesBlock(tileBounds);
-        print(tileBounds);
-
-        for (int y = 0; y < tileBounds.size.y; y++)
+        int i = 0;
+        foreach (Tilemap t in m_TileMapsToShow)
         {
-            for (int x = 0; x < tileBounds.size.x; x++)
+            BoundsInt tileBounds = t.cellBounds;
+            TileBase[] block = t.GetTilesBlock(tileBounds);
+            print(tileBounds);
+
+            for (int y = 0; y < tileBounds.size.y; y++)
             {
-                TileBase tile = block[x + y * tileBounds.size.x];
-                print(tile != null);
-                if (tile != null)
+                for (int x = 0; x < tileBounds.size.x; x++)
                 {
-                    GameObject canvasCell = new GameObject();
+                    TileBase tile = block[x + y * tileBounds.size.x];
+                    print(tile != null);
+                    if (tile != null)
+                    {
+                        GameObject canvasCell = new GameObject();
 
-                    Image img = canvasCell.AddComponent<Image>();
-                    canvasCell.transform.SetParent(m_Origin);
-                    img.sprite = m_FloorSprite;
-                    RectTransform trans = canvasCell.GetComponent<RectTransform>();
-                    trans.anchoredPosition = (Vector2)TileToCanvas(m_Floor, new Vector2Int(x, y));
+                        Image img = canvasCell.AddComponent<Image>();
+                        canvasCell.transform.SetParent(m_Origin);
+                        img.sprite = m_Sprites[i];
+                        RectTransform trans = canvasCell.GetComponent<RectTransform>();
+                        trans.anchoredPosition = (Vector2)TileToCanvas(t, new Vector2Int(x, y));
 
-                    trans.sizeDelta = new Vector2(GetCellSize(m_Floor), GetCellSize(m_Floor));
-                    trans.localScale = Vector3.one;
-                    canvasCell.name = x + "," + y + " Tile";
+                        trans.sizeDelta = new Vector2(GetCellSize(t), GetCellSize(t));
+                        trans.localScale = Vector3.one;
+                        canvasCell.name = x + "," + y + " Tile";
+                    }
                 }
             }
         }
@@ -88,9 +92,9 @@ public class NodeMonitor : MonoBehaviour
                 nodeObject.transform.SetParent(m_Origin);
                 img.sprite = m.m_Icon;
                 RectTransform trans = nodeObject.GetComponent<RectTransform>();
-                trans.anchoredPosition = WorldToCanvas(m_Floor, m.transform.position);
+                trans.anchoredPosition = WorldToCanvas(m_TileMapsToShow[0], m.transform.position);
 
-                trans.sizeDelta = new Vector2(GetCellSize(m_Floor), GetCellSize(m_Floor));
+                trans.sizeDelta = new Vector2(GetCellSize(m_TileMapsToShow[0]), GetCellSize(m_TileMapsToShow[0]));
                 trans.localScale = Vector3.one;
                 nodeObject.name = m.m_NodeName;
                 m_Icons.Add(m.m_NodeName, img);
@@ -129,7 +133,7 @@ public class NodeMonitor : MonoBehaviour
 
     public Vector3 WorldToCanvas(Tilemap _map, Vector3 _pos)
     {
-        Vector2 canvasPosition = (_pos - m_Floor.cellBounds.min) * GetCellSize(_map);
+        Vector2 canvasPosition = (_pos - _map.cellBounds.min) * GetCellSize(_map);
         return canvasPosition;
     }
 

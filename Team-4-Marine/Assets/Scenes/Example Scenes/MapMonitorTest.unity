@@ -2843,10 +2843,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac0c10fee32d943ab30529fb7ad0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Floor: {fileID: 961167651}
+  m_TileMapsToShow:
+  - {fileID: 961167651}
   m_Origin: {fileID: 1474103662}
   m_MaxWidth: 900
-  m_FloorSprite: {fileID: 7482667652216324306, guid: bd3c5d916f2495243bc48c160108680f, type: 3}
+  m_Sprites:
+  - {fileID: 7482667652216324306, guid: bd3c5d916f2495243bc48c160108680f, type: 3}
   m_Nodes: []
 --- !u!1 &1468950321
 GameObject:
