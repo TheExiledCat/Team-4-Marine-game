@@ -11,7 +11,8 @@ public class Movement2D : MonoBehaviour
     private Rigidbody2D m_Rb;
 
     [SerializeField]
-    private Vector2 m_Delta;
+    Vector2 m_Delta,
+    m_LastPosition  ;
 
     [SerializeField]
     private float
@@ -50,6 +51,23 @@ public class Movement2D : MonoBehaviour
         m_Delta.y = Mathf.Clamp(m_Delta.y, -_topSpeed, _topSpeed);
     }
 
+    private void FixedUpdate()
+    {
+        Vector2 change = (Vector2)m_Rb.position - m_LastPosition;
+        m_LastPosition = m_Rb.position;
+        Debug.Log(change);
+        if (Mathf.Abs(change.x) == 0f)
+        {
+            Debug.Log("daar gaat mijn delta");
+            m_Delta.x = 0;
+        }
+
+
+        if (Mathf.Abs(change.y) == 0f)
+        {
+            m_Delta.y = 0;
+        }
+    }
     private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
@@ -62,6 +80,10 @@ public class Movement2D : MonoBehaviour
         {
             Move(m_MaxSpeed, m_MaxSpeed);
         }
+       
+
+
+
         m_Rb.velocity = m_Delta * Time.deltaTime;
     }
 
@@ -77,6 +99,11 @@ public class Movement2D : MonoBehaviour
         {
             m_Delta.y += m_Acceleration * -Mathf.Sign(m_Rb.velocity.y);
             m_Delta.y = Mathf.Abs(m_Delta.y) < m_Acceleration ? 0 : m_Delta.y;
+
+            if (!transform.hasChanged)
+            {
+                m_Delta.y = 0;
+            }
         }
     }
 
