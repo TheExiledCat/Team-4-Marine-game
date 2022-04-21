@@ -24,8 +24,12 @@ public class NodeMonitor : MonoBehaviour
     private Dictionary<string, RoomNode> m_RoomNodes = new Dictionary<string, RoomNode>();
     private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
 
+    [SerializeField]
+    private Grid m_Grid;
+
     private void Start()
     {
+        m_Grid = m_TileMapsToShow[0].transform.parent.GetComponent<Grid>();
         CreateTileMaps();
         GetAllNodes();
         CreateNodes<RoomNode>();
@@ -37,7 +41,6 @@ public class NodeMonitor : MonoBehaviour
         int i = 0;
         foreach (Tilemap t in m_TileMapsToShow)
         {
-            t.size = m_TileMapsToShow[0].size;
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
             print(tileBounds);
@@ -58,7 +61,7 @@ public class NodeMonitor : MonoBehaviour
                         RectTransform trans = canvasCell.GetComponent<RectTransform>();
                         trans.anchoredPosition = (Vector2)TileToCanvas(t, new Vector2Int(x, y));
 
-                        trans.sizeDelta = new Vector2(GetCellSize(t), GetCellSize(t));
+                        trans.sizeDelta = new Vector2(50, 50);
                         trans.localScale = Vector3.one;
                         canvasCell.name = x + "," + y + " Tile";
                     }
@@ -140,7 +143,7 @@ public class NodeMonitor : MonoBehaviour
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = m_TileMapsToShow[0].GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(m_TileMapsToShow[0]));
+        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin)) * 50);
         return canvasPosition;
     }
 
