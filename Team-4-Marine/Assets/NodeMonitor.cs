@@ -178,7 +178,8 @@ public class NodeMonitor : MonoBehaviour
 
     public void UpdateCustomSpritePosition(string _name, Vector3 _pos)
     {
-        m_CustomIcons[_name].anchoredPosition = WorldToCanvas(_pos);
+        if (m_CustomIcons[_name] != null)
+            m_CustomIcons[_name].anchoredPosition = WorldToCanvas(_pos);
     }
 
     public Vector3 WorldToCanvas(Vector3 _pos)
