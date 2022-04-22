@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_StationName: bla boa
-  m_Fixed: 0
+  m_Fixed: 1
   m_Hitbox:
     serializedVersion: 2
     x: 0
