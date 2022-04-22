@@ -81,6 +81,15 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MonitorScroll"",
+                    ""type"": ""Value"",
+                    ""id"": ""d2de391e-d4ff-42e2-beb7-0b017add309d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -182,6 +191,17 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""action"": ""SwapPage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de5339ec-a929-4d2d-b610-f53ec1f53947"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MonitorScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -196,6 +216,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
         m_Manual_SwapPage = m_Manual.FindAction("SwapPage", throwIfNotFound: true);
         m_Manual_Bookmark = m_Manual.FindAction("Bookmark", throwIfNotFound: true);
+        m_Manual_MonitorScroll = m_Manual.FindAction("MonitorScroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -291,6 +312,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     private readonly InputAction m_Manual_ToCockpitScreen;
     private readonly InputAction m_Manual_SwapPage;
     private readonly InputAction m_Manual_Bookmark;
+    private readonly InputAction m_Manual_MonitorScroll;
     public struct ManualActions
     {
         private @Pilot m_Wrapper;
@@ -298,6 +320,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         public InputAction @ToCockpitScreen => m_Wrapper.m_Manual_ToCockpitScreen;
         public InputAction @SwapPage => m_Wrapper.m_Manual_SwapPage;
         public InputAction @Bookmark => m_Wrapper.m_Manual_Bookmark;
+        public InputAction @MonitorScroll => m_Wrapper.m_Manual_MonitorScroll;
         public InputActionMap Get() { return m_Wrapper.m_Manual; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @Bookmark.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
                 @Bookmark.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
                 @Bookmark.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnBookmark;
+                @MonitorScroll.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnMonitorScroll;
+                @MonitorScroll.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnMonitorScroll;
+                @MonitorScroll.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnMonitorScroll;
             }
             m_Wrapper.m_ManualActionsCallbackInterface = instance;
             if (instance != null)
@@ -329,6 +355,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @Bookmark.started += instance.OnBookmark;
                 @Bookmark.performed += instance.OnBookmark;
                 @Bookmark.canceled += instance.OnBookmark;
+                @MonitorScroll.started += instance.OnMonitorScroll;
+                @MonitorScroll.performed += instance.OnMonitorScroll;
+                @MonitorScroll.canceled += instance.OnMonitorScroll;
             }
         }
     }
@@ -342,5 +371,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         void OnToCockpitScreen(InputAction.CallbackContext context);
         void OnSwapPage(InputAction.CallbackContext context);
         void OnBookmark(InputAction.CallbackContext context);
+        void OnMonitorScroll(InputAction.CallbackContext context);
     }
 }

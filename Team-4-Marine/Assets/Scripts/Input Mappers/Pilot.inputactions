@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MonitorScroll",
+                    "type": "Value",
+                    "id": "d2de391e-d4ff-42e2-beb7-0b017add309d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -160,6 +169,17 @@
                     "action": "SwapPage",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "de5339ec-a929-4d2d-b610-f53ec1f53947",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MonitorScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
