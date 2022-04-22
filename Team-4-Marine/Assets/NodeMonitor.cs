@@ -23,10 +23,16 @@ public class NodeMonitor : MonoBehaviour
 
     private Dictionary<string, RoomNode> m_RoomNodes = new Dictionary<string, RoomNode>();
     private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
-
+    private Dictionary<string, RectTransform> m_CustomIcons = new Dictionary<string, RectTransform>();
     private Vector2 m_Overlap;
     private float xWidth;
     private float m_CanvasTileSize;
+
+    [SerializeField]
+    private GameObject m_Player;
+
+    [SerializeField]
+    private Sprite m_PlayerSprite;
 
     private void Start()
     {
@@ -34,6 +40,13 @@ public class NodeMonitor : MonoBehaviour
         GetAllNodes();
         CreateNodes<RoomNode>();
         CreateNodes<UtilityNode>();
+        CreateCustomSprite(m_Player.transform.position, m_PlayerSprite, m_Player.gameObject.name);
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateIcons();
+        UpdateCustomSpritePosition(m_Player.gameObject.name, m_Player.transform.position);
     }
 
     private void CreateTileMaps() // instantiates the level tiles as a canvas element
@@ -123,11 +136,6 @@ public class NodeMonitor : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        UpdateIcons();
-    }
-
     private void UpdateIcons()
     {
         foreach (KeyValuePair<string, RoomNode> k in m_RoomNodes)
@@ -150,6 +158,27 @@ public class NodeMonitor : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void CreateCustomSprite(Vector3 _pos, Sprite _icon, string _name)
+    {
+        GameObject nodeObject = new GameObject();
+
+        Image img = nodeObject.AddComponent<Image>();
+        nodeObject.transform.SetParent(m_Origin);
+        img.sprite = _icon;
+        RectTransform trans = nodeObject.GetComponent<RectTransform>();
+        trans.anchoredPosition = WorldToCanvas(_pos);
+
+        trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
+        trans.localScale = Vector3.one;
+        nodeObject.name = _name;
+        m_CustomIcons.Add(_name, trans);
+    }
+
+    public void UpdateCustomSpritePosition(string _name, Vector3 _pos)
+    {
+        m_CustomIcons[_name].anchoredPosition = WorldToCanvas(_pos);
     }
 
     public Vector3 WorldToCanvas(Vector3 _pos)
