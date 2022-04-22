@@ -22,7 +22,10 @@ public class RoomNode : MapNode
         List<RepairStation> stations = new List<RepairStation>();
         foreach (Collider2D c in cols)
         {
-            stations.Add(c.GetComponent<RepairStation>());
+            if (c.GetComponent<RepairStation>() != null)
+            {
+                stations.Add(c.GetComponent<RepairStation>());
+            }       
         }
         m_Stations = stations;
     }

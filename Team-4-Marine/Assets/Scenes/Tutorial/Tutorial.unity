@@ -1261,17 +1261,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380535794, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9128eba715c6d854eb37d7b86a891741, type: 3}
     - target: {fileID: 380535800, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_Hitbox.y
-      value: -1.01
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 380535800, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_Hitbox.width
-      value: 1.01
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 380535800, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_Hitbox.height
-      value: 0.99
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 380535800, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_PhysicalModel
@@ -1313,6 +1317,14 @@ PrefabInstance:
       propertyPath: m_Indicators.Array.data[2]
       value: 
       objectReference: {fileID: 1680456158}
+    - target: {fileID: 380535801, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 15.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 380535801, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 14.37
+      objectReference: {fileID: 0}
     - target: {fileID: 3745081964867330053, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_Name
       value: Generator Station
@@ -1326,12 +1338,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.28817
+      value: 22.73
       objectReference: {fileID: 0}
     - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.537692
+      value: -3.504
       objectReference: {fileID: 0}
     - target: {fileID: 3850513183162276376, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1517,7 +1541,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "To get the power running you'll need to fix the Generator. \nPress Space
-    to interact when in range.\nLeft mouse button > up\nright mouse button > down"
+    to interact when in range.\nLeft mouse button > down\nright mouse button > up"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3924,7 +3948,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728232092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 220cacc823ae4f1439e544719ef0c8ce, type: 3}
   m_Name: 
@@ -5086,9 +5110,7 @@ MonoBehaviour:
   m_Icon: {fileID: 0}
   m_Size: {x: 5.07, y: 4.97, z: 2.66}
   m_Affected: {fileID: 1296841181}
-  m_StationMask:
-    serializedVersion: 2
-    m_Bits: 256
+  m_DamageState: 0
   m_Stations:
   - {fileID: 0}
 --- !u!50 &1959758591
