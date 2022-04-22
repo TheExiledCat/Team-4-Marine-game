@@ -190,7 +190,7 @@ public class NodeMonitor : MonoBehaviour
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x)) * m_CanvasTileSize);
+        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x) - (Vector3.up * m_Overlap.y) + (Vector3.up * _map.cellBounds.y))) * m_CanvasTileSize;
         return canvasPosition;
     }
 }
