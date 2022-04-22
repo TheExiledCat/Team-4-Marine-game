@@ -23,6 +23,16 @@ public class NodeMonitor : MonoBehaviour
 
     private Dictionary<string, RoomNode> m_RoomNodes = new Dictionary<string, RoomNode>();
     private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
+    private Dictionary<string, RectTransform> m_CustomIcons = new Dictionary<string, RectTransform>();
+    private Vector2 m_Overlap;
+    private float xWidth;
+    private float m_CanvasTileSize;
+
+    [SerializeField]
+    private GameObject m_Player;
+
+    [SerializeField]
+    private Sprite m_PlayerSprite;
 
     private void Start()
     {
@@ -30,18 +40,41 @@ public class NodeMonitor : MonoBehaviour
         GetAllNodes();
         CreateNodes<RoomNode>();
         CreateNodes<UtilityNode>();
+        CreateCustomSprite(m_Player.transform.position, m_PlayerSprite, m_Player.gameObject.name);
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateIcons();
+        UpdateCustomSpritePosition(m_Player.gameObject.name, m_Player.transform.position);
     }
 
     private void CreateTileMaps() // instantiates the level tiles as a canvas element
     {
         int i = 0;
+        Vector2Int bounds = (Vector2Int)m_TileMapsToShow[0].cellBounds.min;
+        m_Overlap.x = bounds.x;
+        float max = m_TileMapsToShow[0].cellBounds.xMax;
         foreach (Tilemap t in m_TileMapsToShow)
         {
-            t.size = m_TileMapsToShow[0].size;
+            t.CompressBounds();
+            BoundsInt tileBounds = t.cellBounds;
+            TileBase[] block = t.GetTilesBlock(tileBounds);
+            print(tileBounds);
+            if (tileBounds.xMin < m_Overlap.x) m_Overlap.x = tileBounds.xMin;
+            if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
+            if (tileBounds.xMax > max) max = tileBounds.xMax;
+        }
+        xWidth = max - m_Overlap.x;
+        m_CanvasTileSize = m_MaxWidth / xWidth;
+        foreach (Tilemap t in m_TileMapsToShow)
+        {
+            t.CompressBounds();
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
             print(tileBounds);
 
+            //if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
             for (int y = 0; y < tileBounds.size.y; y++)
             {
                 for (int x = 0; x < tileBounds.size.x; x++)
@@ -58,7 +91,7 @@ public class NodeMonitor : MonoBehaviour
                         RectTransform trans = canvasCell.GetComponent<RectTransform>();
                         trans.anchoredPosition = (Vector2)TileToCanvas(t, new Vector2Int(x, y));
 
-                        trans.sizeDelta = new Vector2(GetCellSize(t), GetCellSize(t));
+                        trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
                         trans.localScale = Vector3.one;
                         canvasCell.name = x + "," + y + " Tile";
                     }
@@ -93,19 +126,14 @@ public class NodeMonitor : MonoBehaviour
                 nodeObject.transform.SetParent(m_Origin);
                 img.sprite = m.m_Icon;
                 RectTransform trans = nodeObject.GetComponent<RectTransform>();
-                trans.anchoredPosition = WorldToCanvas(m_TileMapsToShow[0], m.transform.position);
+                trans.anchoredPosition = WorldToCanvas(m.transform.position);
 
-                trans.sizeDelta = new Vector2(GetCellSize(m_TileMapsToShow[0]), GetCellSize(m_TileMapsToShow[0]));
+                trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
                 trans.localScale = Vector3.one;
                 nodeObject.name = m.m_NodeName;
                 m_Icons.Add(m.m_NodeName, img);
             }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        UpdateIcons();
     }
 
     private void UpdateIcons()
@@ -132,21 +160,37 @@ public class NodeMonitor : MonoBehaviour
         }
     }
 
-    public Vector3 WorldToCanvas(Tilemap _map, Vector3 _pos)
+    public void CreateCustomSprite(Vector3 _pos, Sprite _icon, string _name)
     {
-        Vector2 canvasPosition = (_pos - m_TileMapsToShow[0].cellBounds.min) * GetCellSize(m_TileMapsToShow[0]);
+        GameObject nodeObject = new GameObject();
+
+        Image img = nodeObject.AddComponent<Image>();
+        nodeObject.transform.SetParent(m_Origin);
+        img.sprite = _icon;
+        RectTransform trans = nodeObject.GetComponent<RectTransform>();
+        trans.anchoredPosition = WorldToCanvas(_pos);
+
+        trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
+        trans.localScale = Vector3.one;
+        nodeObject.name = _name;
+        m_CustomIcons.Add(_name, trans);
+    }
+
+    public void UpdateCustomSpritePosition(string _name, Vector3 _pos)
+    {
+        if (m_CustomIcons[_name] != null)
+            m_CustomIcons[_name].anchoredPosition = WorldToCanvas(_pos);
+    }
+
+    public Vector3 WorldToCanvas(Vector3 _pos)
+    {
+        Vector2 canvasPosition = (_pos - (Vector3)m_Overlap) * m_CanvasTileSize;
         return canvasPosition;
     }
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = m_TileMapsToShow[0].GetCellCenterLocal(new Vector3Int(_tilePos.x, _tilePos.y, 0)) * (GetCellSize(m_TileMapsToShow[0]));
+        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x)) * m_CanvasTileSize);
         return canvasPosition;
-    }
-
-    public float GetCellSize(Tilemap _map)
-    {
-        float canvasCellSize = m_MaxWidth / _map.cellBounds.size.x;
-        return canvasCellSize;
     }
 }
