@@ -24,12 +24,12 @@ public class NodeMonitor : MonoBehaviour
     private Dictionary<string, RoomNode> m_RoomNodes = new Dictionary<string, RoomNode>();
     private Dictionary<string, Image> m_Icons = new Dictionary<string, Image>();//string is the name of the node and then returns the icon on it
 
-    [SerializeField]
-    private Grid m_Grid;
+    private Vector2 m_Overlap;
+    private float xWidth;
+    private float m_CanvasTileSize;
 
     private void Start()
     {
-        m_Grid = m_TileMapsToShow[0].transform.parent.GetComponent<Grid>();
         CreateTileMaps();
         GetAllNodes();
         CreateNodes<RoomNode>();
@@ -39,12 +39,29 @@ public class NodeMonitor : MonoBehaviour
     private void CreateTileMaps() // instantiates the level tiles as a canvas element
     {
         int i = 0;
+        Vector2Int bounds = (Vector2Int)m_TileMapsToShow[0].cellBounds.min;
+        m_Overlap.x = bounds.x;
+        float max = m_TileMapsToShow[0].cellBounds.xMax;
         foreach (Tilemap t in m_TileMapsToShow)
         {
+            t.CompressBounds();
+            BoundsInt tileBounds = t.cellBounds;
+            TileBase[] block = t.GetTilesBlock(tileBounds);
+            print(tileBounds);
+            if (tileBounds.xMin < m_Overlap.x) m_Overlap.x = tileBounds.xMin;
+            if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
+            if (tileBounds.xMax > max) max = tileBounds.xMax;
+        }
+        xWidth = max - m_Overlap.x;
+        m_CanvasTileSize = m_MaxWidth / xWidth;
+        foreach (Tilemap t in m_TileMapsToShow)
+        {
+            t.CompressBounds();
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
             print(tileBounds);
 
+            //if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
             for (int y = 0; y < tileBounds.size.y; y++)
             {
                 for (int x = 0; x < tileBounds.size.x; x++)
@@ -61,7 +78,7 @@ public class NodeMonitor : MonoBehaviour
                         RectTransform trans = canvasCell.GetComponent<RectTransform>();
                         trans.anchoredPosition = (Vector2)TileToCanvas(t, new Vector2Int(x, y));
 
-                        trans.sizeDelta = new Vector2(50, 50);
+                        trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
                         trans.localScale = Vector3.one;
                         canvasCell.name = x + "," + y + " Tile";
                     }
@@ -96,9 +113,9 @@ public class NodeMonitor : MonoBehaviour
                 nodeObject.transform.SetParent(m_Origin);
                 img.sprite = m.m_Icon;
                 RectTransform trans = nodeObject.GetComponent<RectTransform>();
-                trans.anchoredPosition = WorldToCanvas(m_TileMapsToShow[0], m.transform.position);
+                trans.anchoredPosition = WorldToCanvas(m.transform.position);
 
-                trans.sizeDelta = new Vector2(GetCellSize(m_TileMapsToShow[0]), GetCellSize(m_TileMapsToShow[0]));
+                trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
                 trans.localScale = Vector3.one;
                 nodeObject.name = m.m_NodeName;
                 m_Icons.Add(m.m_NodeName, img);
@@ -135,21 +152,15 @@ public class NodeMonitor : MonoBehaviour
         }
     }
 
-    public Vector3 WorldToCanvas(Tilemap _map, Vector3 _pos)
+    public Vector3 WorldToCanvas(Vector3 _pos)
     {
-        Vector2 canvasPosition = (_pos - m_TileMapsToShow[0].cellBounds.min) * GetCellSize(m_TileMapsToShow[0]);
+        Vector2 canvasPosition = (_pos - (Vector3)m_Overlap) * m_CanvasTileSize;
         return canvasPosition;
     }
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin)) * 50);
+        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x)) * m_CanvasTileSize);
         return canvasPosition;
-    }
-
-    public float GetCellSize(Tilemap _map)
-    {
-        float canvasCellSize = m_MaxWidth / _map.cellBounds.size.x;
-        return canvasCellSize;
     }
 }
