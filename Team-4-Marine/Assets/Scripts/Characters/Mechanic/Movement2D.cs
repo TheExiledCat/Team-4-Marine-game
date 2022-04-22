@@ -55,10 +55,8 @@ public class Movement2D : MonoBehaviour
     {
         Vector2 change = (Vector2)m_Rb.position - m_LastPosition;
         m_LastPosition = m_Rb.position;
-        Debug.Log(change);
         if (Mathf.Abs(change.x) == 0f)
         {
-            Debug.Log("daar gaat mijn delta");
             m_Delta.x = 0;
         }
 
