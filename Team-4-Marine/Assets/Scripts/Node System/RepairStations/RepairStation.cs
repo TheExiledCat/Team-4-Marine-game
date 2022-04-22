@@ -39,8 +39,9 @@ public class RepairStation : MonoBehaviour
             m_ConfirmationButton.m_Actions.AddListener(CheckWinCondition);
     }
 
-    protected virtual void InitiatePuzzle()
+    public virtual void InitiatePuzzle()
     {
+        m_Fixed = false;
         //for every type of puzzle component call their Initiate Function here, might change this to an interactable class array and add them seperately
         foreach (Switch s in m_Switches) s.Initiate();
         //foreach (Handle h in m_Handles) h.Randomize();

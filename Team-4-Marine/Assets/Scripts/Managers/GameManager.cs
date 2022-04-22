@@ -7,10 +7,11 @@ public class GameManager : MonoBehaviour
     public static GameManager GM = null;
     public Pilot m_PilotControls;
     public Engineer m_EngineerControls;
+    private List<RoomNode> m_Rooms = new List<RoomNode>();
 
     private void Awake()
     {
-        if(GM == null)
+        if (GM == null)
         {
             GM = this;
             DontDestroyOnLoad(this);
@@ -24,6 +25,18 @@ public class GameManager : MonoBehaviour
         m_PilotControls.Enable();
         m_EngineerControls = new Engineer();
         m_EngineerControls.Enable();
+    }
+
+    private void Start()
+    {
+        MapNode[] nodes = FindObjectsOfType<MapNode>();
+        for (int i = 0; i < nodes.Length - 1; i++)
+        {
+            if (nodes[i] is RoomNode)
+            {
+                m_Rooms.Add(nodes[i] as RoomNode);
+            }
+        }
     }
 
     public void SetCockpitControls(bool _enabled)
@@ -61,4 +74,13 @@ public class GameManager : MonoBehaviour
             m_EngineerControls.Movement2D.Disable();
         }
     }
+
+    //public void CauseShipDamage()
+    //{
+    //    bool selected = false;
+    //    while (!selected)
+    //    {
+    //        foreach
+    //    }
+    //}
 }

@@ -32,6 +32,38 @@ public class RoomNode : MapNode
         SetUtilities();
     }
 
+    public void TakeDamage(int m_StationsToDamage)
+    {
+        int stationsLeft = m_StationsToDamage > TotalBrokenStations() ? TotalBrokenStations() : m_StationsToDamage;
+        foreach (RepairStation r in m_Stations)
+        {
+            if (stationsLeft <= 0)
+            {
+                return;
+            }
+            if (r.IsFixed() == false)
+            {
+                r.InitiatePuzzle();
+                stationsLeft--;
+            }
+        }
+    }
+
+    public int TotalStations()
+    {
+        return m_Stations.Count;
+    }
+
+    public int TotalBrokenStations()
+    {
+        int count = 0;
+        foreach (RepairStation r in m_Stations)
+        {
+            count += r.IsFixed() ? 0 : 1;
+        }
+        return count;
+    }
+
     private void UpdateDamageState(float _amountPercentage)
     {
         if (_amountPercentage >= 0.5f)
