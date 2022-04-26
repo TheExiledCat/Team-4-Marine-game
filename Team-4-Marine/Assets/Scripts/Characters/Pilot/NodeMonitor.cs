@@ -40,13 +40,15 @@ public class NodeMonitor : MonoBehaviour
         GetAllNodes();
         CreateNodes<RoomNode>();
         CreateNodes<UtilityNode>();
-        CreateCustomSprite(m_Player.transform.position, m_PlayerSprite, m_Player.gameObject.name);
+        if (m_Player != null)
+            CreateCustomSprite(m_Player.transform.position, m_PlayerSprite, m_Player.gameObject.name);
     }
 
     private void FixedUpdate()
     {
         UpdateIcons();
-        UpdateCustomSpritePosition(m_Player.gameObject.name, m_Player.transform.position);
+        if (m_Player != null)
+            UpdateCustomSpritePosition(m_Player.gameObject.name, m_Player.transform.position);
     }
 
     private void CreateTileMaps() // instantiates the level tiles as a canvas element
@@ -60,7 +62,6 @@ public class NodeMonitor : MonoBehaviour
             t.CompressBounds();
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
-            print(tileBounds);
             if (tileBounds.xMin < m_Overlap.x) m_Overlap.x = tileBounds.xMin;
             if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
             if (tileBounds.xMax > max) max = tileBounds.xMax;
@@ -72,7 +73,6 @@ public class NodeMonitor : MonoBehaviour
             t.CompressBounds();
             BoundsInt tileBounds = t.cellBounds;
             TileBase[] block = t.GetTilesBlock(tileBounds);
-            print(tileBounds);
 
             //if (tileBounds.yMin < m_Overlap.y) m_Overlap.y = tileBounds.yMin;
             for (int y = 0; y < tileBounds.size.y; y++)
@@ -80,7 +80,6 @@ public class NodeMonitor : MonoBehaviour
                 for (int x = 0; x < tileBounds.size.x; x++)
                 {
                     TileBase tile = block[x + y * tileBounds.size.x];
-                    print(tile != null);
                     if (tile != null)
                     {
                         GameObject canvasCell = new GameObject();
