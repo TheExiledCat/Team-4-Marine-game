@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public Pilot m_PilotControls;
     public Engineer m_EngineerControls;
     private List<RoomNode> m_Rooms = new List<RoomNode>();
+    public float m_ChaosGradient = 0.5f;
+    private float m_Progress = 0;
 
     private void Awake()
     {
@@ -75,12 +77,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //public void CauseShipDamage()
-    //{
-    //    bool selected = false;
-    //    while (!selected)
-    //    {
-    //        foreach
-    //    }
-    //}
+    public void CauseShipDamage(bool _recall = false)
+    {
+        bool selected = false;
+        var rnd = new System.Random();
+        while (!selected)
+        {
+            List<RoomNode> copies = m_Rooms.OrderBy(item => rnd.Next()).ToList<RoomNode>();
+            foreach (RoomNode r in copies)
+            {
+            }
+        }
+        if (_recall)
+        {
+            Invoke("CauseShipDamage", 30 + (30 * m_ChaosGradient));
+        }
+    }
 }
