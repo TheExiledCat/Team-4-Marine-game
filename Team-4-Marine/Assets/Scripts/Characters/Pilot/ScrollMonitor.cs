@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScrollMonitor : MonoBehaviour
 {
-    float m_MinValue = -225.6f, m_MaxValue = -82.4f;
-    float m_Position;
+    [SerializeField]
+    float m_MinValue = -225.6f, m_MaxValue = -82.4f, m_Position;
 
     [SerializeField]
     Vector2 m_Axis;
