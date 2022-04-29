@@ -34,17 +34,17 @@ public class RoomNode : MapNode
 
     public void TakeDamage(int m_StationsToDamage)
     {
-        int stationsLeft = m_StationsToDamage > TotalBrokenStations() ? TotalBrokenStations() : m_StationsToDamage;
+        int stationsLeft = m_StationsToDamage > TotalStations() ? TotalStations() : m_StationsToDamage;
         foreach (RepairStation r in m_Stations)
         {
-            if (stationsLeft <= 0)
-            {
-                return;
-            }
-            if (r.IsFixed() == false)
+            if (r.IsFixed() == true)
             {
                 r.InitiatePuzzle();
                 stationsLeft--;
+            }
+            if (stationsLeft <= 0)
+            {
+                return;
             }
         }
     }
@@ -76,7 +76,9 @@ public class RoomNode : MapNode
             m_DamageState = DamageState.DAMAGED;
             return;
         }
+
         m_DamageState = DamageState.CRITICAL;
+        if (TotalBrokenStations() == TotalStations()) m_DamageState = DamageState.FATAL;
         return;
     }
 
@@ -112,5 +114,6 @@ public enum DamageState
 {
     FULL,
     DAMAGED,
-    CRITICAL
+    CRITICAL,
+    FATAL
 }

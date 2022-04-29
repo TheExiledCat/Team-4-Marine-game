@@ -32,12 +32,21 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MapNode[] nodes = FindObjectsOfType<MapNode>();
-        for (int i = 0; i < nodes.Length - 1; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
             if (nodes[i] is RoomNode)
             {
                 m_Rooms.Add(nodes[i] as RoomNode);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (m_EngineerControls.Interactions.ReturnInteract.WasPressedThisFrame())
+        {
+            print("Damaging");
+            CauseShipDamage();
         }
     }
 
@@ -81,16 +90,26 @@ public class GameManager : MonoBehaviour
     {
         bool selected = false;
         var rnd = new System.Random();
-        while (!selected)
+        RoomNode selection = null;
+        int i = 0;
+        while (!selected && i < 10)
         {
             List<RoomNode> copies = m_Rooms.OrderBy(item => rnd.Next()).ToList<RoomNode>();
+            print(copies.Count);
             foreach (RoomNode r in copies)
             {
+                if (r.m_DamageState != DamageState.FATAL)
+                {
+                    selected = true;
+                    selection = r;
+                }
             }
+            i++;
         }
+        if (selection) selection.TakeDamage(1);
         if (_recall)
         {
-            Invoke("CauseShipDamage", 30 + (30 * m_ChaosGradient));
+            Invoke("CauseShipDamage", 120 - (60 * m_ChaosGradient));
         }
     }
 }
