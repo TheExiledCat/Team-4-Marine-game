@@ -5,9 +5,15 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField]
-    CanvasGroup m_CockpitScreen, m_ManualScreen;
+    List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
+    int m_CurrentIndex;
+    //index 0 = Cockpit perspective & index 1 = Manual perspective
+    CameraPerspective m_CurrentPerspective;
+    float m_TargetTime = 1.2f, m_CurrentTime, m_T;
+    bool m_CameraIsMoving;
+
     [SerializeField]
-    GameObject m_CockpitCamera, m_ManualCamera;
+    Camera m_Camera;
 
     Pilot.CockpitActions m_CockpitControls;
     Pilot.ManualActions m_ManualControls;
@@ -16,8 +22,8 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
-        m_ManualCamera.SetActive(false);
-        m_CockpitCamera.SetActive(true);
+        m_CurrentIndex = 0;
+        m_CurrentPerspective = m_CameraPerspectives[0];
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
         m_ManualControls = GameManager.GM.m_PilotControls.Manual;
         GameManager.GM.SetManualControls(false);
@@ -25,37 +31,53 @@ public class ScreenManager : MonoBehaviour
 
     private void Update()
     {
+        m_CurrentTime += Time.deltaTime;
+        
         if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
         {
+            m_CurrentIndex++;
             m_ManualShown = true;
             ToggleScreens();
         }
         if (m_ManualControls.ToCockpitScreen.WasPressedThisFrame())
         {
+            m_CurrentIndex--;
             m_ManualShown = false;
             ToggleScreens();
+        }
+        if (m_CameraIsMoving)
+        {
+            m_T = m_CurrentTime / m_TargetTime;
+            m_T = Mathf.Clamp(m_T, 0, 1);
+            m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count);
+            ChangePerspective(m_CurrentIndex);
         }
     }
 
     private void ToggleScreens()
     {
+        m_CurrentTime = 0;
         if (m_ManualShown)
         {
-            m_ManualCamera.SetActive(true);
-            m_CockpitCamera.SetActive(false);
             GameManager.GM.SetCockpitControls(false);
-            m_CockpitScreen.alpha = 0;
-            m_ManualScreen.alpha = 1;
             GameManager.GM.SetManualControls(true);
         }
         else
         {
-            m_CockpitCamera.SetActive(true);
-            m_ManualCamera.SetActive(false);
             GameManager.GM.SetManualControls(false);
-            m_ManualScreen.alpha = 0;
-            m_CockpitScreen.alpha = 1;
             GameManager.GM.SetCockpitControls(true);
+        }
+        m_CameraIsMoving = true;
+    }
+
+    private void ChangePerspective(int _index)
+    {
+        m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_CameraPerspectives[_index].m_PerspectiveBounds.center, m_T);
+        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentPerspective.m_CameraRotations, m_CameraPerspectives[_index].m_CameraRotations, m_T); 
+        if(m_CurrentTime >= m_TargetTime)
+        {
+            m_CameraIsMoving = false;
+            m_CurrentPerspective = m_CameraPerspectives[_index];
         }
     }
 }
