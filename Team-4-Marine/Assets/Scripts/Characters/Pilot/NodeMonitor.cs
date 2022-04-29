@@ -88,8 +88,9 @@ public class NodeMonitor : MonoBehaviour
                         canvasCell.transform.SetParent(m_Origin);
                         img.sprite = m_Sprites[i];
                         RectTransform trans = canvasCell.GetComponent<RectTransform>();
+                        canvasCell.transform.localPosition = Vector3.zero;
+                        trans.localEulerAngles = Vector3.zero;
                         trans.anchoredPosition = (Vector2)TileToCanvas(t, new Vector2Int(x, y));
-
                         trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
                         trans.localScale = Vector3.one;
                         canvasCell.name = x + "," + y + " Tile";
@@ -125,6 +126,7 @@ public class NodeMonitor : MonoBehaviour
                 nodeObject.transform.SetParent(m_Origin);
                 img.sprite = m.m_Icon;
                 RectTransform trans = nodeObject.GetComponent<RectTransform>();
+                nodeObject.transform.localPosition = Vector3.zero;
                 trans.anchoredPosition = WorldToCanvas(m.transform.position);
 
                 trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
@@ -167,6 +169,7 @@ public class NodeMonitor : MonoBehaviour
         nodeObject.transform.SetParent(m_Origin);
         img.sprite = _icon;
         RectTransform trans = nodeObject.GetComponent<RectTransform>();
+        nodeObject.transform.localPosition = Vector3.zero;
         trans.anchoredPosition = WorldToCanvas(_pos);
 
         trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
@@ -189,7 +192,8 @@ public class NodeMonitor : MonoBehaviour
 
     public Vector3 TileToCanvas(Tilemap _map, Vector2Int _tilePos)
     {
-        Vector2 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x) - (Vector3.up * m_Overlap.y) + (Vector3.up * _map.cellBounds.y))) * m_CanvasTileSize;
+        Vector3 canvasPosition = ((_map.GetCellCenterWorld((Vector3Int)_tilePos) + (Vector3.right * _map.cellBounds.xMin) - (Vector3.right * m_Overlap.x) - (Vector3.up * m_Overlap.y) + (Vector3.up * _map.cellBounds.y))) * m_CanvasTileSize;
+        canvasPosition.z = 0;
         return canvasPosition;
     }
 }
