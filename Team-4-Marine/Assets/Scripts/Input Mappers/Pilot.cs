@@ -35,6 +35,15 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""f87a6c89-aba8-4267-8dac-8bebc514ea3d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ToManualScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f99b227-1f46-45df-9c7c-4a83111a6539"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -211,6 +231,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         // Cockpit
         m_Cockpit = asset.FindActionMap("Cockpit", throwIfNotFound: true);
         m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
+        m_Cockpit_MoveCamera = m_Cockpit.FindAction("MoveCamera", throwIfNotFound: true);
         // Manual
         m_Manual = asset.FindActionMap("Manual", throwIfNotFound: true);
         m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
@@ -277,11 +298,13 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Cockpit;
     private ICockpitActions m_CockpitActionsCallbackInterface;
     private readonly InputAction m_Cockpit_ToManualScreen;
+    private readonly InputAction m_Cockpit_MoveCamera;
     public struct CockpitActions
     {
         private @Pilot m_Wrapper;
         public CockpitActions(@Pilot wrapper) { m_Wrapper = wrapper; }
         public InputAction @ToManualScreen => m_Wrapper.m_Cockpit_ToManualScreen;
+        public InputAction @MoveCamera => m_Wrapper.m_Cockpit_MoveCamera;
         public InputActionMap Get() { return m_Wrapper.m_Cockpit; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -294,6 +317,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToManualScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
                 @ToManualScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
                 @ToManualScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
+                @MoveCamera.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
+                @MoveCamera.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
+                @MoveCamera.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
             }
             m_Wrapper.m_CockpitActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToManualScreen.started += instance.OnToManualScreen;
                 @ToManualScreen.performed += instance.OnToManualScreen;
                 @ToManualScreen.canceled += instance.OnToManualScreen;
+                @MoveCamera.started += instance.OnMoveCamera;
+                @MoveCamera.performed += instance.OnMoveCamera;
+                @MoveCamera.canceled += instance.OnMoveCamera;
             }
         }
     }
@@ -365,6 +394,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     public interface ICockpitActions
     {
         void OnToManualScreen(InputAction.CallbackContext context);
+        void OnMoveCamera(InputAction.CallbackContext context);
     }
     public interface IManualActions
     {

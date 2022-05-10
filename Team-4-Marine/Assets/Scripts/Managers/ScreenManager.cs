@@ -8,8 +8,12 @@ public class ScreenManager : MonoBehaviour
     List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
     int m_CurrentIndex;
     //index 0 = Cockpit perspective & index 1 = Manual perspective
+    [SerializeField]
     CameraPerspective m_CurrentPerspective;
     float m_TargetTime = 1.2f, m_CurrentTime, m_T;
+    [SerializeField]
+    float m_CameraSpeed = 10;
+
     bool m_CameraIsMoving;
 
     [SerializeField]
@@ -19,6 +23,8 @@ public class ScreenManager : MonoBehaviour
     Pilot.ManualActions m_ManualControls;
 
     bool m_ManualShown = false;
+
+    Vector2 m_Axis;
 
     private void Start()
     {
@@ -31,6 +37,10 @@ public class ScreenManager : MonoBehaviour
 
     private void Update()
     {
+        m_Axis = GameManager.GM.m_PilotControls.Cockpit.MoveCamera.ReadValue<Vector2>();
+
+        MoveCamera();
+
         m_CurrentTime += Time.deltaTime;
         
         if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
@@ -52,6 +62,16 @@ public class ScreenManager : MonoBehaviour
             m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count);
             ChangePerspective(m_CurrentIndex);
         }
+    }
+
+    private void MoveCamera()
+    {
+        float offsetX = m_CurrentPerspective.m_CameraRotations.x;
+        float offsetY = m_CurrentPerspective.m_CameraRotations.y;
+        m_Camera.transform.localEulerAngles += new Vector3(-m_Axis.y, m_Axis.x)*Time.deltaTime*m_CameraSpeed;
+        Vector3 currentRotation = new Vector3(Mathf.Repeat(m_Camera.transform.localEulerAngles.x + 180, 360) - 180, Mathf.Repeat(m_Camera.transform.localEulerAngles.y + 180, 360) - 180);
+        currentRotation = new Vector3(Mathf.Clamp(currentRotation.x, -m_CurrentPerspective.m_PerspectiveBounds.extents.x + offsetX, m_CurrentPerspective.m_PerspectiveBounds.extents.x + offsetX), Mathf.Clamp(currentRotation.y, -m_CurrentPerspective.m_PerspectiveBounds.extents.y + offsetY, m_CurrentPerspective.m_PerspectiveBounds.extents.y + offsetY));
+        m_Camera.transform.localEulerAngles = currentRotation;
     }
 
     private void ToggleScreens()

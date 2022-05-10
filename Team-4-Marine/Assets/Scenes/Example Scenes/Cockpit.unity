@@ -295,8 +295,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 20
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -776,11 +776,17 @@ MonoBehaviour:
   - m_CameraRotations: {x: 0, y: 0, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 0.18, y: 1.99, z: -7.63}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 10, y: 10, z: 0}
   - m_CameraRotations: {x: 0, y: -71.728, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: -2.53, y: 1, z: -7.13}
+      m_Extent: {x: 10, y: 10, z: 0}
+  m_CurrentPerspective:
+    m_CameraRotations: {x: 0, y: 0, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
+  m_CameraSpeed: 20
   m_Camera: {fileID: 133405617}
 --- !u!114 &268221315
 MonoBehaviour:
