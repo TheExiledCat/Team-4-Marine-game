@@ -15,23 +15,21 @@ public class ScreenManager : MonoBehaviour
     float m_CameraSpeed = 10;
 
     bool m_CameraIsMoving;
+    bool m_ManualShown = false;
 
     [SerializeField]
     Camera m_Camera;
 
     Pilot.CockpitActions m_CockpitControls;
-    Pilot.ManualActions m_ManualControls;
-
-    bool m_ManualShown = false;
 
     Vector2 m_Axis;
+    Vector3 m_CurrentCameraRotation;
 
     private void Start()
     {
         m_CurrentIndex = 0;
         m_CurrentPerspective = m_CameraPerspectives[0];
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
-        m_ManualControls = GameManager.GM.m_PilotControls.Manual;
         GameManager.GM.SetManualControls(false);
     }
 
@@ -49,17 +47,17 @@ public class ScreenManager : MonoBehaviour
             m_ManualShown = true;
             ToggleScreens();
         }
-        if (m_ManualControls.ToCockpitScreen.WasPressedThisFrame())
+        if (m_CockpitControls.ToCockpitScreen.WasPressedThisFrame())
         {
             m_CurrentIndex--;
             m_ManualShown = false;
             ToggleScreens();
         }
+        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
         if (m_CameraIsMoving)
         {
             m_T = m_CurrentTime / m_TargetTime;
             m_T = Mathf.Clamp(m_T, 0, 1);
-            m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count);
             ChangePerspective(m_CurrentIndex);
         }
     }
@@ -76,24 +74,32 @@ public class ScreenManager : MonoBehaviour
 
     private void ToggleScreens()
     {
+        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
         m_CurrentTime = 0;
         if (m_ManualShown)
         {
-            GameManager.GM.SetCockpitControls(false);
+            GameManager.GM.SetCenterControls(false);
             GameManager.GM.SetManualControls(true);
         }
         else
         {
             GameManager.GM.SetManualControls(false);
-            GameManager.GM.SetCockpitControls(true);
+            GameManager.GM.SetCenterControls(true);
         }
-        m_CameraIsMoving = true;
+        Debug.Log(m_CurrentIndex);
+        if(m_CurrentPerspective != m_CameraPerspectives[m_CurrentIndex])
+        {
+            m_CameraIsMoving = true;
+        }
+        m_CurrentCameraRotation = m_Camera.transform.localEulerAngles;
+        m_CurrentCameraRotation.x = Mathf.Repeat(m_CurrentCameraRotation.x + 180, 360) - 180;
+        m_CurrentCameraRotation.y = Mathf.Repeat(m_CurrentCameraRotation.y + 180, 360) - 180;
     }
 
     private void ChangePerspective(int _index)
     {
         m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_CameraPerspectives[_index].m_PerspectiveBounds.center, m_T);
-        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentPerspective.m_CameraRotations, m_CameraPerspectives[_index].m_CameraRotations, m_T); 
+        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, m_CameraPerspectives[_index].m_CameraRotations, m_T); 
         if(m_CurrentTime >= m_TargetTime)
         {
             m_CameraIsMoving = false;
