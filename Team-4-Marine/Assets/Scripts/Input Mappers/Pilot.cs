@@ -24,46 +24,15 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     ""name"": ""Pilot"",
     ""maps"": [
         {
-            ""name"": ""Cockpit"",
+            ""name"": ""Center"",
             ""id"": ""522bbbee-0a19-456e-8380-93d05d5a3480"",
-            ""actions"": [
-                {
-                    ""name"": ""ToManualScreen"",
-                    ""type"": ""Button"",
-                    ""id"": ""aaaf155f-5589-473e-b779-f1a7204f4904"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""22c77d43-25ad-4022-96e0-ad8ddf38fe40"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToManualScreen"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         },
         {
             ""name"": ""Manual"",
             ""id"": ""ceef3b21-ae67-4999-853f-dbfc8369997b"",
             ""actions"": [
-                {
-                    ""name"": ""ToCockpitScreen"",
-                    ""type"": ""Button"",
-                    ""id"": ""7b3c07ca-0784-4998-94a6-be1d14acbdfa"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
                 {
                     ""name"": ""SwapPage"",
                     ""type"": ""Value"",
@@ -93,17 +62,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ee92fa10-9acc-48be-b9f7-f90110a457a3"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToCockpitScreen"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""Direction"",
                     ""id"": ""f487f00b-2313-430a-ab9d-c7fed3a17e72"",
@@ -204,19 +162,90 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Cockpit"",
+            ""id"": ""ad7c2db4-f878-45c6-a2d0-6a0b24d17699"",
+            ""actions"": [
+                {
+                    ""name"": ""MoveCamera"",
+                    ""type"": ""Value"",
+                    ""id"": ""b9faac5f-fb54-4d92-bb7a-23593badfda5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ToManualScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b26c865-150c-48fd-8d7a-5ae12e979854"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToCockpitScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""98cf18c8-b71c-46d0-8638-4eedb8cb0d6b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5d31f5c9-6eee-4551-9e35-18998626eb98"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e53c4d37-b710-4133-8090-fc147a1a97f5"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToCockpitScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""442ee1b9-902e-440f-a504-70eb64c60a42"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToManualScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Cockpit
-        m_Cockpit = asset.FindActionMap("Cockpit", throwIfNotFound: true);
-        m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
+        // Center
+        m_Center = asset.FindActionMap("Center", throwIfNotFound: true);
         // Manual
         m_Manual = asset.FindActionMap("Manual", throwIfNotFound: true);
-        m_Manual_ToCockpitScreen = m_Manual.FindAction("ToCockpitScreen", throwIfNotFound: true);
         m_Manual_SwapPage = m_Manual.FindAction("SwapPage", throwIfNotFound: true);
         m_Manual_Bookmark = m_Manual.FindAction("Bookmark", throwIfNotFound: true);
         m_Manual_MonitorScroll = m_Manual.FindAction("MonitorScroll", throwIfNotFound: true);
+        // Cockpit
+        m_Cockpit = asset.FindActionMap("Cockpit", throwIfNotFound: true);
+        m_Cockpit_MoveCamera = m_Cockpit.FindAction("MoveCamera", throwIfNotFound: true);
+        m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
+        m_Cockpit_ToCockpitScreen = m_Cockpit.FindAction("ToCockpitScreen", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,43 +302,34 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Cockpit
-    private readonly InputActionMap m_Cockpit;
-    private ICockpitActions m_CockpitActionsCallbackInterface;
-    private readonly InputAction m_Cockpit_ToManualScreen;
-    public struct CockpitActions
+    // Center
+    private readonly InputActionMap m_Center;
+    private ICenterActions m_CenterActionsCallbackInterface;
+    public struct CenterActions
     {
         private @Pilot m_Wrapper;
-        public CockpitActions(@Pilot wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ToManualScreen => m_Wrapper.m_Cockpit_ToManualScreen;
-        public InputActionMap Get() { return m_Wrapper.m_Cockpit; }
+        public CenterActions(@Pilot wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_Center; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CockpitActions set) { return set.Get(); }
-        public void SetCallbacks(ICockpitActions instance)
+        public static implicit operator InputActionMap(CenterActions set) { return set.Get(); }
+        public void SetCallbacks(ICenterActions instance)
         {
-            if (m_Wrapper.m_CockpitActionsCallbackInterface != null)
+            if (m_Wrapper.m_CenterActionsCallbackInterface != null)
             {
-                @ToManualScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
-                @ToManualScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
-                @ToManualScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
             }
-            m_Wrapper.m_CockpitActionsCallbackInterface = instance;
+            m_Wrapper.m_CenterActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @ToManualScreen.started += instance.OnToManualScreen;
-                @ToManualScreen.performed += instance.OnToManualScreen;
-                @ToManualScreen.canceled += instance.OnToManualScreen;
             }
         }
     }
-    public CockpitActions @Cockpit => new CockpitActions(this);
+    public CenterActions @Center => new CenterActions(this);
 
     // Manual
     private readonly InputActionMap m_Manual;
     private IManualActions m_ManualActionsCallbackInterface;
-    private readonly InputAction m_Manual_ToCockpitScreen;
     private readonly InputAction m_Manual_SwapPage;
     private readonly InputAction m_Manual_Bookmark;
     private readonly InputAction m_Manual_MonitorScroll;
@@ -317,7 +337,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     {
         private @Pilot m_Wrapper;
         public ManualActions(@Pilot wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ToCockpitScreen => m_Wrapper.m_Manual_ToCockpitScreen;
         public InputAction @SwapPage => m_Wrapper.m_Manual_SwapPage;
         public InputAction @Bookmark => m_Wrapper.m_Manual_Bookmark;
         public InputAction @MonitorScroll => m_Wrapper.m_Manual_MonitorScroll;
@@ -330,9 +349,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ManualActionsCallbackInterface != null)
             {
-                @ToCockpitScreen.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
-                @ToCockpitScreen.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
-                @ToCockpitScreen.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnToCockpitScreen;
                 @SwapPage.started -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
                 @SwapPage.performed -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
                 @SwapPage.canceled -= m_Wrapper.m_ManualActionsCallbackInterface.OnSwapPage;
@@ -346,9 +362,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             m_Wrapper.m_ManualActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @ToCockpitScreen.started += instance.OnToCockpitScreen;
-                @ToCockpitScreen.performed += instance.OnToCockpitScreen;
-                @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
                 @SwapPage.started += instance.OnSwapPage;
                 @SwapPage.performed += instance.OnSwapPage;
                 @SwapPage.canceled += instance.OnSwapPage;
@@ -362,15 +375,68 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         }
     }
     public ManualActions @Manual => new ManualActions(this);
-    public interface ICockpitActions
+
+    // Cockpit
+    private readonly InputActionMap m_Cockpit;
+    private ICockpitActions m_CockpitActionsCallbackInterface;
+    private readonly InputAction m_Cockpit_MoveCamera;
+    private readonly InputAction m_Cockpit_ToManualScreen;
+    private readonly InputAction m_Cockpit_ToCockpitScreen;
+    public struct CockpitActions
     {
-        void OnToManualScreen(InputAction.CallbackContext context);
+        private @Pilot m_Wrapper;
+        public CockpitActions(@Pilot wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MoveCamera => m_Wrapper.m_Cockpit_MoveCamera;
+        public InputAction @ToManualScreen => m_Wrapper.m_Cockpit_ToManualScreen;
+        public InputAction @ToCockpitScreen => m_Wrapper.m_Cockpit_ToCockpitScreen;
+        public InputActionMap Get() { return m_Wrapper.m_Cockpit; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CockpitActions set) { return set.Get(); }
+        public void SetCallbacks(ICockpitActions instance)
+        {
+            if (m_Wrapper.m_CockpitActionsCallbackInterface != null)
+            {
+                @MoveCamera.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
+                @MoveCamera.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
+                @MoveCamera.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnMoveCamera;
+                @ToManualScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
+                @ToManualScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
+                @ToManualScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToManualScreen;
+                @ToCockpitScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
+                @ToCockpitScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
+                @ToCockpitScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
+            }
+            m_Wrapper.m_CockpitActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MoveCamera.started += instance.OnMoveCamera;
+                @MoveCamera.performed += instance.OnMoveCamera;
+                @MoveCamera.canceled += instance.OnMoveCamera;
+                @ToManualScreen.started += instance.OnToManualScreen;
+                @ToManualScreen.performed += instance.OnToManualScreen;
+                @ToManualScreen.canceled += instance.OnToManualScreen;
+                @ToCockpitScreen.started += instance.OnToCockpitScreen;
+                @ToCockpitScreen.performed += instance.OnToCockpitScreen;
+                @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
+            }
+        }
+    }
+    public CockpitActions @Cockpit => new CockpitActions(this);
+    public interface ICenterActions
+    {
     }
     public interface IManualActions
     {
-        void OnToCockpitScreen(InputAction.CallbackContext context);
         void OnSwapPage(InputAction.CallbackContext context);
         void OnBookmark(InputAction.CallbackContext context);
         void OnMonitorScroll(InputAction.CallbackContext context);
+    }
+    public interface ICockpitActions
+    {
+        void OnMoveCamera(InputAction.CallbackContext context);
+        void OnToManualScreen(InputAction.CallbackContext context);
+        void OnToCockpitScreen(InputAction.CallbackContext context);
     }
 }
