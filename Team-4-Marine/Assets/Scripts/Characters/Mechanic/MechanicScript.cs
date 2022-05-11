@@ -31,7 +31,7 @@ public class MechanicScript : MonoBehaviour
         {
             if (!m_Repairing)
             {
-                if (GameManager.GM.m_EngineerControls.Interactions.PrimaryInteract.WasPressedThisFrame())
+                if (GameManager.GM.m_EngineerControls.Interactions.PrimaryInteract.WasPressedThisFrame() && m_CurrentStation.IsFixed() == false)
                 {
                     Repair();
                 }

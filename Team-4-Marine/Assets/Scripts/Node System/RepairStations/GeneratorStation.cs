@@ -4,24 +4,12 @@ using UnityEngine;
 
 public class GeneratorStation : RepairStation
 {
-    [SerializeField] private GameObject m_PhysicalModel;
-
     [SerializeField]
     private bool m_RedIsOn, m_YellowIsOn;
 
     public override void Start()
     {
         base.Start();
-    }
-
-    public override void Open()
-    {
-        m_PhysicalModel.gameObject.SetActive(true);
-    }
-
-    public override void Close()
-    {
-        m_PhysicalModel.gameObject.SetActive(false);
     }
 
     protected override void Update()

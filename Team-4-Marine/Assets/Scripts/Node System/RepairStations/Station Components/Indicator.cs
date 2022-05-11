@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Indicator : MonoBehaviour
 {
-    private bool m_LitUp;
+    [SerializeField]
+    private bool m_LitUp = true;
     private Color m_OriginalColor;
 
     public void Initiate()
     {
         m_OriginalColor = GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+        SetIndicator(m_LitUp);
     }
 
     public void SetIndicator(bool _status)
