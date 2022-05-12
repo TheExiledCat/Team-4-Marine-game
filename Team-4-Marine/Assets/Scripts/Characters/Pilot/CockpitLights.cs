@@ -15,6 +15,7 @@ public class CockpitLights : MonoBehaviour
 
     private void Start()
     {
+        m_LightsOn = true;
         foreach(Indicator i in m_CockpitLights)
         {
             i.Initiate();
@@ -23,21 +24,23 @@ public class CockpitLights : MonoBehaviour
         foreach(Indicator i in m_CockpitLights)
         {
             m_CurrentIndicator = i;
-            i.SetIndicator(true);
-            Invoke("Flicker(m_CurrentIndicator)", m_FlickerSpeed);
+            StartCoroutine(Flicker(m_CurrentIndicator));
         }
     }
 
-    private void Flicker(Indicator _indicator)
+    private IEnumerator Flicker(Indicator _indicator)
     {
-        if (_indicator.m_LitUp)
+        while (m_LightsOn)
         {
-            _indicator.SetIndicator(false);
-        }
-        else
-        {
-            _indicator.SetIndicator(true);
-        } 
-        Invoke("Flicker(_indicator)", m_FlickerSpeed);
+            if (_indicator.m_LitUp)
+            {
+                _indicator.SetIndicator(false);
+            }
+            else
+            {
+                _indicator.SetIndicator(true);
+            }
+            yield return new WaitForSeconds(m_FlickerSpeed);
+        }      
     }
 }

@@ -9660,7 +9660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.87909347, b: 0.69882524, a: 1}
+  m_Color: {r: 0.9056604, g: 0.73341405, b: 0.2597365, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9768,8 +9768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220cacc823ae4f1439e544719ef0c8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DoorsClosed: 0
-  m_Doors: {fileID: 0}
 --- !u!19719996 &1666823210
 TilemapCollider2D:
   m_ObjectHideFlags: 0

@@ -86,7 +86,6 @@ public class ScreenManager : MonoBehaviour
             GameManager.GM.SetManualControls(false);
             GameManager.GM.SetCenterControls(true);
         }
-        Debug.Log(m_CurrentIndex);
         if(m_CurrentPerspective != m_CameraPerspectives[m_CurrentIndex])
         {
             m_CameraIsMoving = true;
