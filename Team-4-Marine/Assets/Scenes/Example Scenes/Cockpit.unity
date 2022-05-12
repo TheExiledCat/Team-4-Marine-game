@@ -798,7 +798,7 @@ MonoBehaviour:
     m_PerspectiveBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
-  m_CameraSpeed: 20
+  m_CameraSpeed: 30
   m_Camera: {fileID: 133405617}
 --- !u!114 &268221315
 MonoBehaviour:

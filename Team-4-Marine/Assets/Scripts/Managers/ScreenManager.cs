@@ -10,7 +10,7 @@ public class ScreenManager : MonoBehaviour
     //index 0 = record player perspective, index 1 = cockpit perspective & index 2 = manual perspective
     [SerializeField]
     CameraPerspective m_CurrentPerspective;
-    float m_TargetTime = 1.2f, m_CurrentTime, m_T;
+    float m_TargetTime = 1, m_CurrentTime, m_T;
     [SerializeField]
     float m_CameraSpeed = 10;
 
