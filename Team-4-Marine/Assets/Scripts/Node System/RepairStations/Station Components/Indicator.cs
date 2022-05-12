@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Indicator : MonoBehaviour
 {
-    private bool m_LitUp;
+    public bool m_LitUp;
     private Color m_OriginalColor;
 
     public void Initiate()
