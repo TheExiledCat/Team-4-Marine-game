@@ -67,6 +67,11 @@ public class RepairStation : MonoBehaviour
     {
         if (m_Displays.Count > 0)
             m_Displays[0].SetState(m_Fixed);
+        if (!m_Fixed)
+        {
+            if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
+            else GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
     }
 
     public virtual void Open()
