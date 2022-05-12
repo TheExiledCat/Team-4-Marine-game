@@ -7,7 +7,7 @@ public class ScreenManager : MonoBehaviour
     [SerializeField]
     List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
     int m_CurrentIndex;
-    //index 0 = Cockpit perspective & index 1 = Manual perspective
+    //index 0 = record player perspective, index 1 = cockpit perspective & index 2 = manual perspective
     [SerializeField]
     CameraPerspective m_CurrentPerspective;
     float m_TargetTime = 1.2f, m_CurrentTime, m_T;
@@ -27,8 +27,8 @@ public class ScreenManager : MonoBehaviour
 
     private void Start()
     {
-        m_CurrentIndex = 0;
-        m_CurrentPerspective = m_CameraPerspectives[0];
+        m_CurrentIndex = 1;
+        m_CurrentPerspective = m_CameraPerspectives[1];
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
         GameManager.GM.SetManualControls(false);
     }
@@ -86,7 +86,6 @@ public class ScreenManager : MonoBehaviour
             GameManager.GM.SetManualControls(false);
             GameManager.GM.SetCenterControls(true);
         }
-        Debug.Log(m_CurrentIndex);
         if(m_CurrentPerspective != m_CameraPerspectives[m_CurrentIndex])
         {
             m_CameraIsMoving = true;
