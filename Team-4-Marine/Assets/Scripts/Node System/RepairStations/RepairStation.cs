@@ -7,6 +7,7 @@ using System.Linq;
 public class RepairStation : MonoBehaviour
 {
     [SerializeField] private GameObject m_PhysicalModel;
+
     [SerializeField]
     private string m_StationName;
 
@@ -53,6 +54,7 @@ public class RepairStation : MonoBehaviour
         foreach (StationDisplay sd in m_Displays) sd.Initiate();
         foreach (Indicator i in m_Indicators) i.Initiate();
         foreach (Indicator i in m_ErrorLights) i.Initiate();
+        GetComponent<SpriteRenderer>().color = Color.yellow;
         if (!CheckForFailure()) InitiatePuzzle(); else return;
     }
 
@@ -105,6 +107,7 @@ public class RepairStation : MonoBehaviour
             SetErrorLights();
         }
     }
+
     protected void SetErrorLights()
     {
         m_DamageTaken = m_DamageTaken > m_ErrorLights.Count ? m_ErrorLights.Count : m_DamageTaken;
