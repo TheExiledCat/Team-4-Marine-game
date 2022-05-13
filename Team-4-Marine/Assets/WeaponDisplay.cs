@@ -14,6 +14,7 @@ public class WeaponDisplay : StationDisplay
     private int m_Ammo = 0;
     private int m_AmmoA;
     private int m_AmmoB;
+
     protected override void Awake()
     {
         m_TextName.text = m_StationName;
@@ -34,18 +35,20 @@ public class WeaponDisplay : StationDisplay
         {
             m_Ammo = m_AmmoB;
         }
-        SetNone();
     }
+
     public void SetNone()
     {
         m_AmmoCounter.text = "";
         m_AmmoFill.fillAmount = 0;
     }
+
     public void SetA()
     {
         m_AmmoCounter.text = m_AmmoA.ToString("00");
         m_AmmoFill.fillAmount = float.Parse(m_AmmoCounter.text) / 100f;
     }
+
     public void SetB()
     {
         m_AmmoCounter.text = m_AmmoB.ToString("00");

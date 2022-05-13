@@ -7,10 +7,12 @@ public class WeaponStation : RepairStation
     private List<ToggleButton> m_Gears = new List<ToggleButton>();
     private bool m_IsA;
     private WeaponDisplay m_Display;
+
     public override void Start()
     {
         base.Start();
     }
+
     public override void CheckWinCondition()
     {
         base.CheckWinCondition();
@@ -20,13 +22,15 @@ public class WeaponStation : RepairStation
     {
         base.LateUpdate();
     }
+
     protected override void Update()
     {
         base.Update();
         if (m_Display)
-            m_Display.SetNone();
-        CheckForStatus();
+            //m_Display.SetNone();
+            CheckForStatus();
     }
+
     private void CheckForStatus()
     {
         if (m_Handles[0].GetPosition() == 1 && m_Handles[1].GetPosition() == 1)//both handles down
@@ -38,6 +42,7 @@ public class WeaponStation : RepairStation
             m_Display.SetB();
         }
     }
+
     protected override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
@@ -56,12 +61,14 @@ public class WeaponStation : RepairStation
         }
         m_Display = m_Displays[0] as WeaponDisplay;
     }
+
     public override bool CheckForFailure() // Puzzle win condition, hardcoded
     {
         print("Checking");
         if (m_Display && AmmoCheck()) return false;
         return true;//not done yet
     }
+
     private bool AmmoCheck()
     {
         switch (m_Display.GetAmmo())
@@ -76,6 +83,7 @@ public class WeaponStation : RepairStation
                     return true;
                 }
                 break;
+
             case int n when (n >= 11 && n <= 35):
                 if (m_Gears[2].Get())
                 {
@@ -90,6 +98,7 @@ public class WeaponStation : RepairStation
                     return true;
                 }
                 break;
+
             case int n when (n >= 36 && n <= 65):
                 if (m_Gears[0].Get() && m_Gears[3].Get())
                 {
@@ -100,6 +109,7 @@ public class WeaponStation : RepairStation
                     return true;
                 }
                 break;
+
             case int n when (n >= 66 && n <= 83):
                 if (m_Gears[3].Get() && m_Handles[0].GetPosition() == 0)
                 {
@@ -110,6 +120,7 @@ public class WeaponStation : RepairStation
                     return true;
                 }
                 break;
+
             case int n when (n >= 84 && n <= 100):
 
                 foreach (ToggleButton t in m_Gears)
