@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GeneratorStation : RepairStation
 {
-    [SerializeField] private GameObject m_PhysicalModel;
-
     [SerializeField]
     private bool m_RedIsOn, m_YellowIsOn;
 
@@ -14,26 +12,10 @@ public class GeneratorStation : RepairStation
         base.Start();
     }
 
-    public override void Open()
-    {
-        m_PhysicalModel.gameObject.SetActive(true);
-    }
-
-    public override void Close()
-    {
-        m_PhysicalModel.gameObject.SetActive(false);
-    }
-
     protected override void Update()
     {
         base.Update();
         SetIndicators();
-
-        if (!m_Fixed)
-        {
-            if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
-            else GetComponent<SpriteRenderer>().color = Color.yellow;
-        }
     }
 
     public override void CheckWinCondition()

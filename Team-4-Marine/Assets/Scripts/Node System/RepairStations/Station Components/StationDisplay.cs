@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 public class StationDisplay : PuzzleComponent
 {
-    [SerializeField] private string m_StationName;
+    [SerializeField] protected string m_StationName;
     [SerializeField]
-    private int m_DigitCrosses;
+    protected int m_DigitCrosses;
     [SerializeField]
-    private TMP_Text m_TextName, m_Crosses, m_FreeText;
+    protected TMP_Text m_TextName, m_Crosses, m_FreeText;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         m_TextName.text = m_StationName;
         print(m_Crosses.name);
