@@ -50,6 +50,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetCenterControls(bool _enabled)
+    {
+        if (_enabled)
+        {
+            m_PilotControls.Cockpit.Enable();
+            m_PilotControls.Center.Enable();
+        }
+        else
+        {
+            m_PilotControls.Cockpit.Disable();
+            m_PilotControls.Center.Disable();
+        }
+    }
+
     public void SetCockpitControls(bool _enabled)
     {
         if (_enabled)

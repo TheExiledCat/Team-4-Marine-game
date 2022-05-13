@@ -43,7 +43,7 @@ public class WeaponStation : RepairStation
         }
     }
 
-    protected override void InitiatePuzzle()
+    public override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
         foreach (ButtonComponent b in m_Buttons)
