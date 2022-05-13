@@ -15,6 +15,8 @@ public class MechanicScript : MonoBehaviour
         m_CurrentStation = _station;
     }
 
+    public bool m_CanInteract = true;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -50,31 +52,36 @@ public class MechanicScript : MonoBehaviour
     private void FixedUpdate()
     {
     }
+
     private void Interact()
     {
-        if (GameManager.GM.m_EngineerControls.Interactions.MouseInteract.WasPressedThisFrame())
+        if (m_CanInteract)
         {
-            print("CLick");
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+            if (GameManager.GM.m_EngineerControls.Interactions.MouseInteract.WasPressedThisFrame())
             {
-                print(hit.collider.gameObject.name);
-                hit.collider.gameObject.GetComponent<Interactable>().Interact();
+                print("CLick");
+                RaycastHit hit;
+
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+                {
+                    print(hit.collider.gameObject.name);
+                    hit.collider.gameObject.GetComponent<Interactable>().Interact();
+                }
             }
-        }
-        else if (GameManager.GM.m_EngineerControls.Interactions.MouseSecondaryInteract.WasPressedThisFrame())
-        {
-            print("CLick");
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+            else if (GameManager.GM.m_EngineerControls.Interactions.MouseSecondaryInteract.WasPressedThisFrame())
             {
-                print(hit.collider.gameObject.name);
-                hit.collider.gameObject.GetComponent<Interactable>().SecondaryInteract();
+                print("CLick");
+                RaycastHit hit;
+
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+                {
+                    print(hit.collider.gameObject.name);
+                    hit.collider.gameObject.GetComponent<Interactable>().SecondaryInteract();
+                }
             }
         }
     }
+
     private void Repair()
     {
         m_CurrentStation.Open();
@@ -82,9 +89,10 @@ public class MechanicScript : MonoBehaviour
         GameManager.GM.SetMovement2DControls(false);
     }
 
-    private void Roam()
+    public void Roam()
     {
-        m_CurrentStation.Close();
+        if (m_CurrentStation.m_Opened)
+            m_CurrentStation.Close();
         m_Repairing = false;
         GameManager.GM.SetMovement2DControls(true);
     }

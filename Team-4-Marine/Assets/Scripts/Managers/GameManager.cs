@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private List<RoomNode> m_Rooms = new List<RoomNode>();
     public float m_ChaosGradient = 0.5f;
     private float m_Progress = 0;
+    private MechanicScript m_Mechanic;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         m_PilotControls.Enable();
         m_EngineerControls = new Engineer();
         m_EngineerControls.Enable();
+        m_Mechanic = FindObjectOfType<MechanicScript>();
     }
 
     private void Start()
@@ -48,6 +50,21 @@ public class GameManager : MonoBehaviour
             print("Damaging");
             CauseShipDamage();
         }
+    }
+
+    public void ForceRoam()
+    {
+        m_Mechanic.Roam();
+    }
+
+    public void DisableMechanicInteraction()
+    {
+        m_Mechanic.m_CanInteract = false;
+    }
+
+    public void EnableMechanicInteraction()
+    {
+        m_Mechanic.m_CanInteract = true;
     }
 
     public void SetCenterControls(bool _enabled)

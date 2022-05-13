@@ -24,7 +24,7 @@ public class RepairStation : MonoBehaviour
     public static Action OnFail;
     public static Action OnOpen;
     public static Action OnClose;
-    private bool m_Opened;
+    public bool m_Opened;
 
     [SerializeField] protected List<Switch> m_Switches = new List<Switch>();
     [SerializeField] protected List<Handle> m_Handles = new List<Handle>();
@@ -36,10 +36,12 @@ public class RepairStation : MonoBehaviour
 
     [SerializeField] protected List<Indicator> m_ErrorLights = new List<Indicator>();
     protected int m_DamageTaken = 0;
+    private bool m_Locked = false;
+    private float m_LockTime = 15f;
 
     public virtual void Start()
     {
-        //InitiatePuzzle();
+        InitiatePuzzle();
         if (m_ConfirmationButton != null)
             m_ConfirmationButton.m_Actions.AddListener(CheckWinCondition);
     }
@@ -70,8 +72,15 @@ public class RepairStation : MonoBehaviour
             m_Displays[0].SetState(m_Fixed);
         if (!m_Fixed)
         {
-            if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
-            else GetComponent<SpriteRenderer>().color = Color.yellow;
+            if (!m_Locked)
+            {
+                if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
+                else GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().color = Color.red;
+            }
         }
     }
 
@@ -91,6 +100,8 @@ public class RepairStation : MonoBehaviour
             m_Opened = false;
             OnClose?.Invoke();
             m_PhysicalModel.gameObject.SetActive(false);
+            GameManager.GM.EnableMechanicInteraction();
+            GameManager.GM.ForceRoam();
         }
     }
 
@@ -111,7 +122,23 @@ public class RepairStation : MonoBehaviour
             m_DamageTaken++;
             GetComponent<SpriteRenderer>().color = Color.yellow;
             SetErrorLights();
+            if (m_DamageTaken == 2)
+            {
+                m_Opened = false;
+                print("Locking Station");
+                m_Locked = true;
+                Invoke("Unlock", m_LockTime);
+                Invoke("Close", 2f);
+                GameManager.GM.DisableMechanicInteraction();
+                GetComponent<SpriteRenderer>().color = Color.red;
+            }
         }
+    }
+
+    private void Unlock()
+    {
+        m_Locked = false;
+        InitiatePuzzle();
     }
 
     protected void SetErrorLights()
