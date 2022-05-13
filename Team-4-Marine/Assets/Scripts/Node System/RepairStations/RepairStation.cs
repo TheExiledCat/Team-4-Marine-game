@@ -6,6 +6,8 @@ using System.Linq;
 [RequireComponent(typeof(BoxCollider2D))]
 public class RepairStation : MonoBehaviour
 {
+    [SerializeField] private GameObject m_PhysicalModel;
+
     [SerializeField]
     private string m_StationName;
 
@@ -32,6 +34,9 @@ public class RepairStation : MonoBehaviour
     [SerializeField] protected List<ButtonComponent> m_Buttons = new List<ButtonComponent>();
     [SerializeField] protected ButtonComponent m_ConfirmationButton;
 
+    [SerializeField] protected List<Indicator> m_ErrorLights = new List<Indicator>();
+    protected int m_DamageTaken = 0;
+
     public virtual void Start()
     {
         //InitiatePuzzle();
@@ -44,11 +49,13 @@ public class RepairStation : MonoBehaviour
         m_Fixed = false;
         //for every type of puzzle component call their Initiate Function here, might change this to an interactable class array and add them seperately
         foreach (Switch s in m_Switches) s.Initiate();
-        //foreach (Handle h in m_Handles) h.Randomize();
+        foreach (Handle h in m_Handles) h.Initiate();
         foreach (RotaryKnob r in m_Rotaries) r.Initiate();
         foreach (ButtonComponent b in m_Buttons) b.Initiate();
         foreach (StationDisplay sd in m_Displays) sd.Initiate();
         foreach (Indicator i in m_Indicators) i.Initiate();
+        foreach (Indicator i in m_ErrorLights) i.Initiate();
+        GetComponent<SpriteRenderer>().color = Color.yellow;
         if (!CheckForFailure()) InitiatePuzzle(); else return;
     }
 
@@ -61,6 +68,11 @@ public class RepairStation : MonoBehaviour
     {
         if (m_Displays.Count > 0)
             m_Displays[0].SetState(m_Fixed);
+        if (!m_Fixed)
+        {
+            if (CheckForMechanic()) GetComponent<SpriteRenderer>().color = Color.cyan;
+            else GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
     }
 
     public virtual void Open()
@@ -68,6 +80,7 @@ public class RepairStation : MonoBehaviour
         print("Opening");
         m_Opened = true;
         OnOpen?.Invoke();
+        m_PhysicalModel.gameObject.SetActive(true);
     }
 
     public virtual void Close()
@@ -77,11 +90,13 @@ public class RepairStation : MonoBehaviour
             print("Closing");
             m_Opened = false;
             OnClose?.Invoke();
+            m_PhysicalModel.gameObject.SetActive(false);
         }
     }
 
     public virtual void CheckWinCondition()
     {
+        print("Checking for win");
         if (!CheckForFailure())
         {
             print("win");
@@ -93,7 +108,20 @@ public class RepairStation : MonoBehaviour
         {
             print("broken");
             m_Fixed = false;
+            m_DamageTaken++;
             GetComponent<SpriteRenderer>().color = Color.yellow;
+            SetErrorLights();
+        }
+    }
+
+    protected void SetErrorLights()
+    {
+        m_DamageTaken = m_DamageTaken > m_ErrorLights.Count ? m_ErrorLights.Count : m_DamageTaken;
+        for (int i = 0; i < m_DamageTaken; i++)
+        {
+            print("Setting lights");
+
+            m_ErrorLights[i].SetIndicator(true);
         }
     }
 

@@ -12,7 +12,7 @@ public class Selector : Interactable
     [SerializeField]
     private Vector3 m_Axis;
 
-    private Vector3 m_OriginalRotation;
+    private Quaternion m_OriginalRotation;
 
     public override void Interact()
     {
@@ -32,8 +32,10 @@ public class Selector : Interactable
     {
         base.Initiate();
         System.Random random = new System.Random();
-        m_CurrentPosition = random.Next(m_Positions.Count);
-        m_OriginalRotation = transform.localEulerAngles;
+        if (m_IsRandom)
+            m_CurrentPosition = random.Next(m_Positions.Count);
+        m_OriginalRotation = transform.localRotation;
+        print(m_OriginalRotation);
     }
 
     protected virtual void Update()
@@ -43,13 +45,12 @@ public class Selector : Interactable
 
     protected void UpdateRotation()
     {
-        Vector3 origin = m_OriginalRotation;
-        origin = m_OriginalRotation - Vector3.Scale(m_Axis, m_OriginalRotation);
+        Vector3 origin = m_OriginalRotation.eulerAngles;
+        origin = m_OriginalRotation.eulerAngles - Vector3.Scale(m_Axis, m_OriginalRotation.eulerAngles);
+
+        origin = origin + (m_Axis * m_Positions[m_CurrentPosition]);
         print(origin);
-        origin = origin + m_Axis * m_Positions[m_CurrentPosition];
-        print(origin);
-        if (m_Positions.Count > 0)
-            transform.localRotation = Quaternion.Euler(origin);
+        transform.localEulerAngles = Quaternion.Euler(origin).eulerAngles;
     }
 
     public int GetPosition()
