@@ -104,7 +104,7 @@ public class GeneratorStation : RepairStation
         return true;//not done yet
     }
 
-    protected override void InitiatePuzzle()
+    public override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
         GetComponent<SpriteRenderer>().color = m_Fixed ? Color.green : Color.yellow;
