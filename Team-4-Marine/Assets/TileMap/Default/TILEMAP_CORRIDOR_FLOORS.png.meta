@@ -1,0 +1,2004 @@
+fileFormatVersion: 2
+guid: 3472e122a714e0f47b83ba52c91fa364
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 605632629617823223
+    second: TILEMAP_CORRIDOR_FLOORS_0
+  - first:
+      213: 4455628014070143946
+    second: TILEMAP_CORRIDOR_FLOORS_1
+  - first:
+      213: -1825300269256066177
+    second: TILEMAP_CORRIDOR_FLOORS_2
+  - first:
+      213: -5350989565044938570
+    second: TILEMAP_CORRIDOR_FLOORS_3
+  - first:
+      213: -7849486292985192921
+    second: TILEMAP_CORRIDOR_FLOORS_4
+  - first:
+      213: -1887282840390712916
+    second: TILEMAP_CORRIDOR_FLOORS_5
+  - first:
+      213: -1876202486268257086
+    second: TILEMAP_CORRIDOR_FLOORS_6
+  - first:
+      213: -3593732593862307109
+    second: TILEMAP_CORRIDOR_FLOORS_7
+  - first:
+      213: 4470222784507340128
+    second: TILEMAP_CORRIDOR_FLOORS_8
+  - first:
+      213: -6250644236318403817
+    second: TILEMAP_CORRIDOR_FLOORS_9
+  - first:
+      213: -5222374873239444831
+    second: TILEMAP_CORRIDOR_FLOORS_10
+  - first:
+      213: 7263101380016675377
+    second: TILEMAP_CORRIDOR_FLOORS_11
+  - first:
+      213: 7794010067086876951
+    second: TILEMAP_CORRIDOR_FLOORS_12
+  - first:
+      213: -447702279721966757
+    second: TILEMAP_CORRIDOR_FLOORS_13
+  - first:
+      213: -8529449504404791725
+    second: TILEMAP_CORRIDOR_FLOORS_14
+  - first:
+      213: 6125426056157531654
+    second: TILEMAP_CORRIDOR_FLOORS_15
+  - first:
+      213: 847722394804619504
+    second: TILEMAP_CORRIDOR_FLOORS_16
+  - first:
+      213: -2030107038739619916
+    second: TILEMAP_CORRIDOR_FLOORS_17
+  - first:
+      213: 5527105762811950033
+    second: TILEMAP_CORRIDOR_FLOORS_18
+  - first:
+      213: -6290645536428467437
+    second: TILEMAP_CORRIDOR_FLOORS_19
+  - first:
+      213: 8064389086126059008
+    second: TILEMAP_CORRIDOR_FLOORS_20
+  - first:
+      213: 6289596996546995127
+    second: TILEMAP_CORRIDOR_FLOORS_21
+  - first:
+      213: -4044722116600525483
+    second: TILEMAP_CORRIDOR_FLOORS_22
+  - first:
+      213: 3710741027114593136
+    second: TILEMAP_CORRIDOR_FLOORS_23
+  - first:
+      213: 3206961003865681764
+    second: TILEMAP_CORRIDOR_FLOORS_24
+  - first:
+      213: 8412133175033590108
+    second: TILEMAP_CORRIDOR_FLOORS_25
+  - first:
+      213: -5056916503496739512
+    second: TILEMAP_CORRIDOR_FLOORS_26
+  - first:
+      213: 1168060324070638524
+    second: TILEMAP_CORRIDOR_FLOORS_27
+  - first:
+      213: -3919496207779646295
+    second: TILEMAP_CORRIDOR_FLOORS_28
+  - first:
+      213: 108682956570643642
+    second: TILEMAP_CORRIDOR_FLOORS_29
+  - first:
+      213: 2558871717903233095
+    second: TILEMAP_CORRIDOR_FLOORS_30
+  - first:
+      213: 7089002294287404567
+    second: TILEMAP_CORRIDOR_FLOORS_31
+  - first:
+      213: -3401134821832603178
+    second: TILEMAP_CORRIDOR_FLOORS_32
+  - first:
+      213: 8615118310429483282
+    second: TILEMAP_CORRIDOR_FLOORS_33
+  - first:
+      213: -2608428889468829413
+    second: TILEMAP_CORRIDOR_FLOORS_34
+  - first:
+      213: 5080351259541526963
+    second: TILEMAP_CORRIDOR_FLOORS_35
+  - first:
+      213: -7496574478313859478
+    second: TILEMAP_CORRIDOR_FLOORS_36
+  - first:
+      213: 9177226611449651916
+    second: TILEMAP_CORRIDOR_FLOORS_37
+  - first:
+      213: -1584729700675674667
+    second: TILEMAP_CORRIDOR_FLOORS_38
+  - first:
+      213: 3859450197142403070
+    second: TILEMAP_CORRIDOR_FLOORS_39
+  - first:
+      213: 2419557835826369786
+    second: TILEMAP_CORRIDOR_FLOORS_40
+  - first:
+      213: -2533867444757614393
+    second: TILEMAP_CORRIDOR_FLOORS_41
+  - first:
+      213: 6883954035867822705
+    second: TILEMAP_CORRIDOR_FLOORS_42
+  - first:
+      213: -546302652164313378
+    second: TILEMAP_CORRIDOR_FLOORS_43
+  - first:
+      213: -2980229869758522589
+    second: TILEMAP_CORRIDOR_FLOORS_44
+  - first:
+      213: -4984186897066987150
+    second: TILEMAP_CORRIDOR_FLOORS_45
+  - first:
+      213: -7135055742662834995
+    second: TILEMAP_CORRIDOR_FLOORS_46
+  - first:
+      213: 4740372689440970878
+    second: TILEMAP_CORRIDOR_FLOORS_47
+  - first:
+      213: 9137435257736971034
+    second: TILEMAP_CORRIDOR_FLOORS_48
+  - first:
+      213: 8403365978214287673
+    second: TILEMAP_CORRIDOR_FLOORS_49
+  - first:
+      213: -8968663723756611571
+    second: TILEMAP_CORRIDOR_FLOORS_50
+  - first:
+      213: -6971238668675808877
+    second: TILEMAP_CORRIDOR_FLOORS_51
+  - first:
+      213: -6524744883408603801
+    second: TILEMAP_CORRIDOR_FLOORS_52
+  - first:
+      213: -5428225604823806493
+    second: TILEMAP_CORRIDOR_FLOORS_53
+  - first:
+      213: 7940142499905993355
+    second: TILEMAP_CORRIDOR_FLOORS_54
+  - first:
+      213: -5950880718561736686
+    second: TILEMAP_CORRIDOR_FLOORS_55
+  - first:
+      213: -5059615627986069998
+    second: TILEMAP_CORRIDOR_FLOORS_56
+  - first:
+      213: 8827224911212307500
+    second: TILEMAP_CORRIDOR_FLOORS_57
+  - first:
+      213: -7993785018442741999
+    second: TILEMAP_CORRIDOR_FLOORS_58
+  - first:
+      213: 7724129411515969073
+    second: TILEMAP_CORRIDOR_FLOORS_59
+  - first:
+      213: 5374051477362580582
+    second: TILEMAP_CORRIDOR_FLOORS_60
+  - first:
+      213: 7426107819269170920
+    second: TILEMAP_CORRIDOR_FLOORS_61
+  - first:
+      213: -2301228274259907594
+    second: TILEMAP_CORRIDOR_FLOORS_62
+  - first:
+      213: -2261980231309790056
+    second: TILEMAP_CORRIDOR_FLOORS_63
+  - first:
+      213: 2401067658815102458
+    second: TILEMAP_CORRIDOR_FLOORS_64
+  - first:
+      213: 4093193858100683431
+    second: TILEMAP_CORRIDOR_FLOORS_65
+  - first:
+      213: 5585769010955757555
+    second: TILEMAP_CORRIDOR_FLOORS_66
+  - first:
+      213: -6756693182061003557
+    second: TILEMAP_CORRIDOR_FLOORS_67
+  - first:
+      213: -4191172158681615906
+    second: TILEMAP_CORRIDOR_FLOORS_68
+  - first:
+      213: -3074930232216238362
+    second: TILEMAP_CORRIDOR_FLOORS_69
+  - first:
+      213: -8928153768545004523
+    second: TILEMAP_CORRIDOR_FLOORS_70
+  - first:
+      213: 9090759379675431301
+    second: TILEMAP_CORRIDOR_FLOORS_71
+  - first:
+      213: 524910088871126196
+    second: TILEMAP_CORRIDOR_FLOORS_72
+  - first:
+      213: -4650202540364196761
+    second: TILEMAP_CORRIDOR_FLOORS_73
+  - first:
+      213: -6119017190026006925
+    second: TILEMAP_CORRIDOR_FLOORS_74
+  - first:
+      213: -6383541208692098401
+    second: TILEMAP_CORRIDOR_FLOORS_75
+  - first:
+      213: -3163548721615876967
+    second: TILEMAP_CORRIDOR_FLOORS_76
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 2
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 900
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_0
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd81c8faa3a76800800000000000000
+      internalID: 605632629617823223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_1
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb1ee5621295dd30800000000000000
+      internalID: 4455628014070143946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_2
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b3192731b3ba6e0800000000000000
+      internalID: -1825300269256066177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_3
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8aca267577db5b0800000000000000
+      internalID: -5350989565044938570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_4
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ed15d0ec5011390800000000000000
+      internalID: -7849486292985192921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_5
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca142d381460fc5e0800000000000000
+      internalID: -1887282840390712916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_6
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 8100
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cc964f77c366f5e0800000000000000
+      internalID: -1876202486268257086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_7
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2181d0f3f702ec0800000000000000
+      internalID: -3593732593862307109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_8
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 065ea6130fb690e30800000000000000
+      internalID: 4470222784507340128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_9
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71316e43f204149a0800000000000000
+      internalID: -6250644236318403817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_10
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a223acd8b56687b0800000000000000
+      internalID: -5222374873239444831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_11
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a1b8b3938bbc460800000000000000
+      internalID: 7263101380016675377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_12
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71128809cd2e92c60800000000000000
+      internalID: 7794010067086876951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_13
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b532a0c062179c9f0800000000000000
+      internalID: -447702279721966757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_14
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e1250edde41a980800000000000000
+      internalID: -8529449504404791725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_15
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 7200
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e013f4b82e10550800000000000000
+      internalID: 6125426056157531654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f80972d607b3cb00800000000000000
+      internalID: 847722394804619504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_17
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf97eb776c93d3e0800000000000000
+      internalID: -2030107038739619916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_18
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3bb6c486934bc40800000000000000
+      internalID: 5527105762811950033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_19
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bd841c63323b8a0800000000000000
+      internalID: -6290645536428467437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_20
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ea41995277aef60800000000000000
+      internalID: 8064389086126059008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_21
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b32c870523294750800000000000000
+      internalID: 6289596996546995127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_22
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d0cd03aa24ed7c0800000000000000
+      internalID: -4044722116600525483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_23
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b22a6cd433f7330800000000000000
+      internalID: 3710741027114593136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_24
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46fa1f3ba0a618c20800000000000000
+      internalID: 3206961003865681764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_25
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 6300
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51f725ad86edb470800000000000000
+      internalID: 8412133175033590108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84534469b3932d9b0800000000000000
+      internalID: -5056916503496739512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb345741da8c53010800000000000000
+      internalID: 1168060324070638524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_28
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4bdc427f62b99c0800000000000000
+      internalID: -3919496207779646295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_29
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc488bb29e128100800000000000000
+      internalID: 108682956570643642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_30
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7407a6b1540f28320800000000000000
+      internalID: 2558871717903233095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_31
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e0eea0702316260800000000000000
+      internalID: 7089002294287404567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_32
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9c47746edbcc0d0800000000000000
+      internalID: -3401134821832603178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_33
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211ec1f557c0f8770800000000000000
+      internalID: 8615118310429483282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_34
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b11085dbebffccbd0800000000000000
+      internalID: -2608428889468829413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_35
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 5400
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b95e2fbd88018640800000000000000
+      internalID: 5080351259541526963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_36
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66d7d30b31d6f790800000000000000
+      internalID: -7496574478313859478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_37
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2e7b6eafe0c5f70800000000000000
+      internalID: 9177226611449651916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_38
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dd1736cbb8e10ae0800000000000000
+      internalID: -1584729700675674667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_39
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7fbfc81858f8530800000000000000
+      internalID: 3859450197142403070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_40
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af491f5480ff39120800000000000000
+      internalID: 2419557835826369786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_41
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0bb47ebf4e5dcd0800000000000000
+      internalID: -2533867444757614393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_42
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17aa40e09b7b88f50800000000000000
+      internalID: 6883954035867822705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_43
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 4500
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede64edd1a42b68f0800000000000000
+      internalID: -546302652164313378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_44
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bd80039b814a6d0800000000000000
+      internalID: -2980229869758522589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_45
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2717a2aac6c94dab0800000000000000
+      internalID: -4984186897066987150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_46
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc488fdea903bfc90800000000000000
+      internalID: -7135055742662834995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_47
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78971178df29c140800000000000000
+      internalID: 4740372689440970878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_48
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a13ca8764f0bece70800000000000000
+      internalID: 9137435257736971034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_49
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 939c01195d0ce9470800000000000000
+      internalID: 8403365978214287673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_50
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d081e8b7cd7e88380800000000000000
+      internalID: -8968663723756611571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_51
+      rect:
+        serializedVersion: 2
+        x: 8100
+        y: 3600
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3918c15bd5f214f90800000000000000
+      internalID: -6971238668675808877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765f16e19137375a0800000000000000
+      internalID: -6524744883408603801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_53
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed0cc782911ba4b0800000000000000
+      internalID: -5428225604823806493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_54
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8af0e4f88d013e60800000000000000
+      internalID: 7940142499905993355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_55
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 218086df3893a6da0800000000000000
+      internalID: -5950880718561736686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_56
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21610e1b462a8c9b0800000000000000
+      internalID: -5059615627986069998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_57
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c24e941c94a908a70800000000000000
+      internalID: 8827224911212307500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_58
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11781ece0ee501190800000000000000
+      internalID: -7993785018442741999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_59
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e6e8c86ce913b60800000000000000
+      internalID: 7724129411515969073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_60
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 2700
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c1cd08857749a40800000000000000
+      internalID: 5374051477362580582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e62a4767b5de0760800000000000000
+      internalID: 7426107819269170920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_62
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb27a5b3156010e0800000000000000
+      internalID: -2301228274259907594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_63
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894f2dfc6f4db90e0800000000000000
+      internalID: -2261980231309790056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_64
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd5a55705e425120800000000000000
+      internalID: 2401067658815102458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_65
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a2e6e49022fdc830800000000000000
+      internalID: 4093193858100683431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_66
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7276f1253a48d40800000000000000
+      internalID: 5585769010955757555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_67
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 1800
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc33f279576b32a0800000000000000
+      internalID: -6756693182061003557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_68
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 900
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed17641a027f5d5c0800000000000000
+      internalID: -4191172158681615906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_69
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 900
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e644a7de37a355d0800000000000000
+      internalID: -3074930232216238362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_70
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 900
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5145fcd6373d81480800000000000000
+      internalID: -8928153768545004523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_71
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 900
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581ca1cad7dd82e70800000000000000
+      internalID: 9090759379675431301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_72
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4ae2ad1fad84700800000000000000
+      internalID: 524910088871126196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_73
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76419f76d69277fb0800000000000000
+      internalID: -4650202540364196761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_74
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37eadfd1942e41ba0800000000000000
+      internalID: -6119017190026006925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_75
+      rect:
+        serializedVersion: 2
+        x: 5400
+        y: 0
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9af6d6971b1967a0800000000000000
+      internalID: -6383541208692098401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILEMAP_CORRIDOR_FLOORS_76
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 900
+        height: 900
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99cc17ae231d814d0800000000000000
+      internalID: -3163548721615876967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
