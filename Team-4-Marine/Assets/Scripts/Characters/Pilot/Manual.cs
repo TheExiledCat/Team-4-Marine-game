@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,7 +10,11 @@ public class Manual : MonoBehaviour
     [SerializeField]
     Image m_PageImage;
     [SerializeField]
-    List<Sprite> m_Pages;
+    TMP_Text m_TextFieldImage, m_BigTextField;
+    [SerializeField]
+    CanvasGroup m_ImageGroup, m_TextGroup;
+    [SerializeField]
+    List<Page> m_Pages;
     [SerializeField]
     CanvasGroup m_BookmarkTriangle, m_BookmarkCircle, m_BookmarkCross, m_BookmarkSquare;
 
@@ -63,7 +68,24 @@ public class Manual : MonoBehaviour
                 break;
         }
         m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count - 1);
-        m_PageImage.sprite = m_Pages[m_PageIndex];
+        FormatPage(m_PageIndex);
+    }
+
+    private void FormatPage(int _pageIndex)
+    {
+        if(m_Pages[_pageIndex].m_Sprite == null)
+        {
+            m_TextGroup.alpha = 1;
+            m_ImageGroup.alpha = 0;
+            m_BigTextField.text = m_Pages[_pageIndex].m_Text;
+        }
+        else
+        {
+            m_TextGroup.alpha = 0;
+            m_ImageGroup.alpha = 1;
+            m_PageImage.sprite = m_Pages[_pageIndex].m_Sprite;
+            m_TextFieldImage.text = m_Pages[_pageIndex].m_Text;
+        }
     }
 
     private void CheckBookmarkInput()
@@ -112,22 +134,19 @@ public class Manual : MonoBehaviour
     {
         if (m_PageBookmarks[_bookmark] == -1)
         {
-            Debug.Log("bookmark placed");
             _bookmarkCanvasGroup.alpha = 1;
             m_PageBookmarks[_bookmark] = _currentPage;
         }
         else if (m_PageBookmarks[_bookmark] == _currentPage)
         {
-            Debug.Log("bookmark removed");
             _bookmarkCanvasGroup.alpha = 0;
             m_PageBookmarks[_bookmark] = -1;
         }
         else
         {
-            Debug.Log("move to bookmark");
             m_PageIndex = m_PageBookmarks[_bookmark];
             m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count - 1);
-            m_PageImage.sprite = m_Pages[m_PageIndex];
+            FormatPage(m_PageIndex);
         }
     }
 }
