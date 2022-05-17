@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2846213, g: 0.3712097, b: 0.4988053, a: 1}
+  m_IndirectSpecularColor: {r: 0.28461993, g: 0.37120807, b: 0.49880373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8f254d893f05746a9ad3a16eb8592b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ChaosGradient: 0.5
 --- !u!114 &918589355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5068361651928874792, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
@@ -669,6 +670,506 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390bc9a3285ffde4a9c91f8c7d40f615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1397355752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397355755}
+  - component: {fileID: 1397355754}
+  - component: {fileID: 1397355753}
+  m_Layer: 0
+  m_Name: NavigationStation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1397355753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397355752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b344e96073f2e44d8678a9e7119f841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PhysicalModel: {fileID: 1416414041}
+  m_StationName: Navigation
+  m_Fixed: 0
+  m_Hitbox:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  m_PlayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_Switches: []
+  m_Handles: []
+  m_Rotaries: []
+  m_Indicators: []
+  m_Displays: []
+  m_Buttons: []
+  m_ConfirmationButton: {fileID: 0}
+  m_ErrorLights: []
+  m_MazeA:
+    m_Width: 8
+    m_Height: 10
+    m_Cells:
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 1
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 1
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 1
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 1
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    - m_Position: {x: 0, y: 0}
+      m_WallLeft: 0
+      m_WallRight: 0
+      m_WallUp: 0
+      m_WallDown: 0
+    m_StartPosition: {x: 0, y: 0}
+  m_MazeB:
+    m_Width: 8
+    m_Height: 10
+    m_Cells: []
+    m_StartPosition: {x: 0, y: 0}
+--- !u!61 &1397355754
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397355752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1397355755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397355752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.1, y: -4.12, z: -7.0200005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1416414039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -801,6 +1302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf4a31189f95f14ea494d21fa3ffcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1416414041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8175429011539659771, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+  m_PrefabInstance: {fileID: 1416414039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1416414048 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5274639158744362442, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
@@ -1610,7 +2116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &8078788323337807523
 MonoBehaviour:
   m_ObjectHideFlags: 0
