@@ -9,7 +9,7 @@ public class Movement2D : MonoBehaviour
     private Engineer.Movement2DActions m_2DControls;
     private InputAction m_Move;
     private Rigidbody2D m_Rb;
-
+    private Animator m_Anim;
     [SerializeField]
     private Vector2 m_Delta,
     m_LastPosition;
@@ -35,6 +35,7 @@ public class Movement2D : MonoBehaviour
         m_Rb = GetComponent<Rigidbody2D>();
         m_Rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         m_Rb.gravityScale = 0;
+        m_Anim = m_Renderer.GetComponent<Animator>();
     }
 
     private void Move(float _topSpeed, float _decaySpeed)
@@ -72,6 +73,8 @@ public class Movement2D : MonoBehaviour
     private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
+        m_Anim.SetBool("Moving", m_MoveDirection == Vector2.zero ? false : true);
+        m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
         m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
         Bounds bounds = m_Renderer.bounds;
         m_Shadow.transform.localScale = new Vector2(bounds.size.x * 2, 1);

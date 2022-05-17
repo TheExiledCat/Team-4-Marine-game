@@ -280,14 +280,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 710068690, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2055713705, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241202, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Name
       value: Engineer
