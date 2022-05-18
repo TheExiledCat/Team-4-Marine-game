@@ -4,9 +4,10 @@ using UnityEngine;
 using System.Linq;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class RepairStation : MonoBehaviour
 {
-    [SerializeField] private GameObject m_PhysicalModel;
+    [SerializeField] protected GameObject m_PhysicalModel;
 
     [SerializeField]
     private string m_StationName;
