@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,14 +10,22 @@ public class Manual : MonoBehaviour
     [SerializeField]
     Image m_PageImage;
     [SerializeField]
-    List<Sprite> m_Pages;
+    TMP_Text m_TextFieldImage, m_BigTextField;
+    [SerializeField]
+    CanvasGroup m_ImageGroup, m_TextGroup;
+    [SerializeField]
+    List<Page> m_Pages;
+    [SerializeField]
+    List<Sprite> m_Chapters;
+    [SerializeField]
+    List<Image> m_Images;
     [SerializeField]
     CanvasGroup m_BookmarkTriangle, m_BookmarkCircle, m_BookmarkCross, m_BookmarkSquare;
 
     Pilot.ManualActions m_ManualControls;
     InputAction m_Bookmark;
     InputAction m_SwapPage;
-    int m_PageIndex;
+    int m_PageIndex, m_CurrentChapter;
     int[] m_PageBookmarks = {-1, -1, -1, -1 }; //index 0 = Triangle, 1 = Circle, 2 = Cross, 3 = Square
 
     enum BookmarkButton { Triangle, Circle, Cross, Square };
@@ -44,6 +53,33 @@ public class Manual : MonoBehaviour
             CheckBookmarkInput();
             Bookmark(m_PageIndex);
         }
+
+        SwapChapter(m_PageIndex);
+    }
+
+    private void SwapChapter(int _pageIndex)
+    {
+        switch (_pageIndex)
+        {
+            case int i when (i <= 2):
+                m_CurrentChapter = 0;
+                break;
+            case int i when (i > 2 && i <= 4):
+                m_CurrentChapter = 1;
+                break;
+            case int i when (i > 4 && i <= 8):
+                m_CurrentChapter = 2;
+                break;
+            case int i when (i > 8):
+                m_CurrentChapter = 3;
+                break;
+        }
+
+        for (int i = 0; i < m_Images.Count; i++)
+        {
+            int targetIndex = i % 4 + m_CurrentChapter;
+            m_Images[i].sprite = m_Chapters[targetIndex % 4];
+        }
     }
 
     private int CheckSwapPageInput(float _value)
@@ -63,7 +99,24 @@ public class Manual : MonoBehaviour
                 break;
         }
         m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count - 1);
-        m_PageImage.sprite = m_Pages[m_PageIndex];
+        FormatPage(m_PageIndex);
+    }
+
+    private void FormatPage(int _pageIndex)
+    {
+        if(m_Pages[_pageIndex].m_Sprite == null)
+        {
+            m_TextGroup.alpha = 1;
+            m_ImageGroup.alpha = 0;
+            m_BigTextField.text = m_Pages[_pageIndex].m_Text;
+        }
+        else
+        {
+            m_TextGroup.alpha = 0;
+            m_ImageGroup.alpha = 1;
+            m_PageImage.sprite = m_Pages[_pageIndex].m_Sprite;
+            m_TextFieldImage.text = m_Pages[_pageIndex].m_Text;
+        }
     }
 
     private void CheckBookmarkInput()
@@ -112,22 +165,19 @@ public class Manual : MonoBehaviour
     {
         if (m_PageBookmarks[_bookmark] == -1)
         {
-            Debug.Log("bookmark placed");
             _bookmarkCanvasGroup.alpha = 1;
             m_PageBookmarks[_bookmark] = _currentPage;
         }
         else if (m_PageBookmarks[_bookmark] == _currentPage)
         {
-            Debug.Log("bookmark removed");
             _bookmarkCanvasGroup.alpha = 0;
             m_PageBookmarks[_bookmark] = -1;
         }
         else
         {
-            Debug.Log("move to bookmark");
             m_PageIndex = m_PageBookmarks[_bookmark];
             m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count - 1);
-            m_PageImage.sprite = m_Pages[m_PageIndex];
+            FormatPage(m_PageIndex);
         }
     }
 }
