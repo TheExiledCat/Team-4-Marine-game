@@ -13,7 +13,6 @@ public class Indicator : MonoBehaviour
     {
         m_OriginalColor = GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
         m_TargetColor = m_OriginalColor;
-        print(m_OriginalColor);
         SetIndicator(m_LitUp);
     }
 
