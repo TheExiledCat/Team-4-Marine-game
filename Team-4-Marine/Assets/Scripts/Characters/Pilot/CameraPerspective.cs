@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 [System.Serializable]
 public class CameraPerspective
 {
-    [SerializeField]
     public Vector3 m_CameraRotations;
-    [SerializeField]
     public Bounds m_PerspectiveBounds;
 }

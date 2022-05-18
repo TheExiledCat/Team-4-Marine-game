@@ -9,10 +9,10 @@ public class Movement2D : MonoBehaviour
     private Engineer.Movement2DActions m_2DControls;
     private InputAction m_Move;
     private Rigidbody2D m_Rb;
-
+    private Animator m_Anim;
     [SerializeField]
-    Vector2 m_Delta,
-    m_LastPosition  ;
+    private Vector2 m_Delta,
+    m_LastPosition;
 
     [SerializeField]
     private float
@@ -23,14 +23,19 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField]
     private Vector2 m_MoveDirection = Vector2.zero;
-
+    private SpriteRenderer m_Renderer;
+    private bool m_IsFacingRight = true;
+    private GameObject m_Shadow;
     private void Start()
     {
+        m_Renderer = GetComponentInChildren<SpriteRenderer>();
+        m_Shadow = m_Renderer.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().gameObject;
         m_2DControls = GameManager.GM.m_EngineerControls.Movement2D;
         m_Move = m_2DControls.Move;
         m_Rb = GetComponent<Rigidbody2D>();
         m_Rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         m_Rb.gravityScale = 0;
+        m_Anim = m_Renderer.GetComponent<Animator>();
     }
 
     private void Move(float _topSpeed, float _decaySpeed)
@@ -60,7 +65,6 @@ public class Movement2D : MonoBehaviour
             m_Delta.x = 0;
         }
 
-
         if (Mathf.Abs(change.y) == 0f)
         {
             m_Delta.y = 0;
@@ -69,6 +73,12 @@ public class Movement2D : MonoBehaviour
     private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
+        m_Anim.SetBool("Moving", m_MoveDirection == Vector2.zero ? false : true);
+        m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
+        m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
+        Bounds bounds = m_Renderer.bounds;
+        m_Shadow.transform.localScale = new Vector2(bounds.size.x * 2, 1);
+        m_Renderer.flipX = m_IsFacingRight;
         if (!m_2DControls.Sprint.IsPressed())
         {
             Move(m_MaxSpeed, m_Speed);
@@ -78,9 +88,6 @@ public class Movement2D : MonoBehaviour
         {
             Move(m_MaxSpeed, m_MaxSpeed);
         }
-       
-
-
 
         m_Rb.velocity = m_Delta * Time.deltaTime;
     }
