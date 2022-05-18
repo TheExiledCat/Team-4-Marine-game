@@ -35,6 +35,7 @@ public class NavigationStation : RepairStation
         }
         Indicate();
         //StartCoroutine(Test());
+        m_CurrentPosition = Vector2Int.zero;
     }
 
     protected override void Update()
@@ -81,7 +82,7 @@ public class NavigationStation : RepairStation
 
     private int PositionToIndicator(Vector2Int _position)
     {
-        int target = _position.x + _position.y * m_ChosenMaze.m_Width;
+        int target = _position.x + _position.y * (m_ChosenMaze.m_Width + 2);
         return target;
     }
 
@@ -94,8 +95,9 @@ public class NavigationStation : RepairStation
 
     private void Indicate()
     {
-        m_Lights[PositionToIndicator(m_CurrentPosition)].SetIndicator(true, Color.green);
+        print(PositionToIndicator(m_CurrentPosition));
         m_Lights[PositionToIndicator(m_PreviousPosition)].SetIndicator(false);
+        m_Lights[PositionToIndicator(m_CurrentPosition)].SetIndicator(true, Color.green);
     }
 
     private IEnumerator Test()
