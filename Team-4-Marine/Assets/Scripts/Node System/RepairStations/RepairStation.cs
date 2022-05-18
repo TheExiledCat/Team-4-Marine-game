@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class RepairStation : MonoBehaviour
 {
     [SerializeField] private GameObject m_PhysicalModel;
@@ -101,7 +100,7 @@ public class RepairStation : MonoBehaviour
         {
             print("win");
             m_Fixed = true;
-            GetComponent<SpriteRenderer>().color = Color.green;
+            GetComponent<SpriteRenderer>().color = Color.white;
             OnComplete?.Invoke();
         }
         else
