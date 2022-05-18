@@ -730,17 +730,6 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "8ad49f26-fbcd-455a-bc96-7a917aaabf2c",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryInteract",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bffaf2de-e449-4964-a6b1-76a44a55708a",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -754,17 +743,6 @@
                     "name": "",
                     "id": "3cc9f44b-61f4-4417-8ef8-78ede8a996e5",
                     "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ReturnInteract",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7183a5e1-dba5-4034-b9a8-6e86125c5279",
-                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

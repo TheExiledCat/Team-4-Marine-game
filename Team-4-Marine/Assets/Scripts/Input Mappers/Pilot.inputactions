@@ -2,46 +2,15 @@
     "name": "Pilot",
     "maps": [
         {
-            "name": "Cockpit",
+            "name": "Center",
             "id": "522bbbee-0a19-456e-8380-93d05d5a3480",
-            "actions": [
-                {
-                    "name": "ToManualScreen",
-                    "type": "Button",
-                    "id": "aaaf155f-5589-473e-b779-f1a7204f4904",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "22c77d43-25ad-4022-96e0-ad8ddf38fe40",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToManualScreen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         },
         {
             "name": "Manual",
             "id": "ceef3b21-ae67-4999-853f-dbfc8369997b",
             "actions": [
-                {
-                    "name": "ToCockpitScreen",
-                    "type": "Button",
-                    "id": "7b3c07ca-0784-4998-94a6-be1d14acbdfa",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
                 {
                     "name": "SwapPage",
                     "type": "Value",
@@ -59,20 +28,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MonitorScroll",
+                    "type": "Value",
+                    "id": "d2de391e-d4ff-42e2-beb7-0b017add309d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "ee92fa10-9acc-48be-b9f7-f90110a457a3",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToCockpitScreen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "Direction",
                     "id": "f487f00b-2313-430a-ab9d-c7fed3a17e72",
@@ -160,6 +127,85 @@
                     "action": "SwapPage",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "de5339ec-a929-4d2d-b610-f53ec1f53947",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MonitorScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cockpit",
+            "id": "ad7c2db4-f878-45c6-a2d0-6a0b24d17699",
+            "actions": [
+                {
+                    "name": "MoveCamera",
+                    "type": "Value",
+                    "id": "b9faac5f-fb54-4d92-bb7a-23593badfda5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ToManualScreen",
+                    "type": "Button",
+                    "id": "0b26c865-150c-48fd-8d7a-5ae12e979854",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToCockpitScreen",
+                    "type": "Button",
+                    "id": "98cf18c8-b71c-46d0-8638-4eedb8cb0d6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5d31f5c9-6eee-4551-9e35-18998626eb98",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e53c4d37-b710-4133-8090-fc147a1a97f5",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToCockpitScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "442ee1b9-902e-440f-a504-70eb64c60a42",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToManualScreen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D))]
 
 public class VacuumDoor : UtilityNode
 {
+
     [SerializeField]
     private bool m_IsLocked = false;
 
