@@ -284,6 +284,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 380535800, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2aedf14fb692f46429e864569089d5ac, type: 3}
+--- !u!1 &449754375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5812981963809600035, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+  m_PrefabInstance: {fileID: 1416414039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &474197577 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3195177703178897935, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
@@ -772,6 +777,7 @@ MonoBehaviour:
   - {fileID: 851229743}
   - {fileID: 876328896}
   m_CurrentPosition: {x: 0, y: 0}
+  m_LightParent: {fileID: 449754375}
 --- !u!61 &1397355754
 BoxCollider2D:
   m_ObjectHideFlags: 0
