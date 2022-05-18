@@ -16,12 +16,16 @@ public class Manual : MonoBehaviour
     [SerializeField]
     List<Page> m_Pages;
     [SerializeField]
+    List<Sprite> m_Chapters;
+    [SerializeField]
+    List<Image> m_Images;
+    [SerializeField]
     CanvasGroup m_BookmarkTriangle, m_BookmarkCircle, m_BookmarkCross, m_BookmarkSquare;
 
     Pilot.ManualActions m_ManualControls;
     InputAction m_Bookmark;
     InputAction m_SwapPage;
-    int m_PageIndex;
+    int m_PageIndex, m_CurrentChapter;
     int[] m_PageBookmarks = {-1, -1, -1, -1 }; //index 0 = Triangle, 1 = Circle, 2 = Cross, 3 = Square
 
     enum BookmarkButton { Triangle, Circle, Cross, Square };
@@ -48,6 +52,33 @@ public class Manual : MonoBehaviour
         {
             CheckBookmarkInput();
             Bookmark(m_PageIndex);
+        }
+
+        SwapChapter(m_PageIndex);
+    }
+
+    private void SwapChapter(int _pageIndex)
+    {
+        switch (_pageIndex)
+        {
+            case int i when (i <= 2):
+                m_CurrentChapter = 0;
+                break;
+            case int i when (i > 2 && i <= 4):
+                m_CurrentChapter = 1;
+                break;
+            case int i when (i > 4 && i <= 8):
+                m_CurrentChapter = 2;
+                break;
+            case int i when (i > 8):
+                m_CurrentChapter = 3;
+                break;
+        }
+
+        for (int i = 0; i < m_Images.Count; i++)
+        {
+            int targetIndex = i % 4 + m_CurrentChapter;
+            m_Images[i].sprite = m_Chapters[targetIndex % 4];
         }
     }
 
