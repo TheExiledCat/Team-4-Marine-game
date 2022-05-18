@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class RepairStation : MonoBehaviour
 {
@@ -95,7 +94,7 @@ public class RepairStation : MonoBehaviour
 
     public virtual void Close()
     {
-        if (m_Opened == false)
+        if (m_Opened == true)
         {
             print("Closing");
             m_Opened = false;

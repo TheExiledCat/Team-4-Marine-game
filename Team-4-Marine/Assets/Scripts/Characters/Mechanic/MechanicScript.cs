@@ -91,8 +91,8 @@ public class MechanicScript : MonoBehaviour
 
     public void Roam()
     {
-        if (m_CurrentStation.m_Opened)
-            m_CurrentStation.Close();
+        //if (m_CurrentStation.m_Opened)
+        m_CurrentStation.Close();
         m_Repairing = false;
         GameManager.GM.SetMovement2DControls(true);
     }
