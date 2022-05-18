@@ -8,13 +8,16 @@ public class Indicator : MonoBehaviour
 
     private Color m_OriginalColor;
     private Color m_TargetColor;
+    private bool m_Initiated = false;
 
     public void Initiate()
     {
-        m_OriginalColor = GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+        print("Initiating");
+        if (!m_Initiated)
+            m_OriginalColor = GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
         m_TargetColor = m_OriginalColor;
-        print(m_OriginalColor);
         SetIndicator(m_LitUp);
+        m_Initiated = true;
     }
 
     public void SetIndicator(bool _status)

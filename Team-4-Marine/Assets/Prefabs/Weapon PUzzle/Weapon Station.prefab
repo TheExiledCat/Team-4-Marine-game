@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3745081964867330053
+--- !u!1 &2747255434611486008
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3850513183162276376}
-  - component: {fileID: 380535801}
-  - component: {fileID: 380535794}
-  - component: {fileID: 1034330367}
+  - component: {fileID: 2357290402219579173}
+  - component: {fileID: 1574292256532876996}
+  - component: {fileID: 1574292256532877007}
+  - component: {fileID: 2747255434611486009}
   m_Layer: 0
-  m_Name: Generator Station
+  m_Name: Weapon Station
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3850513183162276376
+  m_IsActive: 1
+--- !u!4 &2357290402219579173
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745081964867330053}
+  m_GameObject: {fileID: 2747255434611486008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6905916, y: -24.87261, z: 34.356335}
+  m_LocalPosition: {x: -13.31, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &380535801
+--- !u!61 &1574292256532876996
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745081964867330053}
+  m_GameObject: {fileID: 2747255434611486008}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -59,13 +59,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!212 &380535794
+--- !u!212 &1574292256532877007
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745081964867330053}
+  m_GameObject: {fileID: 2747255434611486008}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -110,47 +110,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1034330367
+--- !u!114 &2747255434611486009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3745081964867330053}
+  m_GameObject: {fileID: 2747255434611486008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac4c4e6cb47159242b517c3a45e2261d, type: 3}
+  m_Script: {fileID: 11500000, guid: 671dec5c3598eba4bbb6d2f53f5d18ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_PhysicalModel: {fileID: 0}
-  m_StationName: Generator
+  m_StationName: Weapons
   m_Fixed: 0
   m_Hitbox:
     serializedVersion: 2
     x: 0
-    y: -1.17
-    width: 2.3
-    height: 4.44
+    y: -1
+    width: 2
+    height: 2
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 64
-  m_Switches:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Switches: []
   m_Handles:
   - {fileID: 0}
-  m_Rotaries:
   - {fileID: 0}
-  m_Indicators:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Rotaries: []
+  m_Indicators: []
   m_Displays:
   - {fileID: 0}
-  m_Buttons: []
+  m_Buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_ConfirmationButton: {fileID: 0}
   m_ErrorLights:
   - {fileID: 0}
   - {fileID: 0}
-  m_RedIsOn: 0
-  m_YellowIsOn: 0
