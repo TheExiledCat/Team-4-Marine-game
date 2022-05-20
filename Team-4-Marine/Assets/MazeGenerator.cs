@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class MazeGenerator : MonoBehaviour
 {
+    [SerializeField]
+    private Vector2Int m_StartPosition, m_Target;
+
     public Tilemap m_TileMapToGenerate;
     private List<Cell> m_Cells;
 
@@ -55,7 +58,7 @@ public class MazeGenerator : MonoBehaviour
     private void CreateMap()
     {
         print(m_Cells.Count);
-        string json = JsonUtility.ToJson(new Maze(m_Cells, (Vector2Int)m_TileMapToGenerate.cellBounds.size));
+        string json = JsonUtility.ToJson(new Maze(m_Cells, (Vector2Int)m_TileMapToGenerate.cellBounds.size, m_StartPosition, m_Target));
         System.IO.File.WriteAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "Maze.txt"), json);
     }
 }

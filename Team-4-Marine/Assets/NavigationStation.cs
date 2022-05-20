@@ -5,7 +5,7 @@ using UnityEngine;
 public class NavigationStation : RepairStation
 {
     // Start is called before the first frame update
-
+    [SerializeField]
     private Maze m_MazeA, m_MazeB;
 
     [SerializeField]
@@ -25,7 +25,8 @@ public class NavigationStation : RepairStation
         m_Buttons[1].m_Actions.AddListener(MoveRight);
         m_Buttons[2].m_Actions.AddListener(MoveDown);
         m_Buttons[3].m_Actions.AddListener(MoveUp);
-        m_ChosenMaze = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "Maze.txt")));
+        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
+        m_ChosenMaze = m_MazeA;
         print(m_ChosenMaze.m_Width);
         base.Start();
         m_Lights = m_LightParent.GetComponentsInChildren<Indicator>();
@@ -76,19 +77,29 @@ public class NavigationStation : RepairStation
         m_PreviousPosition = m_CurrentPosition;
         Vector2Int start = m_CurrentPosition;
         Vector2Int target = start + _dir;
+        Cell currentCell = m_ChosenMaze.m_Cells[PositionToIndicator(start)];
+        print(currentCell.m_Position);
+        Cell targetCell = m_ChosenMaze.m_Cells[PositionToIndicator(target)];
+        print(targetCell.m_Position);
 
         return false;
     }
 
     private int PositionToIndicator(Vector2Int _position)
     {
-        int target = _position.x + _position.y * (m_ChosenMaze.m_Width + 2);
+        int target = _position.x + _position.y * (m_ChosenMaze.m_Width);
+        return target;
+    }
+
+    private int PositionToCell(Vector2Int _position)
+    {
+        int target = _position.x + (m_ChosenMaze.m_Height - _position.y) * (m_ChosenMaze.m_Width);
         return target;
     }
 
     private void ClampPosition()
     {
-        m_CurrentPosition = new Vector2Int(Mathf.Clamp(m_CurrentPosition.x, 0, m_ChosenMaze.m_Width), Mathf.Clamp(m_CurrentPosition.y, 0, m_ChosenMaze.m_Height));
+        m_CurrentPosition = new Vector2Int(Mathf.Clamp(m_CurrentPosition.x, 0, m_ChosenMaze.m_Width - 1), Mathf.Clamp(m_CurrentPosition.y, 0, m_ChosenMaze.m_Height - 1));
 
         Indicate();
     }

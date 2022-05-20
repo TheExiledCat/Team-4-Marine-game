@@ -666,6 +666,7 @@ MonoBehaviour:
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_Opened: 0
   m_Switches:
   - {fileID: 1992635361}
   - {fileID: 1690044199}
@@ -762,6 +763,7 @@ MonoBehaviour:
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_Opened: 0
   m_Switches: []
   m_Handles: []
   m_Rotaries: []
@@ -943,6 +945,14 @@ PrefabInstance:
     - target: {fileID: 4297585204002241207, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297585204282227028, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175429011539659771, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
@@ -1818,6 +1828,7 @@ MonoBehaviour:
   m_PlayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_Opened: 0
   m_Switches: []
   m_Handles:
   - {fileID: 51110293}
