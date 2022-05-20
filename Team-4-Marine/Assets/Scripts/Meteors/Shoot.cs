@@ -1,70 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shoot : MonoBehaviour
 {
+    [SerializeField]
+    private Camera m_PilotCam;
 
-    public GameObject m_ShootPosition;
+    public Transform m_ShootPosition;
+
+
+    [SerializeField]
+    Vector2 move;
+
+    Pilot.CockpitActions m_CockpitControls;
     // Start is called before the first frame update
     void Start()
     {
+        m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
+    }
+    private void Awake()
+    {
 
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (Input.GetKeyDown("l"))
+        move = m_CockpitControls.ShootingMovement.ReadValue<Vector2>();
+
+        if (m_CockpitControls.Shooting.WasPressedThisFrame())
         {
-            Debug.Log("L");
             Fire();
         }
-        if (m_ShootPosition.transform.position.x >= -4)
-        {
-            if (Input.GetKey("a"))
-            {
-                m_ShootPosition.transform.position -= new Vector3(1, 0, 0) * 2 * Time.deltaTime;
-                Debug.Log(m_ShootPosition.transform.position);
-            }
-        }
-        if (m_ShootPosition.transform.position.y <= 4)
-        {
-            if (Input.GetKey("d"))
-            {
-                m_ShootPosition.transform.position += new Vector3(1, 0, 0) * 2 * Time.deltaTime;
-                Debug.Log(m_ShootPosition.transform.position);
-            }
-        }
-        if (m_ShootPosition.transform.position.y >= -2)
-        {
-            if (Input.GetKey("s"))
-            {
-                m_ShootPosition.transform.position -= new Vector3(0, 1, 0) * 2 * Time.deltaTime;
-                Debug.Log(m_ShootPosition.transform.position);
-            }
-        }
-        if(m_ShootPosition.transform.position.y <= 4)
-        {
-            if (Input.GetKey("w"))
-            {
-                m_ShootPosition.transform.position += new Vector3(0, 1, 0) * 2 * Time.deltaTime;
-                Debug.Log(m_ShootPosition.transform.position);
-            }
-        }
+
+        m_ShootPosition.position += (Vector3)move;
 
 
-        Vector3 forward = m_ShootPosition.transform.TransformDirection(Vector3.forward) * 100;
-        Debug.DrawRay(m_ShootPosition.transform.position, forward, Color.green);
+
+        //Vector3 forward = m_ShootPosition.transform.TransformDirection(Vector3.forward) * 500;
+        Debug.DrawRay(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, Color.green);
     }
 
     private void Fire()
     {
+        Debug.Log("iAmShooting");
         RaycastHit hit;
-        if(Physics.Raycast(m_ShootPosition.transform.position, m_ShootPosition.transform.forward, out hit))
+        if(Physics.Raycast(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, out hit))
         {
             Debug.Log(hit.transform.name);
+            Destroy(hit.transform.gameObject);
         }
     }
 

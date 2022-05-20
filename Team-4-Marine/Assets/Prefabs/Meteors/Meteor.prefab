@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6463289327638033136}
   - component: {fileID: 3931320844613860619}
   - component: {fileID: 2883094876023312646}
-  - component: {fileID: 6172561594792497814}
+  - component: {fileID: 6259884342918309177}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Meteor
@@ -96,29 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7808082867555f4fadd657e5f5c4f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &6172561594792497814
-BoxCollider2D:
+--- !u!65 &6259884342918309177
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5275746147216217373}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
-  m_EdgeRadius: 0
+  m_Size: {x: 5.12, y: 5.12, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
