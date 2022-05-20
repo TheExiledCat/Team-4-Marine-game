@@ -9,7 +9,9 @@ public class Shoot : MonoBehaviour
     private Camera m_PilotCam;
 
     public Transform m_ShootPosition;
-
+    public Transform m_GunPosition;
+    [SerializeField]
+    private GameObject LazerPrefab;
 
     [SerializeField]
     Vector2 move;
@@ -19,12 +21,6 @@ public class Shoot : MonoBehaviour
     void Start()
     {
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
-    }
-    private void Awake()
-    {
-
-
-        
     }
 
     // Update is called once per frame
@@ -51,8 +47,11 @@ public class Shoot : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, out hit))
         {
+            print(hit.collider.gameObject.name);
+           Lazer l =Instantiate(LazerPrefab, transform).GetComponent<Lazer>();
+            l.ShootBeam(m_GunPosition.position, m_ShootPosition.position, 0.2f);
             Debug.Log(hit.transform.name);
-            Destroy(hit.transform.gameObject);
+            Destroy(hit.collider.gameObject);
         }
     }
 

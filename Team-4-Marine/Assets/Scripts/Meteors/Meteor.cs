@@ -7,7 +7,8 @@ public class Meteor : MonoBehaviour
 {
     public  event Action m_OnDestroy;
     private Vector3 increaseValues = new Vector3(0, 0, 20f);
-
+    SpriteRenderer m_Renderer;
+ 
     void Update()
     {
         
@@ -25,6 +26,12 @@ public class Meteor : MonoBehaviour
     {
         m_OnDestroy += _Callback;
     }
+    public void Initialize()
+    {
+        m_Renderer = GetComponent<SpriteRenderer>();
+        print(m_Renderer);
 
+        GetComponent<BoxCollider>().size = m_Renderer.sprite.bounds.size;
+    }
 
 }

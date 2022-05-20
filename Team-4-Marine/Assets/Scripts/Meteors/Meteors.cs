@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class Meteors : MonoBehaviour
 {
+
+    [SerializeField]
+    private List<Sprite> m_Sprites;
+
     public GameObject m_MeteorPrefab;
     public static event Action m_OnDamage;
     private float X_Pos, Y_Pos, Z_Pos;
-
-
-
-
-    private bool m_Spawner = false;
-
    
     public void Update()
     {
@@ -32,7 +30,9 @@ public class Meteors : MonoBehaviour
             X_Pos = UnityEngine.Random.Range(-10, 10);
             Z_Pos = 250;
 
-           Meteor m=  Instantiate(m_MeteorPrefab, new Vector3(X_Pos, Y_Pos, Z_Pos), Quaternion.identity).GetComponent<Meteor>();
+           Meteor m =  Instantiate(m_MeteorPrefab, new Vector3(X_Pos, Y_Pos, Z_Pos), Quaternion.identity).GetComponent<Meteor>();
+            m.GetComponent<SpriteRenderer>().sprite = m_Sprites[UnityEngine.Random.Range(0, Mathf.FloorToInt(m_Sprites.Count))];
+            m.Initialize();
             m.Subscribe(Damage);
 
             yield return new WaitForSeconds(_delay);
