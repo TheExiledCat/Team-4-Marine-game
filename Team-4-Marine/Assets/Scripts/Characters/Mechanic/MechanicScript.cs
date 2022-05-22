@@ -59,23 +59,23 @@ public class MechanicScript : MonoBehaviour
         {
             if (GameManager.GM.m_EngineerControls.Interactions.MouseInteract.WasPressedThisFrame())
             {
-                print("CLick");
+                //print("CLick");
                 RaycastHit hit;
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
                 {
-                    print(hit.collider.gameObject.name);
+                    // print(hit.collider.gameObject.name);
                     hit.collider.gameObject.GetComponent<Interactable>().Interact();
                 }
             }
             else if (GameManager.GM.m_EngineerControls.Interactions.MouseSecondaryInteract.WasPressedThisFrame())
             {
-                print("CLick");
+                //print("CLick");
                 RaycastHit hit;
 
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
                 {
-                    print(hit.collider.gameObject.name);
+                    //print(hit.collider.gameObject.name);
                     hit.collider.gameObject.GetComponent<Interactable>().SecondaryInteract();
                 }
             }
