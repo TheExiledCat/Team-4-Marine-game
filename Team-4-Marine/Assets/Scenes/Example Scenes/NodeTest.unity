@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2846213, g: 0.3712097, b: 0.4988053, a: 1}
+  m_IndirectSpecularColor: {r: 0.28461993, g: 0.37120807, b: 0.49880373, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -298,6 +298,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 993ab1b863885c949bf3aa8d3a1056ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &567303933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 567303933, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+  m_PrefabInstance: {fileID: 1416414039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebf474d3b08d9847a78f1afd3d55335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &622114073 stripped
@@ -768,17 +779,31 @@ MonoBehaviour:
   m_Handles: []
   m_Rotaries: []
   m_Indicators: []
-  m_Displays: []
+  m_Displays:
+  - {fileID: 567303933}
   m_Buttons:
   - {fileID: 1517779551}
   - {fileID: 1738778056}
   - {fileID: 124034799}
   - {fileID: 641055685}
-  m_ConfirmationButton: {fileID: 0}
+  m_ConfirmationButton: {fileID: 1556727251}
   m_ErrorLights:
   - {fileID: 851229743}
   - {fileID: 876328896}
+  m_MazeA:
+    m_Width: 0
+    m_Height: 0
+    m_Cells: []
+    m_StartPosition: {x: 0, y: 0}
+    m_EndPosition: {x: 0, y: 0}
+  m_MazeB:
+    m_Width: 0
+    m_Height: 0
+    m_Cells: []
+    m_StartPosition: {x: 0, y: 0}
+    m_EndPosition: {x: 0, y: 0}
   m_CurrentPosition: {x: 0, y: 0}
+  m_Lights: []
   m_LightParent: {fileID: 449754375}
 --- !u!61 &1397355754
 BoxCollider2D:
@@ -878,26 +903,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1243991932516090302, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3711458695197673139, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3847223744985159337, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4182744357801888576, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4241206137215621602, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241202, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Name
       value: Engineer
@@ -945,14 +950,6 @@ PrefabInstance:
     - target: {fileID: 4297585204002241207, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4297585204282227028, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_TargetDisplay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8175429011539659771, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
@@ -1008,6 +1005,17 @@ MonoBehaviour:
 --- !u!114 &1517779551 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 860437112493053626, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
+  m_PrefabInstance: {fileID: 1416414039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf4a31189f95f14ea494d21fa3ffcea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1556727251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1556727251, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
   m_PrefabInstance: {fileID: 1416414039}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

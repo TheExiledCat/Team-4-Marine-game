@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Cell
 {
-    [HideInInspector]
     public Vector2 m_Position;
 
     [SerializeField]

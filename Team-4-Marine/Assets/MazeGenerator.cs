@@ -18,38 +18,42 @@ public class MazeGenerator : MonoBehaviour
         m_TileMapToGenerate.CompressBounds();
         BoundsInt bounds = m_TileMapToGenerate.cellBounds;
         TileBase[] tiles = m_TileMapToGenerate.GetTilesBlock(bounds);
-        for (int i = 0; i < tiles.Length - 1; i++)
+        for (int y = bounds.size.y - 1; y >= 0; y--)
         {
-            if (tiles[i])
+            for (int x = 0; x < bounds.size.x; x++)
             {
-                Vector2 pos = new Vector2(i % bounds.size.x % bounds.size.x, bounds.size.y - (i / bounds.size.x / bounds.size.x));
-                print(tiles[i].name);
-                Cell c = new Cell(); ;
-                c.m_Position = pos;
-
-                foreach (char letter in tiles[i].name)
+                TileBase t = tiles[x + y * bounds.size.x];
+                if (t)
                 {
-                    switch (letter)
+                    Vector2 pos = new Vector2(x, bounds.size.y - y - 1);
+                    //print(tiles[i].name);
+                    Cell c = new Cell(); ;
+                    c.m_Position = pos;
+
+                    foreach (char letter in t.name)
                     {
-                        case 'B':
-                            c.m_WallDown = true;
-                            break;
+                        switch (letter)
+                        {
+                            case 'B':
+                                c.m_WallDown = true;
+                                break;
 
-                        case 'T':
-                            c.m_WallUp = true;
-                            break;
+                            case 'T':
+                                c.m_WallUp = true;
+                                break;
 
-                        case 'L':
-                            c.m_WallLeft = true;
-                            break;
+                            case 'L':
+                                c.m_WallLeft = true;
+                                break;
 
-                        case 'R':
-                            c.m_WallRight = true;
-                            break;
+                            case 'R':
+                                c.m_WallRight = true;
+                                break;
+                        }
                     }
-                }
 
-                m_Cells.Add(c);
+                    m_Cells.Add(c);
+                }
             }
         }
         CreateMap();
