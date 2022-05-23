@@ -193,6 +193,24 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootingMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""5fd54bd4-a18c-4572-8df4-e41921bbf852"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5209b36-101d-4da3-b5d6-2696cda74765"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -228,6 +246,28 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""action"": ""ToManualScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""468774ad-ee17-4a79-b8d3-0b5b7f00bbe1"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootingMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2eac39b-8676-4bb4-b1ec-4d534f529b3e"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shooting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -246,6 +286,8 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         m_Cockpit_MoveCamera = m_Cockpit.FindAction("MoveCamera", throwIfNotFound: true);
         m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
         m_Cockpit_ToCockpitScreen = m_Cockpit.FindAction("ToCockpitScreen", throwIfNotFound: true);
+        m_Cockpit_ShootingMovement = m_Cockpit.FindAction("ShootingMovement", throwIfNotFound: true);
+        m_Cockpit_Shooting = m_Cockpit.FindAction("Shooting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,6 +424,8 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     private readonly InputAction m_Cockpit_MoveCamera;
     private readonly InputAction m_Cockpit_ToManualScreen;
     private readonly InputAction m_Cockpit_ToCockpitScreen;
+    private readonly InputAction m_Cockpit_ShootingMovement;
+    private readonly InputAction m_Cockpit_Shooting;
     public struct CockpitActions
     {
         private @Pilot m_Wrapper;
@@ -389,6 +433,8 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         public InputAction @MoveCamera => m_Wrapper.m_Cockpit_MoveCamera;
         public InputAction @ToManualScreen => m_Wrapper.m_Cockpit_ToManualScreen;
         public InputAction @ToCockpitScreen => m_Wrapper.m_Cockpit_ToCockpitScreen;
+        public InputAction @ShootingMovement => m_Wrapper.m_Cockpit_ShootingMovement;
+        public InputAction @Shooting => m_Wrapper.m_Cockpit_Shooting;
         public InputActionMap Get() { return m_Wrapper.m_Cockpit; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -407,6 +453,12 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
+                @ShootingMovement.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
+                @ShootingMovement.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
+                @ShootingMovement.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
+                @Shooting.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
+                @Shooting.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
+                @Shooting.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
             }
             m_Wrapper.m_CockpitActionsCallbackInterface = instance;
             if (instance != null)
@@ -420,6 +472,12 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started += instance.OnToCockpitScreen;
                 @ToCockpitScreen.performed += instance.OnToCockpitScreen;
                 @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
+                @ShootingMovement.started += instance.OnShootingMovement;
+                @ShootingMovement.performed += instance.OnShootingMovement;
+                @ShootingMovement.canceled += instance.OnShootingMovement;
+                @Shooting.started += instance.OnShooting;
+                @Shooting.performed += instance.OnShooting;
+                @Shooting.canceled += instance.OnShooting;
             }
         }
     }
@@ -438,5 +496,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         void OnMoveCamera(InputAction.CallbackContext context);
         void OnToManualScreen(InputAction.CallbackContext context);
         void OnToCockpitScreen(InputAction.CallbackContext context);
+        void OnShootingMovement(InputAction.CallbackContext context);
+        void OnShooting(InputAction.CallbackContext context);
     }
 }
