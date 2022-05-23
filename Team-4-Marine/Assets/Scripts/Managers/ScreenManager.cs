@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ScreenManager : MonoBehaviour
 {
+    [SerializeField]
+    CameraPerspective m_ShootingPerspective;
     [SerializeField]
     List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
     int m_CurrentIndex;
@@ -16,20 +19,29 @@ public class ScreenManager : MonoBehaviour
 
     bool m_CameraIsMoving;
     bool m_ManualShown = false;
+    bool m_RightStickPressed = false;
 
     [SerializeField]
     Camera m_Camera;
 
+    InputAction m_Shooting, m_ShootingMovement;
+
     Pilot.CockpitActions m_CockpitControls;
+    Pilot.CenterActions m_CenterControls;
+    Pilot.ShootingActions m_ShootingControls;
 
     Vector2 m_Axis;
     Vector3 m_CurrentCameraRotation;
 
     private void Start()
     {
+        m_ShootingControls = GameManager.GM.m_PilotControls.Shooting;
+        m_Shooting = m_ShootingControls.Shooting;
+        m_ShootingMovement = m_ShootingControls.ShootingMovement;
         m_CurrentIndex = 1;
         m_CurrentPerspective = m_CameraPerspectives[1];
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
+        m_CenterControls = GameManager.GM.m_PilotControls.Center;
         GameManager.GM.SetManualControls(false);
     }
 
@@ -40,7 +52,23 @@ public class ScreenManager : MonoBehaviour
         MoveCamera();
 
         m_CurrentTime += Time.deltaTime;
-        
+
+        if (m_CenterControls.ZoomIn.WasPressedThisFrame())
+        {
+            if (!m_RightStickPressed)
+            {
+                CenterZoomIn();
+                m_RightStickPressed = true;
+                m_ShootingControls.Enable();
+            }
+            else
+            {
+                CenterZoomOut();
+                m_RightStickPressed = false;
+                m_ShootingControls.Disable();
+            }
+        }
+
         if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
         {
             m_CurrentIndex++;
@@ -59,6 +87,26 @@ public class ScreenManager : MonoBehaviour
             m_T = m_CurrentTime / m_TargetTime;
             m_T = Mathf.Clamp(m_T, 0, 1);
             ChangePerspective(m_CurrentIndex);
+        }
+    }
+
+    private void CenterZoomIn()
+    {
+        m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_ShootingPerspective.m_PerspectiveBounds.center, m_T);
+        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, m_ShootingPerspective.m_CameraRotations, m_T);
+        if (m_CurrentTime >= m_TargetTime)
+        {
+            m_CameraIsMoving = false;
+        }
+    }
+
+    private void CenterZoomOut()
+    {
+        m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_CameraPerspectives[1].m_PerspectiveBounds.center, m_T);
+        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, m_CameraPerspectives[1].m_CameraRotations, m_T);
+        if (m_CurrentTime >= m_TargetTime)
+        {
+            m_CameraIsMoving = false;
         }
     }
 

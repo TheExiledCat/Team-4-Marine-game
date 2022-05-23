@@ -26,8 +26,30 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         {
             ""name"": ""Center"",
             ""id"": ""522bbbee-0a19-456e-8380-93d05d5a3480"",
-            ""actions"": [],
-            ""bindings"": []
+            ""actions"": [
+                {
+                    ""name"": ""ZoomIn"",
+                    ""type"": ""Button"",
+                    ""id"": ""6fe34a9b-6050-47f4-977a-5eac80b989f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a75ddee9-1b9f-41f9-bc3e-d138900f16dc"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomIn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         },
         {
             ""name"": ""Manual"",
@@ -193,24 +215,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ShootingMovement"",
-                    ""type"": ""Value"",
-                    ""id"": ""5fd54bd4-a18c-4572-8df4-e41921bbf852"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Shooting"",
-                    ""type"": ""Button"",
-                    ""id"": ""c5209b36-101d-4da3-b5d6-2696cda74765"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -246,10 +250,56 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                     ""action"": ""ToManualScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Shooting"",
+            ""id"": ""c1cf1589-51ce-451f-8985-1d177881d7d8"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab2d5cb3-37f5-4dde-af95-6e194f022730"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootingMovement"",
+                    ""type"": ""Value"",
+                    ""id"": ""7c0bf33b-32ca-4388-97a0-74a86acb3b96"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shooting"",
+                    ""type"": ""Button"",
+                    ""id"": ""97d8108c-27a2-4053-b700-523e65bfa22c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""cde1d773-5c17-4887-af32-ccd17f416203"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""468774ad-ee17-4a79-b8d3-0b5b7f00bbe1"",
+                    ""id"": ""7ee91439-4028-4132-bd3b-68743d4473c0"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -260,7 +310,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e2eac39b-8676-4bb4-b1ec-4d534f529b3e"",
+                    ""id"": ""d62c6b42-bd54-4f9a-9136-1944d3f2788a"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -276,6 +326,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
 }");
         // Center
         m_Center = asset.FindActionMap("Center", throwIfNotFound: true);
+        m_Center_ZoomIn = m_Center.FindAction("ZoomIn", throwIfNotFound: true);
         // Manual
         m_Manual = asset.FindActionMap("Manual", throwIfNotFound: true);
         m_Manual_SwapPage = m_Manual.FindAction("SwapPage", throwIfNotFound: true);
@@ -286,8 +337,11 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         m_Cockpit_MoveCamera = m_Cockpit.FindAction("MoveCamera", throwIfNotFound: true);
         m_Cockpit_ToManualScreen = m_Cockpit.FindAction("ToManualScreen", throwIfNotFound: true);
         m_Cockpit_ToCockpitScreen = m_Cockpit.FindAction("ToCockpitScreen", throwIfNotFound: true);
-        m_Cockpit_ShootingMovement = m_Cockpit.FindAction("ShootingMovement", throwIfNotFound: true);
-        m_Cockpit_Shooting = m_Cockpit.FindAction("Shooting", throwIfNotFound: true);
+        // Shooting
+        m_Shooting = asset.FindActionMap("Shooting", throwIfNotFound: true);
+        m_Shooting_Newaction = m_Shooting.FindAction("New action", throwIfNotFound: true);
+        m_Shooting_ShootingMovement = m_Shooting.FindAction("ShootingMovement", throwIfNotFound: true);
+        m_Shooting_Shooting = m_Shooting.FindAction("Shooting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -347,10 +401,12 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     // Center
     private readonly InputActionMap m_Center;
     private ICenterActions m_CenterActionsCallbackInterface;
+    private readonly InputAction m_Center_ZoomIn;
     public struct CenterActions
     {
         private @Pilot m_Wrapper;
         public CenterActions(@Pilot wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ZoomIn => m_Wrapper.m_Center_ZoomIn;
         public InputActionMap Get() { return m_Wrapper.m_Center; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,10 +416,16 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_CenterActionsCallbackInterface != null)
             {
+                @ZoomIn.started -= m_Wrapper.m_CenterActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.performed -= m_Wrapper.m_CenterActionsCallbackInterface.OnZoomIn;
+                @ZoomIn.canceled -= m_Wrapper.m_CenterActionsCallbackInterface.OnZoomIn;
             }
             m_Wrapper.m_CenterActionsCallbackInterface = instance;
             if (instance != null)
             {
+                @ZoomIn.started += instance.OnZoomIn;
+                @ZoomIn.performed += instance.OnZoomIn;
+                @ZoomIn.canceled += instance.OnZoomIn;
             }
         }
     }
@@ -424,8 +486,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     private readonly InputAction m_Cockpit_MoveCamera;
     private readonly InputAction m_Cockpit_ToManualScreen;
     private readonly InputAction m_Cockpit_ToCockpitScreen;
-    private readonly InputAction m_Cockpit_ShootingMovement;
-    private readonly InputAction m_Cockpit_Shooting;
     public struct CockpitActions
     {
         private @Pilot m_Wrapper;
@@ -433,8 +493,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         public InputAction @MoveCamera => m_Wrapper.m_Cockpit_MoveCamera;
         public InputAction @ToManualScreen => m_Wrapper.m_Cockpit_ToManualScreen;
         public InputAction @ToCockpitScreen => m_Wrapper.m_Cockpit_ToCockpitScreen;
-        public InputAction @ShootingMovement => m_Wrapper.m_Cockpit_ShootingMovement;
-        public InputAction @Shooting => m_Wrapper.m_Cockpit_Shooting;
         public InputActionMap Get() { return m_Wrapper.m_Cockpit; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -453,12 +511,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
                 @ToCockpitScreen.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnToCockpitScreen;
-                @ShootingMovement.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
-                @ShootingMovement.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
-                @ShootingMovement.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShootingMovement;
-                @Shooting.started -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
-                @Shooting.performed -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
-                @Shooting.canceled -= m_Wrapper.m_CockpitActionsCallbackInterface.OnShooting;
             }
             m_Wrapper.m_CockpitActionsCallbackInterface = instance;
             if (instance != null)
@@ -472,6 +524,49 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 @ToCockpitScreen.started += instance.OnToCockpitScreen;
                 @ToCockpitScreen.performed += instance.OnToCockpitScreen;
                 @ToCockpitScreen.canceled += instance.OnToCockpitScreen;
+            }
+        }
+    }
+    public CockpitActions @Cockpit => new CockpitActions(this);
+
+    // Shooting
+    private readonly InputActionMap m_Shooting;
+    private IShootingActions m_ShootingActionsCallbackInterface;
+    private readonly InputAction m_Shooting_Newaction;
+    private readonly InputAction m_Shooting_ShootingMovement;
+    private readonly InputAction m_Shooting_Shooting;
+    public struct ShootingActions
+    {
+        private @Pilot m_Wrapper;
+        public ShootingActions(@Pilot wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Shooting_Newaction;
+        public InputAction @ShootingMovement => m_Wrapper.m_Shooting_ShootingMovement;
+        public InputAction @Shooting => m_Wrapper.m_Shooting_Shooting;
+        public InputActionMap Get() { return m_Wrapper.m_Shooting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ShootingActions set) { return set.Get(); }
+        public void SetCallbacks(IShootingActions instance)
+        {
+            if (m_Wrapper.m_ShootingActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
+                @ShootingMovement.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
+                @ShootingMovement.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
+                @ShootingMovement.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
+                @Shooting.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShooting;
+                @Shooting.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShooting;
+                @Shooting.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShooting;
+            }
+            m_Wrapper.m_ShootingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
                 @ShootingMovement.started += instance.OnShootingMovement;
                 @ShootingMovement.performed += instance.OnShootingMovement;
                 @ShootingMovement.canceled += instance.OnShootingMovement;
@@ -481,9 +576,10 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             }
         }
     }
-    public CockpitActions @Cockpit => new CockpitActions(this);
+    public ShootingActions @Shooting => new ShootingActions(this);
     public interface ICenterActions
     {
+        void OnZoomIn(InputAction.CallbackContext context);
     }
     public interface IManualActions
     {
@@ -496,6 +592,10 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         void OnMoveCamera(InputAction.CallbackContext context);
         void OnToManualScreen(InputAction.CallbackContext context);
         void OnToCockpitScreen(InputAction.CallbackContext context);
+    }
+    public interface IShootingActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
         void OnShootingMovement(InputAction.CallbackContext context);
         void OnShooting(InputAction.CallbackContext context);
     }
