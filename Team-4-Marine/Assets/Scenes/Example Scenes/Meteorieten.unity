@@ -176,9 +176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PageImage: {fileID: 1694574786}
+  m_TextFieldImage: {fileID: 0}
+  m_BigTextField: {fileID: 0}
+  m_ImageGroup: {fileID: 0}
+  m_TextGroup: {fileID: 0}
   m_Pages:
-  - {fileID: 21300000, guid: 26cab998ba9a02640af36fe12d431112, type: 3}
-  - {fileID: 21300000, guid: fe6eb5d426d9802409a5ce382971f292, type: 3}
+  - m_Sprite: {fileID: 0}
+    m_Text: 
+  - m_Sprite: {fileID: 0}
+    m_Text: 
+  m_Chapters: []
+  m_Images: []
   m_BookmarkTriangle: {fileID: 1610390548}
   m_BookmarkCircle: {fileID: 2028748809}
   m_BookmarkCross: {fileID: 872071945}
@@ -1336,14 +1344,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd149143e372b54083f029c3f068731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraPerspectives: []
+  m_CameraPerspectives:
+  - m_CameraRotations: {x: 12.182, y: 63.574, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 4.36, y: 0.81, z: -5.81}
+      m_Extent: {x: 10, y: 5, z: 0}
+  - m_CameraRotations: {x: 0, y: 0, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 0.18, y: 1.99, z: -7.63}
+      m_Extent: {x: 10, y: 10, z: 0}
+  - m_CameraRotations: {x: 0, y: -67.66, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: -2.66, y: 0.81, z: -7.07}
+      m_Extent: {x: 10, y: 5, z: 0}
   m_CurrentPerspective:
     m_CameraRotations: {x: 0, y: 0, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
-  m_CameraSpeed: 10
-  m_Camera: {fileID: 0}
+  m_CameraSpeed: 30
+  m_Camera: {fileID: 369401854}
 --- !u!114 &759302769
 MonoBehaviour:
   m_ObjectHideFlags: 0
