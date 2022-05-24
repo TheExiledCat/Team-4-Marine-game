@@ -176,9 +176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PageImage: {fileID: 1694574786}
+  m_TextFieldImage: {fileID: 0}
+  m_BigTextField: {fileID: 0}
+  m_ImageGroup: {fileID: 0}
+  m_TextGroup: {fileID: 0}
   m_Pages:
-  - {fileID: 21300000, guid: 26cab998ba9a02640af36fe12d431112, type: 3}
-  - {fileID: 21300000, guid: fe6eb5d426d9802409a5ce382971f292, type: 3}
+  - m_Sprite: {fileID: 0}
+    m_Text: 
+  - m_Sprite: {fileID: 0}
+    m_Text: 
+  m_Chapters: []
+  m_Images: []
   m_BookmarkTriangle: {fileID: 1610390548}
   m_BookmarkCircle: {fileID: 2028748809}
   m_BookmarkCross: {fileID: 872071945}
@@ -441,6 +449,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66eced6c1e4d1a4d8c97fce50bc6c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Sprites:
+  - {fileID: 3604153571076352497, guid: ee1d96b7f73df344ab5dba8e26f5599c, type: 3}
+  - {fileID: -1237233469960739150, guid: c397a448f6619d742baa6e64107334fb, type: 3}
+  - {fileID: -2875435260804788372, guid: fbc4f5e3f7024ae428551b57bba2c99f, type: 3}
+  - {fileID: -1937344749572682165, guid: 0b7b4926ff254354899751bd72f7224c, type: 3}
+  - {fileID: -2845198267566790831, guid: 85ee76ae92ad16d47ba8e487e653e6bb, type: 3}
   m_MeteorPrefab: {fileID: 5275746147216217373, guid: 2938200f56a650841945bfeb0780be01, type: 3}
 --- !u!4 &293801594
 Transform:
@@ -1330,10 +1344,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd149143e372b54083f029c3f068731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CockpitScreen: {fileID: 704115691}
-  m_ManualScreen: {fileID: 1829592822}
-  m_CockpitCamera: {fileID: 1000051234}
-  m_ManualCamera: {fileID: 511421276}
+  m_CameraPerspectives:
+  - m_CameraRotations: {x: 12.182, y: 63.574, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 4.36, y: 0.81, z: -5.81}
+      m_Extent: {x: 10, y: 5, z: 0}
+  - m_CameraRotations: {x: 0, y: 0, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 0.18, y: 1.99, z: -7.63}
+      m_Extent: {x: 10, y: 10, z: 0}
+  - m_CameraRotations: {x: 0, y: -67.66, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: -2.66, y: 0.81, z: -7.07}
+      m_Extent: {x: 10, y: 5, z: 0}
+  m_CurrentPerspective:
+    m_CameraRotations: {x: 0, y: 0, z: 0}
+    m_PerspectiveBounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0, y: 0, z: 0}
+  m_CameraSpeed: 30
+  m_Camera: {fileID: 369401854}
 --- !u!114 &759302769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6660,6 +6690,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f0eb0b1f5559a4c96eb7850a1f85ce, type: 3}
+--- !u!1 &1557342286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557342287}
+  m_Layer: 0
+  m_Name: GunPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1557342287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557342286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -6.12, z: 6.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093307231}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1578711648
 GameObject:
   m_ObjectHideFlags: 0
@@ -10460,6 +10520,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870957487}
   m_CullTransparentMesh: 1
+--- !u!1 &1920921092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1920921093}
+  m_Layer: 0
+  m_Name: Shootposition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1920921093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920921092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 250}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093307231}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988609705
 GameObject:
   m_ObjectHideFlags: 0
@@ -11742,6 +11832,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028748807}
   m_CullTransparentMesh: 1
+--- !u!1 &2093307229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093307231}
+  - component: {fileID: 2093307230}
+  m_Layer: 0
+  m_Name: MeteoriteShooting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2093307230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093307229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009acd184077ad3469ab8f8c62949ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PilotCam: {fileID: 369401854}
+  m_ShootPosition: {fileID: 1920921093}
+  m_GunPosition: {fileID: 1557342287}
+  LazerPrefab: {fileID: 1478738854966211338, guid: a9a83a53fca8b4f41a166b3f72e1e814, type: 3}
+  move: {x: 0, y: 0}
+--- !u!4 &2093307231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093307229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08, y: 0.1, z: 1.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1920921093}
+  - {fileID: 1557342287}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121813058
 GameObject:
   m_ObjectHideFlags: 0
