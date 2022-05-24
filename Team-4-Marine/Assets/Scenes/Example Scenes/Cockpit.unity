@@ -7267,9 +7267,9 @@ MonoBehaviour:
       rode balk van 3 lampjes lang zich door het level heen bewegen. Die verplaatst
       zich 1 lampje om de 2 seconden.  Altijd in rechte lijnen, horizontaal of verticaal.
       \n\nAls er 1 kruisje staat volg 1a, als er 2 of meer kruisjes staan volg 1b"
-  - m_Sprite: {fileID: 21300000, guid: a5fc06641106cea458e60a91654b60db, type: 3}
+  - m_Sprite: {fileID: 21300000, guid: 0ee3f1d3a6a6f954d998f83ff1ed0d69, type: 3}
     m_Text: 1a
-  - m_Sprite: {fileID: 21300000, guid: 5bd79903445795e4ba5b7329d77057e4, type: 3}
+  - m_Sprite: {fileID: 21300000, guid: a01e666380be7b64184e9292afc98fde, type: 3}
     m_Text: 1b
   - m_Sprite: {fileID: 0}
     m_Text: "Voor de speler zien ze de zijkant van een lopende band. In het midden

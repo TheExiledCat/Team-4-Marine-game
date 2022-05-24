@@ -98,7 +98,11 @@ public class Manual : MonoBehaviour
                 m_PageIndex++;
                 break;
         }
-        m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count - 1);
+        m_PageIndex = Mathf.Clamp(m_PageIndex, 0, m_Pages.Count);
+        if(m_PageIndex > m_Pages.Count -1)
+        {
+            m_PageIndex = 0;
+        }
         FormatPage(m_PageIndex);
     }
 
