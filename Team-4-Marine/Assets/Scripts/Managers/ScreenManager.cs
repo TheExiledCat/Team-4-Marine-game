@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public class ScreenManager : MonoBehaviour
     //index 0 = record player perspective, index 1 = cockpit perspective & index 2 = manual perspective
     [SerializeField]
     CameraPerspective m_CurrentPerspective;
+    [SerializeField]
     float m_TargetTime = 1, m_CurrentTime, m_T;
     [SerializeField]
     float m_CameraSpeed = 10;
@@ -24,8 +24,6 @@ public class ScreenManager : MonoBehaviour
     [SerializeField]
     Camera m_Camera;
 
-    InputAction m_Shooting, m_ShootingMovement;
-
     Pilot.CockpitActions m_CockpitControls;
     Pilot.CenterActions m_CenterControls;
     Pilot.ShootingActions m_ShootingControls;
@@ -36,13 +34,12 @@ public class ScreenManager : MonoBehaviour
     private void Start()
     {
         m_ShootingControls = GameManager.GM.m_PilotControls.Shooting;
-        m_Shooting = m_ShootingControls.Shooting;
-        m_ShootingMovement = m_ShootingControls.ShootingMovement;
         m_CurrentIndex = 1;
         m_CurrentPerspective = m_CameraPerspectives[1];
         m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
         m_CenterControls = GameManager.GM.m_PilotControls.Center;
         GameManager.GM.SetManualControls(false);
+        m_ShootingControls.Disable();
     }
 
     private void Update()
@@ -55,17 +52,19 @@ public class ScreenManager : MonoBehaviour
 
         if (m_CenterControls.ZoomIn.WasPressedThisFrame())
         {
+            m_CameraIsMoving = true;
+            m_CurrentTime = 0;
             if (!m_RightStickPressed)
             {
-                CenterZoomIn();
                 m_RightStickPressed = true;
                 m_ShootingControls.Enable();
+                m_CockpitControls.Disable();
             }
             else
             {
-                CenterZoomOut();
                 m_RightStickPressed = false;
                 m_ShootingControls.Disable();
+                m_CockpitControls.Enable();
             }
         }
 
@@ -86,27 +85,14 @@ public class ScreenManager : MonoBehaviour
         {
             m_T = m_CurrentTime / m_TargetTime;
             m_T = Mathf.Clamp(m_T, 0, 1);
-            ChangePerspective(m_CurrentIndex);
-        }
-    }
-
-    private void CenterZoomIn()
-    {
-        m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_ShootingPerspective.m_PerspectiveBounds.center, m_T);
-        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, m_ShootingPerspective.m_CameraRotations, m_T);
-        if (m_CurrentTime >= m_TargetTime)
-        {
-            m_CameraIsMoving = false;
-        }
-    }
-
-    private void CenterZoomOut()
-    {
-        m_Camera.transform.position = Vector3.Lerp(m_CurrentPerspective.m_PerspectiveBounds.center, m_CameraPerspectives[1].m_PerspectiveBounds.center, m_T);
-        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, m_CameraPerspectives[1].m_CameraRotations, m_T);
-        if (m_CurrentTime >= m_TargetTime)
-        {
-            m_CameraIsMoving = false;
+            if (m_RightStickPressed)
+            {
+                ChangePerspective(m_ShootingPerspective, m_CurrentPerspective.m_PerspectiveBounds.center);
+            }
+            else
+            {
+                ChangePerspective(m_CurrentIndex);
+            }
         }
     }
 
@@ -151,6 +137,16 @@ public class ScreenManager : MonoBehaviour
         {
             m_CameraIsMoving = false;
             m_CurrentPerspective = m_CameraPerspectives[_index];
+        }
+    }
+
+    private void ChangePerspective(CameraPerspective _cameraPerspective, Vector3 _startPosition)
+    {
+        m_Camera.transform.position = Vector3.Lerp(_startPosition, _cameraPerspective.m_PerspectiveBounds.center, m_T);
+        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, _cameraPerspective.m_CameraRotations, m_T);
+        if (m_CurrentTime >= m_TargetTime)
+        {
+            m_CameraIsMoving = false;
         }
     }
 }
