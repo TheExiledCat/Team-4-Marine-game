@@ -16,19 +16,19 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     Vector2 move;
 
-    Pilot.CockpitActions m_CockpitControls;
+    Pilot.ShootingActions m_ShootingControls;
     // Start is called before the first frame update
     void Start()
     {
-        m_CockpitControls = GameManager.GM.m_PilotControls.Cockpit;
+        m_ShootingControls = GameManager.GM.m_PilotControls.Shooting;
     }
 
     // Update is called once per frame
     void Update()
     {
-        move = m_CockpitControls.ShootingMovement.ReadValue<Vector2>();
+        move = m_ShootingControls.ShootingMovement.ReadValue<Vector2>();
 
-        if (m_CockpitControls.Shooting.WasPressedThisFrame())
+        if (m_ShootingControls.Shooting.WasPressedThisFrame())
         {
             Fire();
         }

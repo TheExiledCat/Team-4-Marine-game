@@ -4,8 +4,30 @@
         {
             "name": "Center",
             "id": "522bbbee-0a19-456e-8380-93d05d5a3480",
-            "actions": [],
-            "bindings": []
+            "actions": [
+                {
+                    "name": "ZoomIn",
+                    "type": "Button",
+                    "id": "6fe34a9b-6050-47f4-977a-5eac80b989f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a75ddee9-1b9f-41f9-bc3e-d138900f16dc",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomIn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         },
         {
             "name": "Manual",
@@ -171,24 +193,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ShootingMovement",
-                    "type": "Value",
-                    "id": "5fd54bd4-a18c-4572-8df4-e41921bbf852",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Shooting",
-                    "type": "Button",
-                    "id": "c5209b36-101d-4da3-b5d6-2696cda74765",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -224,10 +228,56 @@
                     "action": "ToManualScreen",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Shooting",
+            "id": "c1cf1589-51ce-451f-8985-1d177881d7d8",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "ab2d5cb3-37f5-4dde-af95-6e194f022730",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ShootingMovement",
+                    "type": "Value",
+                    "id": "7c0bf33b-32ca-4388-97a0-74a86acb3b96",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shooting",
+                    "type": "Button",
+                    "id": "97d8108c-27a2-4053-b700-523e65bfa22c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cde1d773-5c17-4887-af32-ccd17f416203",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "468774ad-ee17-4a79-b8d3-0b5b7f00bbe1",
+                    "id": "7ee91439-4028-4132-bd3b-68743d4473c0",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
@@ -238,7 +288,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e2eac39b-8676-4bb4-b1ec-4d534f529b3e",
+                    "id": "d62c6b42-bd54-4f9a-9136-1944d3f2788a",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
