@@ -6,12 +6,17 @@ using System;
 public class Meteor : MonoBehaviour
 {
     public  event Action m_OnDestroy;
-    private Vector3 increaseValues = new Vector3(0, 0, 20f);
+    
+    [SerializeField]
+    private float RandomSpeed;
+    [SerializeField]
+    private Vector3 increaseValues;
     SpriteRenderer m_Renderer;
  
     void Update()
     {
-        
+        RandomSpeed = UnityEngine.Random.Range(25f, 50f);
+        increaseValues = new Vector3(0, 0, RandomSpeed);
         transform.position -= increaseValues * Time.deltaTime;
 
         if (transform.position.z <= 6)

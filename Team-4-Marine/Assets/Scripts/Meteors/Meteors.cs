@@ -26,9 +26,9 @@ public class Meteors : MonoBehaviour
     {
         for (int i = 0; i < _amount; i++)
         {
-            Y_Pos = UnityEngine.Random.Range(-8, 12);
-            X_Pos = UnityEngine.Random.Range(-10, 10);
-            Z_Pos = 250;
+            Y_Pos = UnityEngine.Random.Range(-12, 12);
+            X_Pos = UnityEngine.Random.Range(-15, 15);
+            Z_Pos = 400;
 
            Meteor m =  Instantiate(m_MeteorPrefab, new Vector3(X_Pos, Y_Pos, Z_Pos), Quaternion.identity).GetComponent<Meteor>();
             m.GetComponent<SpriteRenderer>().sprite = m_Sprites[UnityEngine.Random.Range(0, Mathf.FloorToInt(m_Sprites.Count))];
@@ -41,7 +41,7 @@ public class Meteors : MonoBehaviour
 
     public void StartSpawner()
     {
-        StartCoroutine(MeteorSpawner(UnityEngine.Random.Range(5,15),UnityEngine.Random.Range(0.1f, 1f)));
+        StartCoroutine(MeteorSpawner(UnityEngine.Random.Range(10,20),UnityEngine.Random.Range(0.2f, 1f)));
     }
     public void Damage()
     {
