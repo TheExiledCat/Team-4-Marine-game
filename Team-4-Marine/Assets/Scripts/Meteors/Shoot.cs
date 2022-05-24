@@ -10,8 +10,12 @@ public class Shoot : MonoBehaviour
 
     public Transform m_ShootPosition;
     public Transform m_GunPosition;
+
     [SerializeField]
     private GameObject LazerPrefab;
+
+    [SerializeField]
+    private GameObject ExplosionPrefab;
 
     [SerializeField]
     Vector2 move;
@@ -35,10 +39,8 @@ public class Shoot : MonoBehaviour
 
         m_ShootPosition.position += (Vector3)move;
 
-
-
-        //Vector3 forward = m_ShootPosition.transform.TransformDirection(Vector3.forward) * 500;
-        Debug.DrawRay(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, Color.green);
+        // debug van de raycast
+        //Debug.DrawRay(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, Color.green);
     }
 
     private void Fire()
@@ -47,21 +49,17 @@ public class Shoot : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, out hit))
         {
+            print(hit.transform.position);
             print(hit.collider.gameObject.name);
            Lazer l =Instantiate(LazerPrefab, transform).GetComponent<Lazer>();
-            l.ShootBeam(m_GunPosition.position, m_ShootPosition.position, 0.2f);
+            l.ShootBeam(m_GunPosition.position, m_ShootPosition.position, 0.3f);
             Debug.Log(hit.transform.name);
-            Destroy(hit.collider.gameObject);
+            if(hit.collider.gameObject.tag == "Meteor")
+            {
+                Instantiate(ExplosionPrefab, hit.collider.transform.position,Quaternion.identity);
+                Destroy(hit.collider.gameObject);
+            }
+            
         }
     }
-
-    //if (Input.GetMouseButtonDown(0)) {
-    //        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-    //RaycastHit2D hit = Physics2D.Raycast(, Vector2.zero);
-    //        if (hit.collider != null) {
-    //            Debug.Log(hit.collider.gameObject.name);
-    //            hit.collider.attachedRigidbody.AddForce(Vector2.up);
-    //        }
 }
