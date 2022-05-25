@@ -31,16 +31,17 @@ public class NavigationStation : RepairStation
     // Update is called once per frame
     public override void Start()
     {
+        base.Start();
         m_Buttons[0].m_Actions.AddListener(MoveLeft);
         m_Buttons[1].m_Actions.AddListener(MoveRight);
         m_Buttons[2].m_Actions.AddListener(MoveDown);
         m_Buttons[3].m_Actions.AddListener(MoveUp);
-        base.Start();
     }
 
     public override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
+        print("initiating");
         switch (m_Displays[0].GetCrosses())
         {
             case 1:
@@ -52,7 +53,7 @@ public class NavigationStation : RepairStation
                 break;
         }
         print(m_ChosenMaze.m_Width);
-
+        print(m_Lights.Length);
         m_Lights = m_LightParent.GetComponentsInChildren<Indicator>();
         for (int i = 0; i < m_Lights.Length; i++)
         {
