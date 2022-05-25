@@ -14,7 +14,10 @@ public class Meteors : MonoBehaviour
 
     private float X_Pos, Y_Pos, Z_Pos = 400;
     [SerializeField] private Bounds m_BoundingBox;
-
+    private void Start()
+    {
+        m_OnDamage += GameManager.GM.MeteoriteDamage;
+    }
     public void Update()
     {
         if (Input.GetKeyDown("space"))
