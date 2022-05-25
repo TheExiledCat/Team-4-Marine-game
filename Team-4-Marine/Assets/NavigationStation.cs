@@ -13,11 +13,20 @@ public class NavigationStation : RepairStation
 
     private Vector2Int m_PreviousPosition;
     private Maze m_ChosenMaze;
+
     [SerializeField]
     private Indicator[] m_Lights;
 
     [SerializeField]
     private GameObject m_LightParent;
+
+    private void Awake()
+    {
+        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
+        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
+
+        m_ChosenMaze = m_MazeA;
+    }
 
     // Update is called once per frame
     public override void Start()
@@ -27,18 +36,17 @@ public class NavigationStation : RepairStation
         m_Buttons[2].m_Actions.AddListener(MoveDown);
         m_Buttons[3].m_Actions.AddListener(MoveUp);
         base.Start();
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
     }
+
     public override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
-
         switch (m_Displays[0].GetCrosses())
         {
             case 1:
                 m_ChosenMaze = m_MazeA;
                 break;
+
             case float n when (n > 1):
                 m_ChosenMaze = m_MazeB;
                 break;
@@ -54,6 +62,7 @@ public class NavigationStation : RepairStation
         //StartCoroutine(Test());
         m_CurrentPosition = Vector2Int.zero;
     }
+
     protected override void Update()
     {
         base.Update();
@@ -131,10 +140,12 @@ public class NavigationStation : RepairStation
         print("Wall: " + wallFound);
         return wallFound;
     }
+
     public override void CheckWinCondition()
     {
         base.CheckWinCondition();
     }
+
     public override bool CheckForFailure()
     {
         if (m_CurrentPosition == m_ChosenMaze.m_EndPosition)
@@ -143,6 +154,7 @@ public class NavigationStation : RepairStation
         }
         return true;
     }
+
     private int PositionToIndicator(Vector2Int _position)
     {
         int target = _position.x + _position.y * (m_ChosenMaze.m_Width);
