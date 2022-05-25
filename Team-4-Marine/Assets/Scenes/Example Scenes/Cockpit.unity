@@ -1731,14 +1731,16 @@ MonoBehaviour:
     m_Text: 1b
   - m_Sprite: {fileID: 0}
     m_Text: 1c
+  - m_Sprite: {fileID: 21300000, guid: 9847cddbed4b1db4090bc60bd6f29c02, type: 3}
+    m_Text: "Als er 3 kruisjes op het scherm staan volg 1a. \nAls er 2 of minder
+      kruisjes op het \r\nscherm staan volg 1b\r"
   - m_Sprite: {fileID: 0}
-    m_Text: "Als er 3 kruisjes op het scherm staan volg 1a. Als er 2 of minder kruisjes
-      op het \r\nscherm staan volg 1b\r\n\r\n1a. zet de hendel op rood. als het rode
-      licht aan gaat draai de draaiknop op 1200\r\nen zet de rechter switch op aan.
-      als het rode licht uit blijft zet de linker switch op aan.\r\n\r\n1b. zet de
-      linker hendel op geel. als er 2 kruisjes staan volg 2b. zo niet draai de \r\ndraaiknop
-      op 800 en zet de linker switch op aan\r\n\r\n2b. zet de draaiknop op 1600 en
-      zet beide switches op aan."
+    m_Text: "1a. zet de hendel op rood. als het rode licht aan gaat draai de draaiknop
+      op 1200\r\nen zet de rechter switch op aan. als het rode licht uit blijft zet
+      de linker switch op aan.\r\n\r\n1b. zet de linker hendel op geel. als er 2
+      kruisjes staan volg 2b. zo niet draai de \r\ndraaiknop op 800 en zet de linker
+      switch op aan\r\n\r\n2b. zet de draaiknop op 1600 en zet beide switches op
+      aan."
   m_Chapters:
   - {fileID: 21300000, guid: 9bfb28d7c48024a4f830f28133bf00c8, type: 3}
   - {fileID: 21300000, guid: c6171b3bdcd44e94b8c09ddecd82acd1, type: 3}
@@ -3477,7 +3479,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941507019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 437957639}
@@ -3485,8 +3487,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70.2, y: -89.19}
-  m_SizeDelta: {x: 200, y: 22.06}
+  m_AnchoredPosition: {x: 79.14, y: -89.49}
+  m_SizeDelta: {x: 218.32, y: 22.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941507021
 MonoBehaviour:
@@ -3535,12 +3537,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 1
+  m_fontSizeMax: 7
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -3571,7 +3573,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 9.859833, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5469,7 +5471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175429011539659771, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
