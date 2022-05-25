@@ -6,7 +6,7 @@ public class MechanicScript : MonoBehaviour
 {
     [SerializeField]
     private RepairStation m_CurrentStation;
-
+    [SerializeField] Camera m_EngineerCam;
     [SerializeField] private LayerMask m_Interactables;
     private bool m_Repairing;
 
@@ -62,7 +62,7 @@ public class MechanicScript : MonoBehaviour
                 //print("CLick");
                 RaycastHit hit;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+                if (Physics.Raycast(m_EngineerCam.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
                 {
                     // print(hit.collider.gameObject.name);
                     hit.collider.gameObject.GetComponent<Interactable>().Interact();
@@ -73,7 +73,7 @@ public class MechanicScript : MonoBehaviour
                 //print("CLick");
                 RaycastHit hit;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
+                if (Physics.Raycast(m_EngineerCam.ScreenPointToRay(Input.mousePosition), out hit, 10000, m_Interactables))
                 {
                     //print(hit.collider.gameObject.name);
                     hit.collider.gameObject.GetComponent<Interactable>().SecondaryInteract();
