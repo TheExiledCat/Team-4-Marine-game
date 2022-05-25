@@ -23,7 +23,7 @@ public class NavigationStation : RepairStation
     private void Awake()
     {
         m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
+        m_MazeB = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
 
         m_ChosenMaze = m_MazeA;
     }
@@ -102,7 +102,16 @@ public class NavigationStation : RepairStation
         m_PreviousPosition = m_CurrentPosition;
         Vector2Int start = m_CurrentPosition;
         Vector2Int target = start + _dir;
-        Cell currentCell = m_ChosenMaze.m_Cells[PositionToIndicator(start)];
+        Cell currentCell = null;
+        try
+        {
+            currentCell = m_ChosenMaze.m_Cells[PositionToIndicator(start)];
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Error");
+        }
+        print(currentCell);
         Cell targetCell = null;
         bool wallFound = false;
         try

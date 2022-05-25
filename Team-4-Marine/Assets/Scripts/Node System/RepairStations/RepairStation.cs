@@ -121,13 +121,14 @@ public class RepairStation : MonoBehaviour
             m_Fixed = false;
             m_DamageTaken++;
             GetComponent<SpriteRenderer>().color = Color.yellow;
-            SetErrorLights();
+            
             CheckDamage();
         }
     }
 
     protected void CheckDamage()
     {
+        SetErrorLights();
         if (m_DamageTaken == 2)
         {
             m_Opened = false;

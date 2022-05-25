@@ -9,6 +9,7 @@ public class MazeGenerator : MonoBehaviour
     private Vector2Int m_StartPosition, m_Target;
 
     public Tilemap m_TileMapToGenerate;
+    [SerializeField]
     private List<Cell> m_Cells;
 
     public void Generate()
