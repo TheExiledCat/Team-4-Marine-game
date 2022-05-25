@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18170162, g: 0.18923748, b: 0.1945446, a: 1}
+  m_IndirectSpecularColor: {r: 0.18157434, g: 0.18913001, b: 0.19447672, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1022,24 +1022,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShootingPerspective:
+    m_PerspectiveName: 
     m_CameraRotations: {x: 0, y: 0, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 0.1800003, y: 0.7194862, z: -3.548245}
       m_Extent: {x: 0, y: 0, z: 0}
   m_CameraPerspectives:
-  - m_CameraRotations: {x: 12.182, y: 63.574, z: 0}
+  - m_PerspectiveName: RecordPlayer
+    m_CameraRotations: {x: 12.182, y: 63.574, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 4.36, y: 0.81, z: -5.81}
       m_Extent: {x: 10, y: 5, z: 0}
-  - m_CameraRotations: {x: 0, y: 0, z: 0}
+  - m_PerspectiveName: Center
+    m_CameraRotations: {x: 0, y: 0, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 0.18, y: 1.99, z: -7.63}
       m_Extent: {x: 10, y: 10, z: 0}
-  - m_CameraRotations: {x: 0, y: -67.66, z: 0}
+  - m_PerspectiveName: Manual
+    m_CameraRotations: {x: 0, y: -67.66, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: -2.66, y: 0.81, z: -7.07}
       m_Extent: {x: 10, y: 5, z: 0}
   m_CurrentPerspective:
+    m_PerspectiveName: 
     m_CameraRotations: {x: 0, y: 0, z: 0}
     m_PerspectiveBounds:
       m_Center: {x: 0, y: 0, z: 0}
@@ -6721,7 +6726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009acd184077ad3469ab8f8c62949ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PilotCam: {fileID: 0}
+  m_PilotCam: {fileID: 133405617}
   m_ShootPosition: {fileID: 1717197284}
   m_GunPosition: {fileID: 848901607}
   LazerPrefab: {fileID: 1478738854966211338, guid: a9a83a53fca8b4f41a166b3f72e1e814, type: 3}

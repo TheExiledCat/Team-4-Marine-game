@@ -56,12 +56,16 @@ public class ScreenManager : MonoBehaviour
             m_CurrentTime = 0;
             if (!m_RightStickPressed)
             {
+                m_CurrentCameraRotation = Vector3.zero;
+                m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
                 m_RightStickPressed = true;
                 m_ShootingControls.Enable();
                 m_CockpitControls.Disable();
             }
             else
             {
+                m_CurrentCameraRotation = Vector3.zero;
+                m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
                 m_RightStickPressed = false;
                 m_ShootingControls.Disable();
                 m_CockpitControls.Enable();
@@ -71,13 +75,11 @@ public class ScreenManager : MonoBehaviour
         if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
         {
             m_CurrentIndex++;
-            m_ManualShown = true;
             ToggleScreens();
         }
         if (m_CockpitControls.ToCockpitScreen.WasPressedThisFrame())
         {
             m_CurrentIndex--;
-            m_ManualShown = false;
             ToggleScreens();
         }
         m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
@@ -108,17 +110,22 @@ public class ScreenManager : MonoBehaviour
 
     private void ToggleScreens()
     {
-        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
+        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count);
         m_CurrentTime = 0;
-        if (m_ManualShown)
+        switch (m_CurrentIndex)
         {
-            GameManager.GM.SetCenterControls(false);
-            GameManager.GM.SetManualControls(true);
-        }
-        else
-        {
-            GameManager.GM.SetManualControls(false);
-            GameManager.GM.SetCenterControls(true);
+            case 0:
+                GameManager.GM.SetManualControls(false);
+                GameManager.GM.SetCenterControls(false);
+                break;
+            case 1:
+                GameManager.GM.SetManualControls(false);
+                GameManager.GM.SetCenterControls(true);
+                break;
+            case 2:
+                GameManager.GM.SetCenterControls(false);
+                GameManager.GM.SetManualControls(true);
+                break;
         }
         if(m_CurrentPerspective != m_CameraPerspectives[m_CurrentIndex])
         {
@@ -143,7 +150,6 @@ public class ScreenManager : MonoBehaviour
     private void ChangePerspective(CameraPerspective _cameraPerspective, Vector3 _startPosition)
     {
         m_Camera.transform.position = Vector3.Lerp(_startPosition, _cameraPerspective.m_PerspectiveBounds.center, m_T);
-        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, _cameraPerspective.m_CameraRotations, m_T);
         if (m_CurrentTime >= m_TargetTime)
         {
             m_CameraIsMoving = false;

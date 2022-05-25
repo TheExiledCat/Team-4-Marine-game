@@ -236,15 +236,6 @@
             "id": "c1cf1589-51ce-451f-8985-1d177881d7d8",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "ab2d5cb3-37f5-4dde-af95-6e194f022730",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ShootingMovement",
                     "type": "Value",
                     "id": "7c0bf33b-32ca-4388-97a0-74a86acb3b96",
@@ -264,17 +255,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "cde1d773-5c17-4887-af32-ccd17f416203",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "7ee91439-4028-4132-bd3b-68743d4473c0",
