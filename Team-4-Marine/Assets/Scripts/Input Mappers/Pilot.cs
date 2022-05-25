@@ -280,7 +280,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7ee91439-4028-4132-bd3b-68743d4473c0"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -291,7 +291,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d62c6b42-bd54-4f9a-9136-1944d3f2788a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
