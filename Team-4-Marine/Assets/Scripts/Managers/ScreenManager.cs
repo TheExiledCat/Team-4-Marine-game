@@ -5,6 +5,10 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField]
+    GameObject m_WheelImage;
+    [SerializeField]
+    Animator m_HandAnimator;
+    [SerializeField]
     CameraPerspective m_ShootingPerspective;
     [SerializeField]
     List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
@@ -18,7 +22,6 @@ public class ScreenManager : MonoBehaviour
     float m_CameraSpeed = 10;
 
     bool m_CameraIsMoving;
-    bool m_ManualShown = false;
     bool m_RightStickPressed = false;
 
     [SerializeField]
@@ -52,10 +55,10 @@ public class ScreenManager : MonoBehaviour
 
         if (m_CenterControls.ZoomIn.WasPressedThisFrame())
         {
-            m_CameraIsMoving = true;
-            m_CurrentTime = 0;
             if (!m_RightStickPressed)
             {
+                m_CameraIsMoving = true;
+                m_CurrentTime = 0;
                 m_CurrentCameraRotation = Vector3.zero;
                 m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
                 m_RightStickPressed = true;
@@ -64,11 +67,7 @@ public class ScreenManager : MonoBehaviour
             }
             else
             {
-                m_CurrentCameraRotation = Vector3.zero;
-                m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
-                m_RightStickPressed = false;
-                m_ShootingControls.Disable();
-                m_CockpitControls.Enable();
+                StartCoroutine(ExitShoot());
             }
         }
 
@@ -98,6 +97,24 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
+    IEnumerator ExitShoot()
+    {
+        m_HandAnimator.SetBool("IsShooting", false);
+        yield return new WaitForEndOfFrame();
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "ExitShooting")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_CameraIsMoving = true;
+        m_CurrentTime = 0;
+        m_WheelImage.SetActive(true);
+        m_CurrentCameraRotation = Vector3.zero;
+        m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
+        m_RightStickPressed = false;
+        m_ShootingControls.Disable();
+        m_CockpitControls.Enable();
+    }
+
     private void MoveCamera()
     {
         float offsetX = m_CurrentPerspective.m_CameraRotations.x;
@@ -110,7 +127,7 @@ public class ScreenManager : MonoBehaviour
 
     private void ToggleScreens()
     {
-        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count);
+        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count -1);
         m_CurrentTime = 0;
         switch (m_CurrentIndex)
         {
@@ -119,10 +136,12 @@ public class ScreenManager : MonoBehaviour
                 GameManager.GM.SetCenterControls(false);
                 break;
             case 1:
+                m_HandAnimator.SetBool("ManualPerspective", false);
                 GameManager.GM.SetManualControls(false);
                 GameManager.GM.SetCenterControls(true);
                 break;
             case 2:
+                m_HandAnimator.SetBool("ManualPerspective", true);
                 GameManager.GM.SetCenterControls(false);
                 GameManager.GM.SetManualControls(true);
                 break;
@@ -153,6 +172,8 @@ public class ScreenManager : MonoBehaviour
         if (m_CurrentTime >= m_TargetTime)
         {
             m_CameraIsMoving = false;
+            m_HandAnimator.SetBool("IsShooting", true);
+            m_WheelImage.SetActive(false);
         }
     }
 }

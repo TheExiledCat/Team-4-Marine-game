@@ -1031,6 +1031,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd149143e372b54083f029c3f068731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_WheelImage: {fileID: 1357448978}
+  m_HandAnimator: {fileID: 1390346968}
   m_ShootingPerspective:
     m_PerspectiveName: 
     m_CameraRotations: {x: 0, y: 0, z: 0}
@@ -1677,6 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f74bad554af85741bd18bd561046b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HandAnimator: {fileID: 1390346968}
   m_PageImage: {fileID: 1434273240}
   m_TextFieldImage: {fileID: 941507021}
   m_BigTextField: {fileID: 1986966882}
@@ -1725,12 +1728,8 @@ MonoBehaviour:
       van het aantal kruisjes veranderd welke letter welk symbool is. \r\n\r \r\nAls
       er 1 kruisje op het scherm staat volg 1a, als er twee kruisjes op het scherm
       staan volg 1b als er 3 kruisjes op het scherm staan volg 1c."
-  - m_Sprite: {fileID: 0}
-    m_Text: 1a
-  - m_Sprite: {fileID: 0}
-    m_Text: 1b
-  - m_Sprite: {fileID: 0}
-    m_Text: 1c
+  - m_Sprite: {fileID: 21300000, guid: 7f6ee2566a51ed2459167ed95967930d, type: 3}
+    m_Text: 1a, 1b, 1c
   - m_Sprite: {fileID: 21300000, guid: 9847cddbed4b1db4090bc60bd6f29c02, type: 3}
     m_Text: "Als er 3 kruisjes op het scherm staan volg 1a. \nAls er 2 of minder
       kruisjes op het \r\nscherm staan volg 1b\r"
@@ -8213,9 +8212,9 @@ Canvas:
   m_GameObject: {fileID: 1896650860}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 133405617}
+  m_PlaneDistance: 0.6
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
