@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class Manual : MonoBehaviour
 {
     [SerializeField]
+    Animator m_HandAnimator;
+    [SerializeField]
     Image m_PageImage;
     [SerializeField]
     TMP_Text m_TextFieldImage, m_BigTextField;
@@ -42,14 +44,17 @@ public class Manual : MonoBehaviour
 
     private void Update()
     {
+        m_HandAnimator.SetBool("InteractingManual", false);
         if (m_SwapPage.WasPressedThisFrame())
         {
+            m_HandAnimator.SetBool("InteractingManual", true);
             var value = CheckSwapPageInput(m_SwapPage.ReadValue<float>());
             SetPage(value);
         }        
 
         if (m_Bookmark.WasPressedThisFrame())
         {
+            m_HandAnimator.SetBool("InteractingManual", true);
             CheckBookmarkInput();
             Bookmark(m_PageIndex);
         }
@@ -67,10 +72,10 @@ public class Manual : MonoBehaviour
             case int i when (i > 2 && i <= 4):
                 m_CurrentChapter = 1;
                 break;
-            case int i when (i > 4 && i <= 8):
+            case int i when (i > 4 && i <= 6):
                 m_CurrentChapter = 2;
                 break;
-            case int i when (i > 8):
+            case int i when (i > 6):
                 m_CurrentChapter = 3;
                 break;
         }
