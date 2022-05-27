@@ -73,7 +73,7 @@ public class Movement2D : MonoBehaviour
     private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
-        m_Anim.SetBool("Moving", m_MoveDirection == Vector2.zero ? false : true);
+
         m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
         m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
         Bounds bounds = m_Renderer.bounds;
@@ -90,6 +90,10 @@ public class Movement2D : MonoBehaviour
         }
 
         m_Rb.velocity = m_Delta * Time.deltaTime;
+        m_Anim.SetBool("Moving", m_Rb.velocity == Vector2.zero ? false : true);
+        m_Anim.SetBool("MovingHorizontal", m_Rb.velocity.x != 0 ? true : false);
+        m_Anim.SetBool("MovingUp", m_Rb.velocity.y > 0 ? true : false);
+        m_Anim.SetBool("MovingDown", m_Rb.velocity.y < 0 ? true : false);
     }
 
     private void Decay()
