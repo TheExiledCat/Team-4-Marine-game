@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_WheelImage;
+    GameObject m_WheelImage, m_LeftArmImage;
     [SerializeField]
     Animator m_HandAnimator;
     [SerializeField]
@@ -31,7 +31,7 @@ public class ScreenManager : MonoBehaviour
     Pilot.CenterActions m_CenterControls;
     Pilot.ShootingActions m_ShootingControls;
 
-    Vector2 m_Axis;
+    Vector2 m_Axis, m_ShootingAxis;
     Vector3 m_CurrentCameraRotation;
 
     private void Start()
@@ -48,6 +48,9 @@ public class ScreenManager : MonoBehaviour
     private void Update()
     {
         m_Axis = GameManager.GM.m_PilotControls.Cockpit.MoveCamera.ReadValue<Vector2>();
+        m_ShootingAxis = GameManager.GM.m_PilotControls.Shooting.ShootingMovement.ReadValue<Vector2>();
+
+        m_LeftArmImage.GetComponent<RectTransform>().localPosition = new Vector3(m_ShootingAxis.x * 20, m_LeftArmImage.GetComponent<RectTransform>().localPosition.y, m_ShootingAxis.y*20);
 
         MoveCamera();
 
@@ -57,13 +60,7 @@ public class ScreenManager : MonoBehaviour
         {
             if (!m_RightStickPressed)
             {
-                m_CameraIsMoving = true;
-                m_CurrentTime = 0;
-                m_CurrentCameraRotation = Vector3.zero;
-                m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
-                m_RightStickPressed = true;
-                m_ShootingControls.Enable();
-                m_CockpitControls.Disable();
+                StartCoroutine(EnterShoot());
             }
             else
             {
@@ -95,6 +92,26 @@ public class ScreenManager : MonoBehaviour
                 ChangePerspective(m_CurrentIndex);
             }
         }
+    }
+
+    IEnumerator EnterShoot()
+    {
+        m_CameraIsMoving = true;
+        m_CurrentTime = 0;
+        m_CurrentCameraRotation = Vector3.zero;
+        m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
+        m_RightStickPressed = true;
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "StrummerHandIdle")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_WheelImage.SetActive(false);
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "InitiateShooting")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_ShootingControls.Enable();
+        m_CockpitControls.Disable();
     }
 
     IEnumerator ExitShoot()
@@ -173,7 +190,6 @@ public class ScreenManager : MonoBehaviour
         {
             m_CameraIsMoving = false;
             m_HandAnimator.SetBool("IsShooting", true);
-            m_WheelImage.SetActive(false);
         }
     }
 }
