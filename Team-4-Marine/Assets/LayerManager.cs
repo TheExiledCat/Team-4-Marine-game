@@ -6,8 +6,8 @@ public class LayerManager : MonoBehaviour
 {
     [SerializeField] private float m_YBorder;
     [SerializeField] private LayerMask m_Props;
-    [SerializeField] private int m_AbovePlayer;
-    [SerializeField] private int m_BelowPlayer;
+    [SerializeField] private string m_AbovePlayer;
+    [SerializeField] private string m_BelowPlayer;
     private Collider2D[] cols;
     private void Update()
     {
@@ -19,11 +19,11 @@ public class LayerManager : MonoBehaviour
             {
                 if (transform.position.y + m_YBorder > d.transform.position.y + d.GetBorder())
                 {
-                    d.SetOrder(m_AbovePlayer);
+                    d.SetOrder(SortingLayer.NameToID(m_AbovePlayer));
                 }
                 else
                 {
-                    d.SetOrder(m_BelowPlayer);
+                    d.SetOrder(SortingLayer.NameToID(m_BelowPlayer));
                 }
             }
         }

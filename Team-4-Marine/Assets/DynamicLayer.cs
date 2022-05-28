@@ -7,12 +7,12 @@ public class DynamicLayer : MonoBehaviour
 {
     [SerializeField]
     private float m_YBorder;
+    [HideInInspector]
     public SpriteRenderer m_SR;
-    private int m_StartingLayer;
     private void Start()
     {
         m_SR = GetComponent<SpriteRenderer>();
-        m_StartingLayer = m_SR.sortingLayerID;
+        gameObject.layer = LayerMask.NameToLayer("Props");
     }
     private void OnDrawGizmos()
     {
@@ -24,6 +24,7 @@ public class DynamicLayer : MonoBehaviour
     }
     public void SetOrder(int _order)
     {
+        print(SortingLayer.IsValid(_order));
         m_SR.sortingLayerID = _order;
     }
 }
