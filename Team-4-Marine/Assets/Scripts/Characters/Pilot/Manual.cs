@@ -66,16 +66,16 @@ public class Manual : MonoBehaviour
     {
         switch (_pageIndex)
         {
-            case int i when (i <= 2):
+            case int i when (i <= 3):
                 m_CurrentChapter = 0;
                 break;
-            case int i when (i > 2 && i <= 4):
+            case int i when (i > 3 && i <= 6):
                 m_CurrentChapter = 1;
                 break;
-            case int i when (i > 4 && i <= 6):
+            case int i when (i > 6 && i <= 9):
                 m_CurrentChapter = 2;
                 break;
-            case int i when (i > 6):
+            case int i when (i > 9):
                 m_CurrentChapter = 3;
                 break;
         }
