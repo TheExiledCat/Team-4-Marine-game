@@ -5,7 +5,9 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_WheelImage, m_LeftArmImage;
+    CanvasGroup m_ManualUI, m_CenterUI, m_RecordPlayerUI;
+    [SerializeField]
+    GameObject m_WheelImage, m_LeftArmImage, m_RightStickPress, m_RightTriggerShoot;
     [SerializeField]
     Animator m_HandAnimator;
     [SerializeField]
@@ -61,10 +63,12 @@ public class ScreenManager : MonoBehaviour
             if (!m_RightStickPressed)
             {
                 StartCoroutine(EnterShoot());
+                m_CenterUI.alpha = 0;
             }
             else
             {
                 StartCoroutine(ExitShoot());
+                m_CenterUI.alpha = 1;
             }
         }
 
@@ -96,6 +100,7 @@ public class ScreenManager : MonoBehaviour
 
     IEnumerator EnterShoot()
     {
+        m_RightStickPress.SetActive(false);
         m_CameraIsMoving = true;
         m_CurrentTime = 0;
         m_CurrentCameraRotation = Vector3.zero;
@@ -110,12 +115,14 @@ public class ScreenManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+        m_RightTriggerShoot.SetActive(true);
         m_ShootingControls.Enable();
         m_CockpitControls.Disable();
     }
 
     IEnumerator ExitShoot()
     {
+        m_RightTriggerShoot.SetActive(false);
         m_HandAnimator.SetBool("IsShooting", false);
         yield return new WaitForEndOfFrame();
         while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "ExitShooting")
@@ -130,6 +137,7 @@ public class ScreenManager : MonoBehaviour
         m_RightStickPressed = false;
         m_ShootingControls.Disable();
         m_CockpitControls.Enable();
+        m_RightStickPress.SetActive(true);
     }
 
     private void MoveCamera()
@@ -149,15 +157,22 @@ public class ScreenManager : MonoBehaviour
         switch (m_CurrentIndex)
         {
             case 0:
+                m_RecordPlayerUI.alpha = 1;
+                m_CenterUI.alpha = 0;
                 GameManager.GM.SetManualControls(false);
                 GameManager.GM.SetCenterControls(false);
                 break;
             case 1:
+                m_CenterUI.alpha = 1;
+                m_RecordPlayerUI.alpha = 0;
+                m_ManualUI.alpha = 0;
                 m_HandAnimator.SetBool("ManualPerspective", false);
                 GameManager.GM.SetManualControls(false);
                 GameManager.GM.SetCenterControls(true);
                 break;
             case 2:
+                m_CenterUI.alpha = 0;
+                m_ManualUI.alpha = 1;
                 m_HandAnimator.SetBool("ManualPerspective", true);
                 GameManager.GM.SetCenterControls(false);
                 GameManager.GM.SetManualControls(true);
