@@ -10,6 +10,7 @@ public class Movement2D : MonoBehaviour
     private InputAction m_Move;
     private Rigidbody2D m_Rb;
     private Animator m_Anim;
+
     [SerializeField]
     private Vector2 m_Delta,
     m_LastPosition;
@@ -23,9 +24,11 @@ public class Movement2D : MonoBehaviour
 
     [SerializeField]
     private Vector2 m_MoveDirection = Vector2.zero;
+
     private SpriteRenderer m_Renderer;
     private bool m_IsFacingRight = true;
     private GameObject m_Shadow;
+
     private void Start()
     {
         m_Renderer = GetComponentInChildren<SpriteRenderer>();
@@ -70,6 +73,7 @@ public class Movement2D : MonoBehaviour
             m_Delta.y = 0;
         }
     }
+
     private void Update()
     {
         m_MoveDirection = m_Move.ReadValue<Vector2>();
@@ -89,7 +93,7 @@ public class Movement2D : MonoBehaviour
             Move(m_MaxSpeed, m_MaxSpeed);
         }
 
-        m_Rb.velocity = m_Delta * Time.deltaTime;
+        m_Rb.velocity = m_Delta;
         m_Anim.SetBool("Moving", m_Rb.velocity == Vector2.zero ? false : true);
         m_Anim.SetBool("MovingHorizontal", m_Rb.velocity.x > 0.45f ? true : m_Rb.velocity.x < -0.45f ? true : false);
         m_Anim.SetBool("MovingUp", m_Rb.velocity.y > 0.45f ? true : false);
