@@ -40,15 +40,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Overlay
-    uniqueID: 1960887733
-    locked: 0
-  - name: Above Player
-    uniqueID: 3672279143
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 3541382047
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: Above Player
+    uniqueID: 3672279143
+    locked: 0
+  - name: Overlay
+    uniqueID: 1960887733
     locked: 0
