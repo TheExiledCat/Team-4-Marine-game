@@ -37,7 +37,7 @@ public class Shoot : MonoBehaviour
             Fire();
         }
 
-        m_ShootPosition.position += (Vector3)move*Time.deltaTime;
+        m_ShootPosition.position += (Vector3)move*Time.deltaTime*250;
 
         // debug van de raycast
         //Debug.DrawRay(m_PilotCam.transform.position, m_ShootPosition.transform.position-m_PilotCam.transform.position, Color.green);
