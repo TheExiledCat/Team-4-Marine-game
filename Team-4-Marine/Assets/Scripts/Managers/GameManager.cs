@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Engineer m_EngineerControls;
     private List<RoomNode> m_Rooms = new List<RoomNode>();
     public float m_ChaosGradient = 0.5f;
-    private float m_Progress = 0;
+    public float m_Progress = 0;
     private MechanicScript m_Mechanic;
     
     private void Awake()
