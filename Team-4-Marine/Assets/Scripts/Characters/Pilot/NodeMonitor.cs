@@ -130,7 +130,8 @@ public class NodeMonitor : MonoBehaviour
                 trans.anchoredPosition = WorldToCanvas(m.transform.position);
 
                 trans.sizeDelta = new Vector2(m_CanvasTileSize, m_CanvasTileSize);
-                trans.localScale = Vector3.one;
+                trans.localScale = Vector3.one * 3;
+                trans.localEulerAngles = Vector3.zero;
                 nodeObject.name = m.m_NodeName;
                 m_Icons.Add(m.m_NodeName, img);
             }
