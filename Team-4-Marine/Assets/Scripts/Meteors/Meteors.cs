@@ -18,13 +18,6 @@ public class Meteors : MonoBehaviour
     {
         m_OnDamage += GameManager.GM.MeteoriteDamage;
     }
-    public void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            StartSpawner();
-        }
-    }
 
     private IEnumerator MeteorSpawner(int _amount, float _delay)
     {
