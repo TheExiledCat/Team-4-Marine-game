@@ -93,7 +93,7 @@ public class Movement2D : MonoBehaviour
             Move(m_MaxSpeed, m_MaxSpeed);
         }
 
-        m_Rb.velocity = m_Delta / 10;
+        m_Rb.velocity = m_Delta *Time.deltaTime;
         m_Anim.SetBool("Moving", m_Rb.velocity == Vector2.zero ? false : true);
         m_Anim.SetBool("MovingHorizontal", m_Rb.velocity.x > 0.45f ? true : m_Rb.velocity.x < -0.45f ? true : false);
         m_Anim.SetBool("MovingUp", m_Rb.velocity.y > 0.45f ? true : false);
