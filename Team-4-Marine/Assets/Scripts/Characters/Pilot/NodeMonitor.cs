@@ -158,6 +158,10 @@ public class NodeMonitor : MonoBehaviour
                 case DamageState.FULL:
                     img.color = Color.green;
                     break;
+
+                case DamageState.FATAL:
+                    img.color = Color.red;
+                    break;
             }
         }
     }

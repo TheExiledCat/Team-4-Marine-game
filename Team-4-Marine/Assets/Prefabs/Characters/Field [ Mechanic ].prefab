@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 2622618579863442506}
   - component: {fileID: 2622618579863442509}
   - component: {fileID: 2622618579863442508}
+  - component: {fileID: 763901296}
   m_Layer: 0
   m_Name: Power Core
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2622618579863442510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 1.4540119, z: -3.5744343}
+  m_LocalPosition: {x: -1.25, y: 1.4540119, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2622618581595066484}
@@ -237,6 +238,20 @@ MonoBehaviour:
   - {fileID: 590785762037587764}
   m_RedIsOn: 0
   m_YellowIsOn: 0
+--- !u!114 &763901296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2622618579863442510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a547cb517879a84988c67242c1cffac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_YBorder: -0.07
+  m_SR: {fileID: 0}
 --- !u!1 &2622618579867883029
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2622618580622486201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.757156, y: 1.889576, z: -3.5744343}
+  m_LocalPosition: {x: 12.757156, y: 1.889576, z: 0}
   m_LocalScale: {x: 9.784072, y: 9.784072, z: 9.784072}
   m_Children: []
   m_Father: {fileID: 2622618581595066484}
@@ -773,8 +788,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -622688153
+  m_SortingLayer: -2
   m_SortingOrder: 15
   m_Sprite: {fileID: -334300520586288892, guid: 36a8319dd307e9948aa31f156bda62d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1197,6 +1212,7 @@ GameObject:
   - component: {fileID: 2622618581462815815}
   - component: {fileID: 2622618581462815813}
   - component: {fileID: 2622618581462815812}
+  - component: {fileID: 128336283}
   m_Layer: 0
   m_Name: Navigation
   m_TagString: Untagged
@@ -1324,6 +1340,32 @@ MonoBehaviour:
   m_CurrentPosition: {x: 0, y: 0}
   m_Lights: []
   m_LightParent: {fileID: 8416864831067285272}
+--- !u!61 &128336283
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2622618581462815814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.065761566, y: 0.49315405}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.150795, y: 0.59188366}
+  m_EdgeRadius: 0
 --- !u!1 &2622618581479307907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,7 +2597,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2671089825830389477}
   - component: {fileID: 5816847173176330416}
-  - component: {fileID: 8368009990447313999}
   m_Layer: 0
   m_Name: Thruster Left
   m_TagString: Untagged
@@ -2598,24 +2639,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8368009990447313999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6227392683671537856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b21975595e102e449269d5ab969ceea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NodeName: Thruster L
-  m_Icon: {fileID: 21300000, guid: aaa75ce783458e64693fe99aebc23f6d, type: 3}
-  m_Size: {x: 5, y: 10, z: 0}
-  m_Affected: []
-  m_DamageState: 0
-  m_Stations: []
 --- !u!1 &7227131070654611943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,7 +2649,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5663469540915957333}
   - component: {fileID: 4436541870169386175}
-  - component: {fileID: 3600892439416862740}
   m_Layer: 0
   m_Name: Thruster Right
   m_TagString: Untagged
@@ -2669,24 +2691,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3600892439416862740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7227131070654611943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b21975595e102e449269d5ab969ceea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NodeName: Thruster R
-  m_Icon: {fileID: 21300000, guid: aaa75ce783458e64693fe99aebc23f6d, type: 3}
-  m_Size: {x: 5, y: 10, z: 0}
-  m_Affected: []
-  m_DamageState: 0
-  m_Stations: []
 --- !u!1001 &2622618579905926459
 PrefabInstance:
   m_ObjectHideFlags: 0
