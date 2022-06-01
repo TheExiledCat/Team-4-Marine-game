@@ -29,7 +29,7 @@ public class Meteors : MonoBehaviour
             m_WarningLights.SetActive(true);
             yield return new WaitForSeconds(0.5f);
             m_WarningLights.SetActive(false);
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         for (int i = 0; i < _amount; i++)
