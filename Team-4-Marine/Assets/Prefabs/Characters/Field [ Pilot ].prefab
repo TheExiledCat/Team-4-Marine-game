@@ -5941,11 +5941,11 @@ MonoBehaviour:
       aan. Lees de waarde af van de munitiemeter en gebruik het onderstaande schema.
       \r\n"
   - m_Sprite: {fileID: 0}
-    m_Text: "1 - 15. Zet de tandwiel links boven aan. \r\n16 - 35. Zet de tandwiel
-      rechts onder aan en zet de rechter hendel in de onderste positie.\r\n36 - 65.
-      Zet de tandwiel links onder en links boven aan.\r\n66 - 83. Zet de tandwiel
-      rechts onder aan en zet de linker hendel in de bovenste positie.\r\n84 - 100.
-      Zet alle tandwielen aan.\r\n"
+    m_Text: "1 - 10. Zet de linker tandwiel aan. \r\n11 - 35. Zet de rechter tandwiel
+      aan en zet de rechter hendel in de bovenste positie.\r\n36 - 65. Zet de bovenste
+      tandwiel en de onderste tandwiel aan.\r\n66 - 83. Zet de onderste tandwiel
+      aan en zet de linker hendel in de bovenste positie.\r\n84 - 100. Zet alle tandwielen
+      aan.\r\n"
   - m_Sprite: {fileID: 21300000, guid: 388c349935b0b064da3be0f01928be02, type: 3}
     m_Text: Op een scherm staan verschillende symbolen. Deze symbolen moeten vertaald
       worden naar letters die een woord maken.

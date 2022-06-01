@@ -72,10 +72,10 @@ public class Manual : MonoBehaviour
             case int i when (i > 3 && i <= 6):
                 m_CurrentChapter = 1;
                 break;
-            case int i when (i > 6 && i <= 9):
+            case int i when (i > 6 && i <= 11):
                 m_CurrentChapter = 2;
                 break;
-            case int i when (i > 9):
+            case int i when (i > 11):
                 m_CurrentChapter = 3;
                 break;
         }
