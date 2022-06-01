@@ -109,7 +109,7 @@ public class RoomNode : MapNode
         }
     }
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, m_Size);

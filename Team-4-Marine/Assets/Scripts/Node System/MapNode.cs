@@ -14,7 +14,7 @@ public class MapNode : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, "MapNode");
     }
