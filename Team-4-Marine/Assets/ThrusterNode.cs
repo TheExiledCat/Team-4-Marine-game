@@ -13,7 +13,7 @@ public class ThrusterNode : UtilityNode
     {
         if (m_Activated)
         {
-            GameManager.GM.m_Progress += 100 / m_Increment;
+            GameManager.GM.m_Progress += 1 / m_Increment;
         }
     }
     protected override void OnDrawGizmos()
