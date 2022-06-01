@@ -1982,7 +1982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NodeName: Thruster R
   m_Icon: {fileID: 0}
-  m_Activated: 0
+  m_Activated: 1
 --- !u!50 &2895152139063864288
 Rigidbody2D:
   serializedVersion: 4
@@ -2826,7 +2826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NodeName: Thruster L
   m_Icon: {fileID: 0}
-  m_Activated: 0
+  m_Activated: 1
 --- !u!50 &1147731122439374571
 Rigidbody2D:
   serializedVersion: 4
