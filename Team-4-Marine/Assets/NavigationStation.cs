@@ -22,9 +22,8 @@ public class NavigationStation : RepairStation
 
     private void Awake()
     {
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
-        m_MazeB = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
-
+        m_MazeA = JsonUtility.FromJson<Maze>(Resources.Load<TextAsset>("MazeA").text);
+        m_MazeB = JsonUtility.FromJson<Maze>(Resources.Load<TextAsset>("MazeB").text);
         m_ChosenMaze = m_MazeA;
     }
 
