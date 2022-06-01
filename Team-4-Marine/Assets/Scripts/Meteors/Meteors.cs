@@ -6,6 +6,8 @@ using UnityEngine;
 public class Meteors : MonoBehaviour
 {
     [SerializeField]
+    GameObject m_WarningLights;
+    [SerializeField]
     private List<Sprite> m_Sprites;
 
     public GameObject m_MeteorPrefab;
@@ -21,6 +23,14 @@ public class Meteors : MonoBehaviour
 
     private IEnumerator MeteorSpawner(int _amount, float _delay)
     {
+        for (int i = 0; i < 3; i++)
+        {
+            m_WarningLights.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            m_WarningLights.SetActive(false);
+            yield return new WaitForSeconds(0.15f);
+        }
+
         for (int i = 0; i < _amount; i++)
         {
             Y_Pos = UnityEngine.Random.Range(m_BoundingBox.center.x - m_BoundingBox.size.x / 2, m_BoundingBox.center.x + m_BoundingBox.size.x / 2);
