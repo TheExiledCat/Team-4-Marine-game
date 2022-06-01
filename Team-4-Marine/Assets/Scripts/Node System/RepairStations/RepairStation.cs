@@ -121,7 +121,7 @@ public class RepairStation : MonoBehaviour
             m_Fixed = false;
             m_DamageTaken++;
             GetComponent<SpriteRenderer>().color = Color.yellow;
-            
+
             CheckDamage();
         }
     }
@@ -131,12 +131,14 @@ public class RepairStation : MonoBehaviour
         SetErrorLights();
         if (m_DamageTaken == 2)
         {
+            Close();
             m_Opened = false;
             print("Locking Station");
             m_Locked = true;
             Invoke("Unlock", m_LockTime);
             Invoke("Close", 2f);
             GameManager.GM.DisableMechanicInteraction();
+
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
