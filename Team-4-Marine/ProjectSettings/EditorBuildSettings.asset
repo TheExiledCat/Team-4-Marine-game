@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CockpitBuild.unity
     guid: bba62f0bb485a2e4fb1a7303bf866f3e
   - enabled: 1

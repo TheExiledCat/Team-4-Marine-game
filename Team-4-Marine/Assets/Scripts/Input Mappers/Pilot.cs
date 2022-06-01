@@ -258,15 +258,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             ""id"": ""c1cf1589-51ce-451f-8985-1d177881d7d8"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""ab2d5cb3-37f5-4dde-af95-6e194f022730"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ShootingMovement"",
                     ""type"": ""Value"",
                     ""id"": ""7c0bf33b-32ca-4388-97a0-74a86acb3b96"",
@@ -288,19 +279,8 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""cde1d773-5c17-4887-af32-ccd17f416203"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7ee91439-4028-4132-bd3b-68743d4473c0"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -311,7 +291,7 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d62c6b42-bd54-4f9a-9136-1944d3f2788a"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -339,7 +319,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         m_Cockpit_ToCockpitScreen = m_Cockpit.FindAction("ToCockpitScreen", throwIfNotFound: true);
         // Shooting
         m_Shooting = asset.FindActionMap("Shooting", throwIfNotFound: true);
-        m_Shooting_Newaction = m_Shooting.FindAction("New action", throwIfNotFound: true);
         m_Shooting_ShootingMovement = m_Shooting.FindAction("ShootingMovement", throwIfNotFound: true);
         m_Shooting_Shooting = m_Shooting.FindAction("Shooting", throwIfNotFound: true);
     }
@@ -532,14 +511,12 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     // Shooting
     private readonly InputActionMap m_Shooting;
     private IShootingActions m_ShootingActionsCallbackInterface;
-    private readonly InputAction m_Shooting_Newaction;
     private readonly InputAction m_Shooting_ShootingMovement;
     private readonly InputAction m_Shooting_Shooting;
     public struct ShootingActions
     {
         private @Pilot m_Wrapper;
         public ShootingActions(@Pilot wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Shooting_Newaction;
         public InputAction @ShootingMovement => m_Wrapper.m_Shooting_ShootingMovement;
         public InputAction @Shooting => m_Wrapper.m_Shooting_Shooting;
         public InputActionMap Get() { return m_Wrapper.m_Shooting; }
@@ -551,9 +528,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_ShootingActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnNewaction;
                 @ShootingMovement.started -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
                 @ShootingMovement.performed -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
                 @ShootingMovement.canceled -= m_Wrapper.m_ShootingActionsCallbackInterface.OnShootingMovement;
@@ -564,9 +538,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
             m_Wrapper.m_ShootingActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
                 @ShootingMovement.started += instance.OnShootingMovement;
                 @ShootingMovement.performed += instance.OnShootingMovement;
                 @ShootingMovement.canceled += instance.OnShootingMovement;
@@ -595,7 +566,6 @@ public partial class @Pilot : IInputActionCollection2, IDisposable
     }
     public interface IShootingActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
         void OnShootingMovement(InputAction.CallbackContext context);
         void OnShooting(InputAction.CallbackContext context);
     }

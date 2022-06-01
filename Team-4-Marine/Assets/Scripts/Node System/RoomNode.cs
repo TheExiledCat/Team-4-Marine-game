@@ -9,15 +9,16 @@ public class RoomNode : MapNode
     protected Vector3 m_Size;
 
     [SerializeField]
-    protected UtilityNode m_Affected;
+    protected List<UtilityNode> m_Affected;
 
     public DamageState m_DamageState = 0;
 
     [SerializeField]
     private List<RepairStation> m_Stations = new List<RepairStation>();
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         List<Collider2D> cols = Physics2D.OverlapBoxAll(transform.position, m_Size, 0).ToList();
         List<RepairStation> stations = new List<RepairStation>();
         foreach (Collider2D c in cols)
@@ -25,7 +26,7 @@ public class RoomNode : MapNode
             if (c.GetComponent<RepairStation>() != null)
             {
                 stations.Add(c.GetComponent<RepairStation>());
-            }       
+            }
         }
         m_Stations = stations;
     }
@@ -102,10 +103,13 @@ public class RoomNode : MapNode
         }
         UpdateDamageState((float)fixedStations / (float)totalStations);
         print(fixedStations + " out of " + totalStations + " are working");
-        m_Affected.SetEnabled(nodeIsFixed);
+        foreach (UtilityNode u in m_Affected)
+        {
+            u.SetEnabled(nodeIsFixed);
+        }
     }
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, m_Size);

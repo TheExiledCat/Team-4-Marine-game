@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="PILOT&#xD;&#xA;">
+    <Position X="23.5" Y="0.69" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Mechanic&#xD;&#xA;">
+    <Position X="12.784" Y="0.829" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="SYSTEMS&#xD;&#xA;">
+    <Position X="17.941" Y="0.694" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Puzzles&#xD;&#xA;">
+    <Position X="0.5" Y="0.865" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="MechanicScript">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAiAAAAAAABAACAAAICAAAAABBAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Mechanic\MechanicScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Movement2D">
+    <Position X="14.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEBAgAAqAAAAAgoEAAEAAAAAAIAjAAAAAABQEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Mechanic\Movement2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraPerspective">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\CameraPerspective.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CockpitLights">
+    <Position X="30.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAACABAAAAEAAAAAAAAAAAAACAAAAAIAAQAQA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\CockpitLights.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Manual">
+    <Position X="23.5" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Manual.BookmarkButton" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Characters\Pilot\Manual.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAcgAAAgQSRaAAAIAwAAACCAIQAAABAhABAAEgQEAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\Manual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodeMonitor">
+    <Position X="32.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgQACAAFCjIAAAAAIAAEBAAgAAAASYACAAAAAAAAAII=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\NodeMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgressSlider">
+    <Position X="23.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\ProgressSlider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScrollMonitor">
+    <Position X="28.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAIAAAAIAAAAAAAAAIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\ScrollMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="18" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAgAEIACAAAAAAAAQACAgYAAQARAAIEAgAAAQAAEA=</HashCode>
+      <FileName>Assets\Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScreenManager">
+    <Position X="27" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BRaAAAAAACHUAIAUIKAggIAAQAgRAAAAAACA4AAABAA=</HashCode>
+      <FileName>Assets\Scripts\Managers\ScreenManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Meteor">
+    <Position X="27" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQIAAAAAAAAAQAAAAAAAAAAAAACAAACAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Meteors\Meteor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Meteors">
+    <Position X="25.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAGAACACAAEAAAAAAAgiAAACAAAAAAAAAQAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Meteors\Meteors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapNode">
+    <Position X="2" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAACAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\MapNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MultiUtilityNode">
+    <Position X="5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAACAAAAAAAAAgAEAAAAAAAAAAAIABAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Node System\MultiUtilityNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeneratorStation">
+    <Position X="0.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAACCAgAAAAAAAAIAAAgAAAggAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\GeneratorStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RepairStation">
+    <Position X="0.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQEACEAAHAEIYgEQABAIEAKwAKAiIAAEAIAgQCgAAg=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\RepairStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonComponent" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\ButtonComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cell">
+    <Position X="7" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAACAAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handle">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Handle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Indicator">
+    <Position X="7.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAACAAACUAAAAAAABAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Indicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interactable">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAEAAAAAAAAAAAAACAIAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Interactable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maze">
+    <Position X="21.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAABAAAAAAAAAAAAAACAAAAAAAAgAAI=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PuzzleComponent" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\PuzzleComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RotaryKnob">
+    <Position X="5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\RotaryKnob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Selector">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAACAAgAAAEIAAAACAIACAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Selector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StationDisplay">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABEAAAAAACAAAAAgAAACAABKAAAAEAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\StationDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Switch">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIJMAAAAAAgAAAAAAAAACAIAQAABAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Switch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToggleButton">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAACYIAAAABAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\ToggleButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomNode">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQGQAAEACAAAAAAAAAAAAAAAAQEAECAAAAAgAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RoomNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UtilityNode">
+    <Position X="3.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAIA=</HashCode>
+      <FileName>Assets\Scripts\Node System\UtilityNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacuumDoor">
+    <Position X="2.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\VacuumDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponStation">
+    <Position X="3" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAIACAAAAAAAAIAIAAAgAAAgEBAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\WeaponStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DynamicLayer">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEAAAAACAAAEAAAAAAAAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\DynamicLayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LayerManager">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAAAAAAAAAAAAQAAAGAAAAAAAAAEABAAAA=</HashCode>
+      <FileName>Assets\LayerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lazer">
+    <Position X="28.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Lazer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenu">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MazeGenerator">
+    <Position X="20" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAAIEAgEAA=</HashCode>
+      <FileName>Assets\MazeGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavigationStation">
+    <Position X="4.75" Y="26.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgWAAAAAACgAAAAAAEAAAAAAgAAAgAAIQCkACAAggEE=</HashCode>
+      <FileName>Assets\NavigationStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponDisplay" Collapsed="true">
+    <Position X="10" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAQAAAEgAAAAAAAACAAABAAwAAAAAAAAAgAEA=</HashCode>
+      <FileName>Assets\WeaponDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="DamageState">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAIAAAAAAAAAACAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RoomNode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -38,6 +38,7 @@ public class RepairStation : MonoBehaviour
     protected int m_DamageTaken = 0;
     private bool m_Locked = false;
     private float m_LockTime = 15f;
+
     public virtual void Start()
     {
         InitiatePuzzle();
@@ -120,23 +121,28 @@ public class RepairStation : MonoBehaviour
             m_Fixed = false;
             m_DamageTaken++;
             GetComponent<SpriteRenderer>().color = Color.yellow;
-            SetErrorLights();
+
             CheckDamage();
         }
     }
+
     protected void CheckDamage()
     {
+        SetErrorLights();
         if (m_DamageTaken == 2)
         {
+            Close();
             m_Opened = false;
             print("Locking Station");
             m_Locked = true;
             Invoke("Unlock", m_LockTime);
             Invoke("Close", 2f);
             GameManager.GM.DisableMechanicInteraction();
+
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
+
     private void Unlock()
     {
         m_Locked = false;
@@ -174,11 +180,13 @@ public class RepairStation : MonoBehaviour
     {
         return m_Fixed;
     }
+
     protected virtual void TakeDamage(int _amount = 1)
     {
         m_DamageTaken += _amount;
         CheckDamage();
     }
+
     protected virtual void OnDrawGizmos()
     {
         if (m_Fixed)

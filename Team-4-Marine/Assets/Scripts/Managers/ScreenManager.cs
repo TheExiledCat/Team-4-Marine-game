@@ -5,6 +5,12 @@ using UnityEngine;
 public class ScreenManager : MonoBehaviour
 {
     [SerializeField]
+    CanvasGroup m_ManualUI, m_CenterUI, m_RecordPlayerUI;
+    [SerializeField]
+    GameObject m_WheelImage, m_LeftArmImage, m_RightStickPress, m_RightTriggerShoot;
+    [SerializeField]
+    Animator m_HandAnimator;
+    [SerializeField]
     CameraPerspective m_ShootingPerspective;
     [SerializeField]
     List<CameraPerspective> m_CameraPerspectives = new List<CameraPerspective>();
@@ -18,7 +24,6 @@ public class ScreenManager : MonoBehaviour
     float m_CameraSpeed = 10;
 
     bool m_CameraIsMoving;
-    bool m_ManualShown = false;
     bool m_RightStickPressed = false;
 
     [SerializeField]
@@ -28,7 +33,7 @@ public class ScreenManager : MonoBehaviour
     Pilot.CenterActions m_CenterControls;
     Pilot.ShootingActions m_ShootingControls;
 
-    Vector2 m_Axis;
+    Vector2 m_Axis, m_ShootingAxis;
     Vector3 m_CurrentCameraRotation;
 
     private void Start()
@@ -45,6 +50,9 @@ public class ScreenManager : MonoBehaviour
     private void Update()
     {
         m_Axis = GameManager.GM.m_PilotControls.Cockpit.MoveCamera.ReadValue<Vector2>();
+        m_ShootingAxis = GameManager.GM.m_PilotControls.Shooting.ShootingMovement.ReadValue<Vector2>();
+
+        m_LeftArmImage.GetComponent<RectTransform>().localPosition = new Vector3(m_ShootingAxis.x * 20, m_LeftArmImage.GetComponent<RectTransform>().localPosition.y, m_ShootingAxis.y*20);
 
         MoveCamera();
 
@@ -52,32 +60,26 @@ public class ScreenManager : MonoBehaviour
 
         if (m_CenterControls.ZoomIn.WasPressedThisFrame())
         {
-            m_CameraIsMoving = true;
-            m_CurrentTime = 0;
             if (!m_RightStickPressed)
             {
-                m_RightStickPressed = true;
-                m_ShootingControls.Enable();
-                m_CockpitControls.Disable();
+                StartCoroutine(EnterShoot());
+                m_CenterUI.alpha = 0;
             }
             else
             {
-                m_RightStickPressed = false;
-                m_ShootingControls.Disable();
-                m_CockpitControls.Enable();
+                StartCoroutine(ExitShoot());
+                m_CenterUI.alpha = 1;
             }
         }
 
         if (m_CockpitControls.ToManualScreen.WasPressedThisFrame())
         {
             m_CurrentIndex++;
-            m_ManualShown = true;
             ToggleScreens();
         }
         if (m_CockpitControls.ToCockpitScreen.WasPressedThisFrame())
         {
             m_CurrentIndex--;
-            m_ManualShown = false;
             ToggleScreens();
         }
         m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
@@ -96,6 +98,48 @@ public class ScreenManager : MonoBehaviour
         }
     }
 
+    IEnumerator EnterShoot()
+    {
+        m_RightStickPress.SetActive(false);
+        m_CameraIsMoving = true;
+        m_CurrentTime = 0;
+        m_CurrentCameraRotation = Vector3.zero;
+        m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
+        m_RightStickPressed = true;
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "StrummerHandIdle")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_WheelImage.SetActive(false);
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "InitiateShooting")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_RightTriggerShoot.SetActive(true);
+        m_ShootingControls.Enable();
+        m_CockpitControls.Disable();
+    }
+
+    IEnumerator ExitShoot()
+    {
+        m_RightTriggerShoot.SetActive(false);
+        m_HandAnimator.SetBool("IsShooting", false);
+        yield return new WaitForEndOfFrame();
+        while (m_HandAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "ExitShooting")
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        m_CameraIsMoving = true;
+        m_CurrentTime = 0;
+        m_WheelImage.SetActive(true);
+        m_CurrentCameraRotation = Vector3.zero;
+        m_Camera.transform.localEulerAngles = m_CurrentCameraRotation;
+        m_RightStickPressed = false;
+        m_ShootingControls.Disable();
+        m_CockpitControls.Enable();
+        m_RightStickPress.SetActive(true);
+    }
+
     private void MoveCamera()
     {
         float offsetX = m_CurrentPerspective.m_CameraRotations.x;
@@ -108,17 +152,31 @@ public class ScreenManager : MonoBehaviour
 
     private void ToggleScreens()
     {
-        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count - 1);
+        m_CurrentIndex = Mathf.Clamp(m_CurrentIndex, 0, m_CameraPerspectives.Count -1);
         m_CurrentTime = 0;
-        if (m_ManualShown)
+        switch (m_CurrentIndex)
         {
-            GameManager.GM.SetCenterControls(false);
-            GameManager.GM.SetManualControls(true);
-        }
-        else
-        {
-            GameManager.GM.SetManualControls(false);
-            GameManager.GM.SetCenterControls(true);
+            case 0:
+                m_RecordPlayerUI.alpha = 1;
+                m_CenterUI.alpha = 0;
+                GameManager.GM.SetManualControls(false);
+                GameManager.GM.SetCenterControls(false);
+                break;
+            case 1:
+                m_CenterUI.alpha = 1;
+                m_RecordPlayerUI.alpha = 0;
+                m_ManualUI.alpha = 0;
+                m_HandAnimator.SetBool("ManualPerspective", false);
+                GameManager.GM.SetManualControls(false);
+                GameManager.GM.SetCenterControls(true);
+                break;
+            case 2:
+                m_CenterUI.alpha = 0;
+                m_ManualUI.alpha = 1;
+                m_HandAnimator.SetBool("ManualPerspective", true);
+                GameManager.GM.SetCenterControls(false);
+                GameManager.GM.SetManualControls(true);
+                break;
         }
         if(m_CurrentPerspective != m_CameraPerspectives[m_CurrentIndex])
         {
@@ -143,10 +201,10 @@ public class ScreenManager : MonoBehaviour
     private void ChangePerspective(CameraPerspective _cameraPerspective, Vector3 _startPosition)
     {
         m_Camera.transform.position = Vector3.Lerp(_startPosition, _cameraPerspective.m_PerspectiveBounds.center, m_T);
-        m_Camera.transform.localEulerAngles = Vector3.Lerp(m_CurrentCameraRotation, _cameraPerspective.m_CameraRotations, m_T);
         if (m_CurrentTime >= m_TargetTime)
         {
             m_CameraIsMoving = false;
+            m_HandAnimator.SetBool("IsShooting", true);
         }
     }
 }

@@ -13,38 +13,47 @@ public class NavigationStation : RepairStation
 
     private Vector2Int m_PreviousPosition;
     private Maze m_ChosenMaze;
+
     [SerializeField]
     private Indicator[] m_Lights;
 
     [SerializeField]
     private GameObject m_LightParent;
 
+    private void Awake()
+    {
+        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
+        m_MazeB = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
+
+        m_ChosenMaze = m_MazeA;
+    }
+
     // Update is called once per frame
     public override void Start()
     {
+        base.Start();
         m_Buttons[0].m_Actions.AddListener(MoveLeft);
         m_Buttons[1].m_Actions.AddListener(MoveRight);
         m_Buttons[2].m_Actions.AddListener(MoveDown);
         m_Buttons[3].m_Actions.AddListener(MoveUp);
-        base.Start();
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeA.txt")));
-        m_MazeA = JsonUtility.FromJson<Maze>(System.IO.File.ReadAllText(System.IO.Path.Combine(Application.dataPath + "/Mazes", "MazeB.txt")));
     }
+
     public override void InitiatePuzzle()
     {
         base.InitiatePuzzle();
-
+        print("initiating");
         switch (m_Displays[0].GetCrosses())
         {
             case 1:
                 m_ChosenMaze = m_MazeA;
                 break;
+
             case float n when (n > 1):
                 m_ChosenMaze = m_MazeB;
                 break;
         }
         print(m_ChosenMaze.m_Width);
-
+        print(m_Lights.Length);
         m_Lights = m_LightParent.GetComponentsInChildren<Indicator>();
         for (int i = 0; i < m_Lights.Length; i++)
         {
@@ -54,6 +63,7 @@ public class NavigationStation : RepairStation
         //StartCoroutine(Test());
         m_CurrentPosition = Vector2Int.zero;
     }
+
     protected override void Update()
     {
         base.Update();
@@ -92,7 +102,16 @@ public class NavigationStation : RepairStation
         m_PreviousPosition = m_CurrentPosition;
         Vector2Int start = m_CurrentPosition;
         Vector2Int target = start + _dir;
-        Cell currentCell = m_ChosenMaze.m_Cells[PositionToIndicator(start)];
+        Cell currentCell = null;
+        try
+        {
+            currentCell = m_ChosenMaze.m_Cells[PositionToIndicator(start)];
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Error");
+        }
+        print(currentCell);
         Cell targetCell = null;
         bool wallFound = false;
         try
@@ -131,10 +150,12 @@ public class NavigationStation : RepairStation
         print("Wall: " + wallFound);
         return wallFound;
     }
+
     public override void CheckWinCondition()
     {
         base.CheckWinCondition();
     }
+
     public override bool CheckForFailure()
     {
         if (m_CurrentPosition == m_ChosenMaze.m_EndPosition)
@@ -143,6 +164,7 @@ public class NavigationStation : RepairStation
         }
         return true;
     }
+
     private int PositionToIndicator(Vector2Int _position)
     {
         int target = _position.x + _position.y * (m_ChosenMaze.m_Width);

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,9 +10,9 @@ public class GameManager : MonoBehaviour
     public Engineer m_EngineerControls;
     private List<RoomNode> m_Rooms = new List<RoomNode>();
     public float m_ChaosGradient = 0.5f;
-    private float m_Progress = 0;
+    public float m_Progress = 0;
     private MechanicScript m_Mechanic;
-
+    
     private void Awake()
     {
         if (GM == null)
@@ -41,17 +42,12 @@ public class GameManager : MonoBehaviour
                 m_Rooms.Add(nodes[i] as RoomNode);
             }
         }
+        print("Damaging");
+        CauseShipDamage(5f,true);
     }
 
-    private void Update()
-    {
-        if (m_EngineerControls.Interactions.ReturnInteract.WasPressedThisFrame())
-        {
-            print("Damaging");
-            CauseShipDamage();
-        }
-    }
-
+  
+    //UpdateGradient
     public void ForceRoam()
     {
         m_Mechanic.Roam();
@@ -114,9 +110,17 @@ public class GameManager : MonoBehaviour
             m_EngineerControls.Movement2D.Disable();
         }
     }
-
-    public void CauseShipDamage(bool _recall = false)
+    public void MeteoriteDamage()
     {
+        CauseShipDamage(0,false);
+    }
+    public void CauseShipDamage(float _startDelay,bool _recall = false)
+    {
+        StartCoroutine(DamageShip(_startDelay, _recall));
+    }
+    IEnumerator DamageShip(float _delay = 0, bool _recall = false)
+    {
+        yield return new WaitForSeconds(_delay);
         bool selected = false;
         var rnd = new System.Random();
         RoomNode selection = null;
@@ -138,7 +142,8 @@ public class GameManager : MonoBehaviour
         if (selection) selection.TakeDamage(1);
         if (_recall)
         {
-            Invoke("CauseShipDamage", 120 - (60 * m_ChaosGradient));
+            StartCoroutine(DamageShip( 80 - (20 * m_ChaosGradient),_recall));
         }
+        yield break ;
     }
 }

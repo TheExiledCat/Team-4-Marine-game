@@ -9,12 +9,12 @@ public class MapNode : MonoBehaviour
 
     public Sprite m_Icon;
 
-    private void Start()
+    protected virtual void Start()
     {
         GetComponent<Rigidbody2D>().isKinematic = true;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawIcon(transform.position, "MapNode");
     }

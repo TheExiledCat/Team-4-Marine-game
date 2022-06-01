@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void CloseMainMenu()
     {
         SceneManager.LoadScene(sceneName: "Cockpit");
     }
+
 
     public void QuitGame()
     {
