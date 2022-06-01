@@ -7205,12 +7205,17 @@ MonoBehaviour:
     m_Text: Op de munitie meter staat een nummer, aan de hand van dat nummer moeten
       de tandwielen op een bepaald volgorde geactiveerd worden.
   - m_Sprite: {fileID: 0}
-    m_Text: "Als er 1 kruisje op het scherm staat volg 2a. Als er 2 of meer kruisjes
-      op het scherm staan volg 2b.\r\n\r\n2a. Zet beide hendels in de onderste positie.
-      Lees de waarde af van de munitiemeter en gebruik het onderstaande schema. \r\n\r\n2b.
-      Zet de linker hendel in de onderste positie. Zet het tandwiel rechts boven
-      aan. Lees de waarde af van de munitiemeter en gebruik het onderstaande schema.
-      \r\n"
+    m_Text: 'Als er 1 kruisje op het scherm staat volg 2a. Als er 2 of meer kruisjes
+      op het scherm staan volg 2b.
+
+      2a. Zet beide hendels in de onderste positie.
+      Lees de waarde af van de munitiemeter en gebruik het onderstaande schema.
+
+      2b.
+      Zet de linker hendel in de onderste positie. Zet het tandwiel rechts aan. Lees
+      de waarde af van de munitiemeter en gebruik het onderstaande schema.
+
+'
   - m_Sprite: {fileID: 0}
     m_Text: "1 - 10. Zet de linker tandwiel aan. \r\n11 - 35. Zet de rechter tandwiel
       aan en zet de rechter hendel in de bovenste positie.\r\n36 - 65. Zet de bovenste
