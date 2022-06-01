@@ -6,7 +6,7 @@ public class MechanicScript : MonoBehaviour
 {
     [SerializeField]
     private RepairStation m_CurrentStation;
-    [SerializeField] Camera m_EngineerCam;
+    [SerializeField] private Camera m_EngineerCam;
     [SerializeField] private LayerMask m_Interactables;
     private bool m_Repairing;
 
@@ -16,11 +16,6 @@ public class MechanicScript : MonoBehaviour
     }
 
     public bool m_CanInteract = true;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-    }
 
     // Update is called once per frame
     private void Update()
@@ -47,10 +42,6 @@ public class MechanicScript : MonoBehaviour
             }
         }
         Interact();
-    }
-
-    private void FixedUpdate()
-    {
     }
 
     private void Interact()
@@ -84,9 +75,12 @@ public class MechanicScript : MonoBehaviour
 
     private void Repair()
     {
-        m_CurrentStation.Open();
-        m_Repairing = true;
-        GameManager.GM.SetMovement2DControls(false);
+        if (!m_CurrentStation.IsFixed())
+        {
+            m_CurrentStation.Open();
+            m_Repairing = true;
+            GameManager.GM.SetMovement2DControls(false);
+        }
     }
 
     public void Roam()
