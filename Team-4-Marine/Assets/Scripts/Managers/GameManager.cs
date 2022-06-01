@@ -2,7 +2,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-
+using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM = null;
@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public float m_ChaosGradient = 0.5f;
     public float m_Progress = 0;
     private MechanicScript m_Mechanic;
-    
+    public event Action OnMeteorShower;
+
     private void Awake()
     {
         if (GM == null)
@@ -43,10 +44,10 @@ public class GameManager : MonoBehaviour
             }
         }
         print("Damaging");
-        CauseShipDamage(5f,true);
+        CauseShipDamage(5f, true);
+        Invoke("CauseMeteorShower", 15 + 10 * m_ChaosGradient);
     }
 
-  
     //UpdateGradient
     public void ForceRoam()
     {
@@ -112,13 +113,18 @@ public class GameManager : MonoBehaviour
     }
     public void MeteoriteDamage()
     {
-        CauseShipDamage(0,false);
+        CauseShipDamage(0, false);
     }
-    public void CauseShipDamage(float _startDelay,bool _recall = false)
+    public void CauseShipDamage(float _startDelay, bool _recall = false)
     {
         StartCoroutine(DamageShip(_startDelay, _recall));
     }
-    IEnumerator DamageShip(float _delay = 0, bool _recall = false)
+    private void CauseMeteorShower()
+    {
+        OnMeteorShower?.Invoke();
+        Invoke("CauseMeteorShower", 35 + 20 * m_ChaosGradient);
+    }
+    private IEnumerator DamageShip(float _delay = 0, bool _recall = false)
     {
         yield return new WaitForSeconds(_delay);
         bool selected = false;
@@ -142,8 +148,8 @@ public class GameManager : MonoBehaviour
         if (selection) selection.TakeDamage(1);
         if (_recall)
         {
-            StartCoroutine(DamageShip( 80 - (20 * m_ChaosGradient),_recall));
+            StartCoroutine(DamageShip(80 - (20 * m_ChaosGradient), _recall));
         }
-        yield break ;
+        yield break;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Meteors : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_WarningLights;
+    private GameObject m_WarningLights;
     [SerializeField]
     private List<Sprite> m_Sprites;
 
@@ -19,6 +19,7 @@ public class Meteors : MonoBehaviour
     private void Start()
     {
         m_OnDamage += GameManager.GM.MeteoriteDamage;
+        GameManager.GM.OnMeteorShower += StartSpawner;
     }
 
     private IEnumerator MeteorSpawner(int _amount, float _delay)
