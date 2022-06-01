@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ProgressSlider : MonoBehaviour
 {
-    Slider m_Slider;
+    private Image m_Slider;
 
     private void Start()
     {
-        m_Slider = gameObject.GetComponent<Slider>();
+        m_Slider = gameObject.GetComponent<Image>();
     }
-    
-    public void HandleSliderValue()
+
+    private void Update()
     {
-        m_Slider.value = GameManager.GM.m_Progress;
+        m_Slider.fillAmount = GameManager.GM.m_Progress;
     }
 }
