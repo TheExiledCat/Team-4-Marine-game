@@ -360,6 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66eced6c1e4d1a4d8c97fce50bc6c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_WarningLights: {fileID: 2085451360}
   m_Sprites:
   - {fileID: 3604153571076352497, guid: ee1d96b7f73df344ab5dba8e26f5599c, type: 3}
   - {fileID: -1237233469960739150, guid: c397a448f6619d742baa6e64107334fb, type: 3}
@@ -404,6 +405,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2085451360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2085451360, guid: da3224aae1e2d4b4191a25362d0461d8, type: 3}
+  m_PrefabInstance: {fileID: 8429211234622553646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2622618581206177134
 PrefabInstance:
   m_ObjectHideFlags: 0
