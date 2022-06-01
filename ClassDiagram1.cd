@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ActivateAllDisplays" Collapsed="true">
+    <Position X="18" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\ActivateAllDisplays.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MechanicScript" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQAAAAAAiAAAAAAABAACAAAICAAAAABBAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Mechanic\MechanicScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Movement2D" Collapsed="true">
+    <Position X="21.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEBAgAAqAAAAAgoEAAEAAAAAAIAjAAAAAABQEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Mechanic\Movement2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trigger" Collapsed="true">
+    <Position X="18" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAACAACAAAAAAAAAAAAAAAEAQAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Mechanic\Trigger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraPerspective" Collapsed="true">
+    <Position X="19.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\CameraPerspective.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CockpitLights" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAACABAAAAEAAAAAAAAAAAAACAAAAAIAAQAQA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\CockpitLights.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Manual" Collapsed="true">
+    <Position X="21.5" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Manual.BookmarkButton" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Characters\Pilot\Manual.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAcgAAAgQSRaAAAIAwAAACCAIQAAABAhABAAEgQEAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\Manual.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodeMonitor" Collapsed="true">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgQACAAFCjIAAAAAIAAEBAAgAAAASYACAAAAAAAAAII=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\NodeMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Page" Collapsed="true">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\Page.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgressSlider" Collapsed="true">
+    <Position X="18" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\ProgressSlider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScrollMonitor" Collapsed="true">
+    <Position X="21.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAIAAAAIAAAAAAAAAIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Characters\Pilot\ScrollMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="@Engineer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@Engineer.Movement2DActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@Engineer.UIActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@Engineer.InteractionsActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@Engineer.IMovement2DActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@Engineer.IUIActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@Engineer.IInteractionsActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Engineer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIACAgAAACIABJAgAALACRAJYAofBXAUACMgoDhQAIA=</HashCode>
+      <FileName>Assets\Scripts\Input Mappers\Engineer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="@Pilot" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@Pilot.CenterActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@Pilot.ManualActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@Pilot.CockpitActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@Pilot.ShootingActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@Pilot.ICenterActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@Pilot.IManualActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@Pilot.ICockpitActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@Pilot.IShootingActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Input Mappers\Pilot.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ggACAQAEACCDQBEFAAAADBABgAAAAmCFAAAgAABwAAA=</HashCode>
+      <FileName>Assets\Scripts\Input Mappers\Pilot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAgAEIACAAAAAAAAQACAgYAAQARAAIEAgAAAQAAEA=</HashCode>
+      <FileName>Assets\Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScreenManager" Collapsed="true">
+    <Position X="19.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BRaAAAAAACHUAIAUIKAggIAAQAgRAAAAAACA4AAABAA=</HashCode>
+      <FileName>Assets\Scripts\Managers\ScreenManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Meteor" Collapsed="true">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQIAAAAAAAAAQAAAAAAAAAAAAACAAACAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Meteors\Meteor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Meteors" Collapsed="true">
+    <Position X="19.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAGAACACAAEAAAAAAAgiAAACAAAAAAAAAQAAAQA=</HashCode>
+      <FileName>Assets\Scripts\Meteors\Meteors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shoot" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAKAAAACgAAA0AIAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Meteors\Shoot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapNode" Collapsed="true">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAACAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\MapNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MultiUtilityNode" Collapsed="true">
+    <Position X="5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAACAAAAAAAAAgAEAAAAAAAAAAAIABAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Node System\MultiUtilityNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GeneratorStation" Collapsed="true">
+    <Position X="8.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAACCAgAAAAAAAAIAAAgAAAggAAAAAAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\GeneratorStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RepairStation" Collapsed="true">
+    <Position X="8.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQEACEAAHAEIYgEQABAIEAKwAKAiIAAEAIAgQCgAAg=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\RepairStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonComponent" Collapsed="true">
+    <Position X="1.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\ButtonComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cell" Collapsed="true">
+    <Position X="21.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAACAAAAEAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CellGroup" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\CellGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfirmButton" Collapsed="true">
+    <Position X="3" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\ConfirmButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Handle" Collapsed="true">
+    <Position X="7.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Handle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Indicator" Collapsed="true">
+    <Position X="19.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAACAAACUAAAAAAABAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Indicator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interactable" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAEAAAAAAAAAAAAACAIAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Interactable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Maze" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAABAAAAAAAAAAAAAACAAAAAAAAgAAI=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Maze.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PuzzleComponent" Collapsed="true">
+    <Position X="6.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\PuzzleComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RotaryKnob" Collapsed="true">
+    <Position X="5.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\RotaryKnob.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Selector" Collapsed="true">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAACAAgAAAEIAAAACAIACAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Selector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StationDisplay" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABEAAAAAACAAAAAgAAACAABKAAAAEAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\StationDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Switch" Collapsed="true">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIJMAAAAAAgAAAAAAAAACAIAQAABAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\Switch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToggleButton" Collapsed="true">
+    <Position X="0.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABABAAAAAAACYIAAAABAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RepairStations\Station Components\ToggleButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomNode" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQGQAAEACAAAAAAAAAAAAAAAAQEAECAAAAAgAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RoomNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UtilityNode" Collapsed="true">
+    <Position X="3.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAACAIA=</HashCode>
+      <FileName>Assets\Scripts\Node System\UtilityNode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacuumDoor" Collapsed="true">
+    <Position X="2.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\VacuumDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityTemplateProjects.SimpleCameraController" Collapsed="true">
+    <Position X="16.25" Y="5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="UnityTemplateProjects.SimpleCameraController.CameraState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\SimpleCameraController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ACQAAAwgADAQAABAQYJAAAEAAAAEAAAAAAAIECIACAI=</HashCode>
+      <FileName>Assets\Scripts\SimpleCameraController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="DamageState" Collapsed="true">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAIAAAAAAAAAACAAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Node System\RoomNode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
