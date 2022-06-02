@@ -5617,11 +5617,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241205, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Speed
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241205, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_MaxSpeed
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241205, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Acceleration
@@ -9595,7 +9595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652481806507842577, guid: 2f9b73fbf7cee0f4eb72f5a52bdfc8da, type: 3}
       propertyPath: m_TileMatrixArray.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6652481806507842577, guid: 2f9b73fbf7cee0f4eb72f5a52bdfc8da, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
