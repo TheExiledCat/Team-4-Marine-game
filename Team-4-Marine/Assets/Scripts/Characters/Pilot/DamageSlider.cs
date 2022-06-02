@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class DamageSlider : MonoBehaviour
 {
-    Slider m_Slider;
-    float m_Damage = 0;
+    private Image m_Slider;
 
     private void Start()
     {
-        m_Slider = gameObject.GetComponent<Slider>();
+        m_Slider = gameObject.GetComponent<Image>();
     }
 
-    public void HandleSliderValue()
+    public void Update()
     {
-        m_Slider.value = m_Damage;
+        m_Slider.fillAmount = GameManager.GM.m_Damage / 100;
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using System;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,16 +14,20 @@ public class GameManager : MonoBehaviour
     private List<RoomNode> m_Rooms = new List<RoomNode>();
     public float m_ChaosGradient = 0.5f;
     public float m_Progress = 0;
+    public float m_Damage = 0;
     private MechanicScript m_Mechanic;
 
     public event Action OnMeteorShower;
+
+    private bool m_Started = false;
+    [SerializeField] private GameObject m_EndScreen;
 
     private void Awake()
     {
         if (GM == null)
         {
             GM = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -46,8 +52,58 @@ public class GameManager : MonoBehaviour
             }
         }
         print("Damaging");
-        CauseShipDamage(5f, true);
-        Invoke("CauseMeteorShower", 15 + 10 * m_ChaosGradient);
+        //CauseShipDamage(5f, true);
+        //Invoke("CauseMeteorShower", 15 + 10 * m_ChaosGradient);
+    }
+
+    private void FixedUpdate()
+    {
+        //10 minutes
+        m_Damage += (float)100 / (float)(60 * 600);
+
+        int total = m_Rooms.Count;
+        int done = 0;
+        foreach (RoomNode r in m_Rooms)
+        {
+            if (r.m_DamageState == DamageState.FULL)
+            {
+                done++;
+            }
+        }
+        m_Progress = (float)done / (float)total;
+        Debug.LogWarning((float)done / (float)total);
+        if (m_Started)
+        {
+            if (m_Progress >= 1)
+            {
+                Win();
+            }
+            if (m_Damage >= 1)
+            {
+                Lose();
+            }
+        }
+
+        m_Started = true;
+    }
+
+    private void Lose()
+    {
+        m_EndScreen.SetActive(true);
+        m_EndScreen.transform.GetChild(0).GetComponent<TMP_Text>().text = "YOU DIED";
+        Debug.LogWarning("Game Lose");
+    }
+
+    private void Win()
+    {
+        m_EndScreen.SetActive(true);
+        m_EndScreen.transform.GetChild(0).GetComponent<TMP_Text>().text = "YOU WIN";
+        Debug.LogWarning("Game Win");
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     //UpdateGradient
@@ -127,7 +183,7 @@ public class GameManager : MonoBehaviour
     private void CauseMeteorShower()
     {
         OnMeteorShower?.Invoke();
-        Invoke("CauseMeteorShower", 60 + 30 * m_ChaosGradient);
+        Invoke("CauseMeteorShower", 180 + 120 * m_ChaosGradient);
     }
 
     private IEnumerator DamageShip(float _delay = 0, bool _recall = false)
