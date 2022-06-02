@@ -8,7 +8,7 @@ public class MechanicScript : MonoBehaviour
     private RepairStation m_CurrentStation;
     [SerializeField] private Camera m_EngineerCam;
     [SerializeField] private LayerMask m_Interactables;
-    private bool m_Repairing;
+    public bool m_Repairing;
 
     public void SetStation(RepairStation _station = null)
     {

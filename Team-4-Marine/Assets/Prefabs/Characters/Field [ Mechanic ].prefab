@@ -5625,7 +5625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241205, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_Acceleration
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4297585204002241207, guid: f883dc45d38e95d438d6885f7b9d14c3, type: 3}
       propertyPath: m_RootOrder
@@ -6109,6 +6109,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2622618581636792761}
     m_Modifications:
+    - target: {fileID: 6652481805669119277, guid: 2f9b73fbf7cee0f4eb72f5a52bdfc8da, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652481805669119277, guid: 2f9b73fbf7cee0f4eb72f5a52bdfc8da, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -622688153
+      objectReference: {fileID: 0}
     - target: {fileID: 6652481805759054757, guid: 2f9b73fbf7cee0f4eb72f5a52bdfc8da, type: 3}
       propertyPath: m_Name
       value: Grid

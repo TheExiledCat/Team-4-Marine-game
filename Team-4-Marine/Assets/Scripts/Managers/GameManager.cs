@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     //UpdateGradient
     public void ForceRoam()
     {
-        m_Mechanic.Roam();
+        m_Mechanic.m_Repairing = false;
     }
 
     public void DisableMechanicInteraction()
