@@ -58,9 +58,10 @@ public class NavigationStation : RepairStation
         {
             m_Lights[i].Initiate();
         }
-        Indicate();
+
         //StartCoroutine(Test());
         m_CurrentPosition = Vector2Int.zero;
+        Indicate();
     }
 
     protected override void Update()
