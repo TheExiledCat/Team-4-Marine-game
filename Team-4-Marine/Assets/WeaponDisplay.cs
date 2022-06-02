@@ -15,12 +15,6 @@ public class WeaponDisplay : StationDisplay
     private int m_AmmoA;
     private int m_AmmoB;
 
-    protected override void Awake()
-    {
-        m_TextName.text = m_StationName;
-        print(m_Crosses.name);
-    }
-
     public override void Initiate()
     {
         base.Initiate();

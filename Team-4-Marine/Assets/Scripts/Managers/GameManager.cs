@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using System;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager GM = null;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float m_ChaosGradient = 0.5f;
     public float m_Progress = 0;
     private MechanicScript m_Mechanic;
+
     public event Action OnMeteorShower;
 
     private void Awake()
@@ -111,19 +113,23 @@ public class GameManager : MonoBehaviour
             m_EngineerControls.Movement2D.Disable();
         }
     }
+
     public void MeteoriteDamage()
     {
         CauseShipDamage(0, false);
     }
+
     public void CauseShipDamage(float _startDelay, bool _recall = false)
     {
         StartCoroutine(DamageShip(_startDelay, _recall));
     }
+
     private void CauseMeteorShower()
     {
         OnMeteorShower?.Invoke();
-        Invoke("CauseMeteorShower", 35 + 20 * m_ChaosGradient);
+        Invoke("CauseMeteorShower", 60 + 30 * m_ChaosGradient);
     }
+
     private IEnumerator DamageShip(float _delay = 0, bool _recall = false)
     {
         yield return new WaitForSeconds(_delay);
