@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             {
                 Win();
             }
-            if (m_Damage >= 1)
+            if (m_Damage >= 100)
             {
                 Lose();
             }
