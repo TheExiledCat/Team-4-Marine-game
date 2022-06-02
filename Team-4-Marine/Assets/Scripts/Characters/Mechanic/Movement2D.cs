@@ -61,43 +61,55 @@ public class Movement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 change = (Vector2)m_Rb.position - m_LastPosition;
-        m_LastPosition = m_Rb.position;
-        if (Mathf.Abs(change.x) == 0f)
-        {
-            m_Delta.x = 0;
-        }
+        //Vector2 change = (Vector2)m_Rb.position - m_LastPosition;
+        //m_LastPosition = m_Rb.position;
+        //if (Mathf.Abs(change.x) == 0f)
+        //{
+        //    m_Delta.x = 0;
+        //}
 
-        if (Mathf.Abs(change.y) == 0f)
-        {
-            m_Delta.y = 0;
-        }
+        //if (Mathf.Abs(change.y) == 0f)
+        //{
+        //    m_Delta.y = 0;
+        //}
+        m_MoveDirection = m_Move.ReadValue<Vector2>();
+        m_Rb.position += m_MoveDirection * (m_2DControls.Sprint.IsPressed() ? m_MaxSpeed : m_Speed)/1000;
+        m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
+        m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
+        m_Anim.SetBool("Moving", m_MoveDirection == Vector2.zero ? false : true);
+        m_Anim.SetBool("MovingHorizontal", m_MoveDirection.x!=0? true : false);
+        m_Anim.SetBool("MovingUp", m_MoveDirection.y>0 ? true : false);
+        m_Anim.SetBool("MovingDown", m_MoveDirection.y<0 ? true : false);
+        Bounds bounds = m_Renderer.bounds;
+        m_Shadow.transform.localScale = new Vector2(bounds.size.x * 2, 1);
+        m_Renderer.flipX = m_IsFacingRight;
+
     }
 
     private void Update()
     {
-        m_MoveDirection = m_Move.ReadValue<Vector2>();
+        //m_MoveDirection = m_Move.ReadValue<Vector2>();
 
-        m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
-        m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
-        Bounds bounds = m_Renderer.bounds;
-        m_Shadow.transform.localScale = new Vector2(bounds.size.x * 2, 1);
-        m_Renderer.flipX = m_IsFacingRight;
-        if (!m_2DControls.Sprint.IsPressed())
-        {
-            Move(m_MaxSpeed, m_Speed);
-        }
+        //m_Anim.SetBool("Sprinting", !m_2DControls.Sprint.IsPressed() ? false : true);
+        //m_IsFacingRight = m_MoveDirection.x > 0 ? true : m_MoveDirection.x < 0 ? false : m_IsFacingRight;
+        //Bounds bounds = m_Renderer.bounds;
+        //m_Shadow.transform.localScale = new Vector2(bounds.size.x * 2, 1);
+        //m_Renderer.flipX = m_IsFacingRight;
+        //if (!m_2DControls.Sprint.IsPressed())
+        //{
+        //    Move(m_MaxSpeed, m_Speed);
+        //}
 
-        if (m_2DControls.Sprint.IsPressed())
-        {
-            Move(m_MaxSpeed, m_MaxSpeed);
-        }
+        //if (m_2DControls.Sprint.IsPressed())
+        //{
+        //    Move(m_MaxSpeed, m_MaxSpeed);
+        //}
 
-        m_Rb.velocity = m_Delta *Time.deltaTime;
-        m_Anim.SetBool("Moving", m_Rb.velocity == Vector2.zero ? false : true);
-        m_Anim.SetBool("MovingHorizontal", m_Rb.velocity.x > 0.45f ? true : m_Rb.velocity.x < -0.45f ? true : false);
-        m_Anim.SetBool("MovingUp", m_Rb.velocity.y > 0.45f ? true : false);
-        m_Anim.SetBool("MovingDown", m_Rb.velocity.y < -0.45f ? true : false);
+        //m_Rb.velocity = m_Delta *Time.deltaTime;
+        //m_Anim.SetBool("Moving", m_Rb.velocity == Vector2.zero ? false : true);
+        //m_Anim.SetBool("MovingHorizontal", m_Rb.velocity.x > 0.45f ? true : m_Rb.velocity.x < -0.45f ? true : false);
+        //m_Anim.SetBool("MovingUp", m_Rb.velocity.y > 0.45f ? true : false);
+        //m_Anim.SetBool("MovingDown", m_Rb.velocity.y < -0.45f ? true : false);
     }
 
     private void Decay()
